@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZEXL Brief — No. 001 · 30 July 2026</title>
+<meta name="description" content="Three central banks have turned. None agrees how far to go.">
+<meta property="og:title" content="ZEXL Brief — 30 July 2026">
+<meta property="og:description" content="Three central banks have turned. None agrees how far to go. One answers tomorrow morning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E7EBED; --card:#F7F9FA; --ink:#12212A; --ink-soft:#53656F; --ink-faint:#8497A0;
+  --rule:#C6CFD4; --up:#9E3417; --dn:#2C5A7A; --watch:#0B6B6B; --watch-tint:#E2EFEE;
+  --f-display:"Newsreader",Georgia,serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,monospace;
+  --track:.13em;
+  --wrap:41rem;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);
+  font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 1.15rem}
+
+/* micro label — sans, one tracking value everywhere */
+.ml{font-size:.66rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;line-height:1}
+
+/* masthead */
+.masthead{border-bottom:1.5px solid var(--ink);padding:1.5rem 0 .75rem}
+.masthead-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--f-display);font-weight:600;font-size:1.55rem;letter-spacing:-.022em;line-height:1}
+.logo b{font-weight:600;letter-spacing:.02em;margin-right:.12em}
+.logo span{color:var(--ink-faint);font-weight:400}
+.issue{font-family:var(--f-data);font-size:.68rem;color:var(--ink-soft);text-align:right;line-height:1.55}
+.issue b{color:var(--ink);font-weight:600}
+
+/* story */
+.story{padding:2.1rem 0 1.4rem}
+.story .ml{color:var(--up);margin-bottom:.8rem}
+.story h1{font-family:var(--f-display);font-size:1.96rem;line-height:1.16;letter-spacing:-.02em;
+  font-weight:500;margin:0 0 .9rem}
+.story p{margin:0 0 .85rem;color:var(--ink-soft);font-size:.97rem;line-height:1.64}
+.story p strong{color:var(--ink);font-weight:500}
+.story p:last-child{margin-bottom:0}
+
+/* index panel */
+.panel{background:var(--card);border-top:1.5px solid var(--ink);border-bottom:1px solid var(--rule);margin-top:1.9rem}
+.p-head{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;
+  padding:.85rem 1rem .8rem;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.p-date{font-family:var(--f-data);font-size:.68rem;color:var(--ink-faint)}
+.gauge{padding:.95rem 1rem 1rem;border-bottom:1px solid var(--rule);position:relative}
+.gauge.lead{background:#F2F0EE}
+.gauge.lead::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--up)}
+.gauge.lead .g-val{color:var(--up)}
+.g-top{display:flex;justify-content:space-between;align-items:baseline;gap:.7rem}
+.g-name{font-size:.97rem;font-weight:600}
+.g-name small{display:block;font-size:.66rem;color:var(--ink-faint);font-weight:400;margin-top:.12rem;letter-spacing:0}
+.g-nums{display:flex;align-items:baseline;gap:.5rem;font-family:var(--f-data)}
+.g-val{font-size:1.5rem;font-weight:600;line-height:1;letter-spacing:-.02em}
+.g-chg{font-size:.75rem;font-weight:600}
+.g-chg.u{color:var(--up)} .g-chg.d{color:var(--dn)} .g-chg.f{color:var(--ink-faint)}
+.g-mid{display:grid;grid-template-columns:1fr 6.6rem;gap:.75rem;align-items:center;margin:.55rem 0 .5rem}
+.bar{position:relative;height:5px;background:#D5DCE0;border-radius:3px}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--up);border-radius:3px}
+.bar u{position:absolute;top:-3px;bottom:-3px;width:1.5px;background:var(--ink);opacity:.45;text-decoration:none}
+.spark{display:block}
+.g-why{font-size:.86rem;color:var(--ink-soft);margin:0;line-height:1.55}
+.g-why em{font-style:normal;color:var(--ink);font-weight:500}
+.g-why a{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--rule);
+  font-family:var(--f-data);font-size:.7rem}
+.g-why a:hover,.g-why a:focus-visible{color:var(--ink);border-bottom-color:var(--ink);outline:none}
+.g-next{margin-top:.4rem;font-family:var(--f-data);font-size:.68rem;color:var(--watch);font-weight:500}
+.p-foot{padding:.85rem 1rem .95rem;font-size:.7rem;color:var(--ink-faint);line-height:1.6}
+.p-foot b{color:var(--ink-soft);font-weight:600}
+
+/* signals */
+.signals{margin-top:1.9rem;border-left:2px solid var(--up);padding-left:1rem}
+.signals .ml{color:var(--ink-faint);margin-bottom:.55rem}
+.sig{border-bottom:1px solid var(--rule)}
+.sig:last-child{border-bottom:none}
+.sig>summary{font-family:var(--f-display);font-size:1.02rem;line-height:1.34;font-weight:600;
+  color:var(--ink);cursor:pointer;list-style:none;padding:.62rem 1.3rem .62rem 0;position:relative}
+.sig>summary::-webkit-details-marker{display:none}
+.sig>summary::after{content:"+";position:absolute;right:.15rem;top:.66rem;font-family:var(--f-data);
+  font-size:.85rem;font-weight:500;color:var(--ink-faint);line-height:1}
+.sig[open]>summary::after{content:"–"}
+.sig>summary:hover,.sig>summary:focus-visible{color:var(--up);outline:none}
+.sig .l2{padding-bottom:.9rem}
+
+/* questions */
+.qs{margin-top:2rem}
+.qs>.ml{color:var(--up);margin-bottom:.75rem}
+.q{border:1.5px solid var(--ink);background:var(--card);padding:1rem 1rem 1.1rem;margin-bottom:.9rem}
+.q:last-child{margin-bottom:0}
+.q-tag{font-size:.62rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;
+  color:var(--watch);margin-bottom:.4rem}
+.q h3{font-family:var(--f-display);font-size:1.14rem;line-height:1.32;font-weight:600;margin:0 0 .3rem}
+.q-meta{font-family:var(--f-data);font-size:.68rem;color:var(--ink-faint);margin:0 0 .9rem}
+.bands{display:grid;grid-template-columns:repeat(7,1fr);gap:.28rem}
+.bands button{font-family:var(--f-data);font-size:.78rem;font-weight:600;color:var(--ink-soft);
+  background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:.52rem .1rem;
+  cursor:pointer;line-height:1;transition:none}
+.bands button:hover{border-color:var(--ink);color:var(--ink)}
+.bands button[aria-pressed="true"]{background:var(--up);border-color:var(--up);color:#fff}
+.bands button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.band-scale{display:flex;justify-content:space-between;font-size:.64rem;color:var(--ink-faint);margin-top:.4rem}
+.q-ack{font-size:.82rem;color:var(--ink-soft);margin:.75rem 0 0;line-height:1.5;min-height:1.3em}
+.q-ack b{color:var(--ink);font-weight:600}
+.q-ack a{color:var(--up);font-weight:600;text-decoration:none;border-bottom:1px solid var(--up)}
+
+/* fold */
+.fold{border-top:1px solid var(--rule);margin-top:2rem}
+.fold>summary{list-style:none;cursor:pointer;padding:1rem 0;display:flex;
+  justify-content:space-between;align-items:baseline;gap:.8rem}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary span{font-size:.66rem;letter-spacing:var(--track);text-transform:uppercase;
+  font-weight:600;color:var(--ink-faint)}
+.fold>summary em{font-style:normal;font-family:var(--f-data);font-size:.72rem;color:var(--ink-faint)}
+.fold>summary:hover span,.fold>summary:focus-visible span{color:var(--ink);outline:none}
+.fold[open]>summary em::after{content:" \2013"}
+.fold:not([open])>summary em::after{content:" +"}
+
+/* items */
+.rest-head{color:var(--ink-faint);padding:1.9rem 0 .35rem}
+.item{border-bottom:1px solid var(--rule);padding:1.2rem 0}
+.item:last-child{border-bottom:none}
+.item-head{display:grid;grid-template-columns:2.1rem 1fr;gap:.55rem}
+.num{font-family:var(--f-data);font-size:.72rem;color:var(--ink-faint);font-weight:500;padding-top:.24rem}
+.item h2{font-family:var(--f-display);font-size:1.1rem;line-height:1.28;letter-spacing:-.012em;
+  font-weight:600;margin:0 0 .32rem}
+.lede{margin:0;font-size:.92rem;line-height:1.58;color:var(--ink-soft)}
+
+/* L2 */
+details.more{margin-top:.68rem}
+summary.more-sum{font-size:.68rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;
+  color:var(--ink-faint);cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:.34rem;padding:.12rem 0}
+summary.more-sum::-webkit-details-marker{display:none}
+summary.more-sum::before{content:"+";font-family:var(--f-data);font-size:.85rem;line-height:1}
+details.more[open] summary.more-sum::before{content:"–"}
+summary.more-sum:hover,summary.more-sum:focus-visible{color:var(--ink);outline:none}
+.item .l2{border-left:2px solid var(--rule);padding:.2rem 0 .1rem .95rem;margin-top:.6rem}
+.blk{margin:0 0 .7rem}
+.blk:last-of-type{margin-bottom:0}
+.blk b{display:block;font-size:.63rem;letter-spacing:var(--track);text-transform:uppercase;
+  color:var(--ink-faint);font-weight:600;margin-bottom:.16rem}
+.blk span{font-size:.9rem;line-height:1.6;color:var(--ink)}
+.src{font-family:var(--f-data);font-size:.68rem;color:var(--ink-faint);margin-top:.85rem}
+.src a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--rule)}
+.src a:hover,.src a:focus-visible{color:var(--ink);border-bottom-color:var(--ink);outline:none}
+.watch{margin-top:.85rem;background:var(--watch-tint);border-left:2px solid var(--watch);
+  padding:.6rem .8rem;display:grid;gap:.2rem}
+.watch b{font-size:.63rem;letter-spacing:var(--track);text-transform:uppercase;color:var(--watch);font-weight:600}
+.watch span{font-size:.875rem;line-height:1.5;color:var(--ink)}
+.watch time{font-family:var(--f-data);font-size:.7rem;color:var(--watch);font-weight:500}
+
+/* tracking */
+.tracking{background:var(--watch-tint);border-top:1px solid var(--watch);border-bottom:1px solid var(--rule);
+  padding:1rem 0 1.1rem;margin-top:1.6rem}
+.tracking .ml{color:var(--watch);margin-bottom:.7rem;display:flex;justify-content:space-between;gap:.7rem;flex-wrap:wrap}
+.tracking .ml em{font-style:normal;color:var(--ink-soft);font-weight:500;letter-spacing:.01em;text-transform:none;font-size:.78rem}
+.tracking ul{list-style:none;margin:0;padding:0;display:grid;gap:.4rem}
+.tracking li{display:grid;grid-template-columns:5.2rem 1fr;gap:.7rem;font-size:.85rem;line-height:1.42;align-items:baseline}
+.tracking time{font-family:var(--f-data);font-size:.7rem;color:var(--watch);font-weight:600;white-space:nowrap}
+.tracking li span{color:var(--ink-soft)}
+
+footer{border-top:1.5px solid var(--ink);margin-top:1.8rem;padding:1.5rem 0 3rem;
+  font-size:.85rem;color:var(--ink-soft);line-height:1.6}
+footer p{margin:0 0 .7rem}
+footer .sign{font-family:var(--f-data);font-size:.68rem;color:var(--ink-faint)}
+
+@media (min-width:44rem){
+  body{font-size:17px}
+  .story h1{font-size:2.5rem}
+  .sig>summary{font-size:1.1rem}
+  .item h2{font-size:1.16rem}
+  .item-head{grid-template-columns:2.6rem 1fr;gap:.85rem}
+  .tracking li{grid-template-columns:6rem 1fr}
+  .bands button{font-size:.85rem;padding:.6rem .1rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="masthead-row">
+    <div class="logo"><b>ZEXL</b>Brief<span>.</span></div>
+    <div class="issue">No. 001 &nbsp;·&nbsp; <b>Thu 30 Jul 2026</b><br>1 story &nbsp;·&nbsp; 5 signals &nbsp;·&nbsp; 3 min</div>
+  </div>
+</header>
+
+<section class="story">
+  <div class="ml">Today's story</div>
+  <h1>Three central banks have turned. None agrees how far to go.</h1>
+  <p>Five months ago the world was cutting rates. It is not any more — and the reason is not growth. It is a war in its fifth month that has put Brent above $100 and written itself into the official language of every major central bank this quarter.</p>
+  <p><strong>What is new is not the turn. It is the disagreement inside it.</strong> The Fed held yesterday, but three regional presidents broke ranks and voted to raise. The Bank of Japan has three dissenters of its own on record. The ECB has already moved, into a growth forecast it cut at the same meeting.</p>
+  <p>None of these committees is arguing about direction. They are arguing about speed — which is the argument that moves the long end of every curve. <strong>One of the three answers tomorrow morning.</strong></p>
+</section>
+
+<section class="panel">
+  <div class="p-head">
+    <span class="ml">Where today points</span>
+    <span class="p-date">30 Jul &nbsp;·&nbsp; vs 29 Jul</span>
+  </div>
+
+  <div class="gauge">
+    <div class="g-top">
+      <span class="g-name">Prices<small>inflation pressure · next 6 months</small></span>
+      <span class="g-nums"><span class="g-val">72.4</span><span class="g-chg u">▲ 4.1</span></span>
+    </div>
+    <div class="g-mid">
+      <div class="bar"><i style="width:72%"></i><u style="left:68%"></u></div>
+      <svg class="spark" width="106" height="24" viewBox="0 0 106 24" aria-hidden="true">
+        <polyline fill="none" stroke="#9E3417" stroke-width="1.5" stroke-linejoin="round"
+          points="0,19 8,19 16,18 24,18 32,16 40,15 48,13 56,14 64,10 72,9 80,9 88,7 96,5 104,3"/></svg>
+    </div>
+    <p class="g-why"><em>Brent up 40% in a month</em>, and the Damietta strike puts the Suez bypass itself in question — freight cost lands in European prints first. <a href="#i02">items 02 · Signal 4</a></p>
+    <div class="g-next">next read — US CPI, 12 Aug</div>
+  </div>
+
+  <div class="gauge">
+    <div class="g-top">
+      <span class="g-name">Growth<small>growth risk · next 6 months</small></span>
+      <span class="g-nums"><span class="g-val">63.8</span><span class="g-chg u">▲ 2.6</span></span>
+    </div>
+    <div class="g-mid">
+      <div class="bar"><i style="width:64%"></i><u style="left:61%"></u></div>
+      <svg class="spark" width="106" height="24" viewBox="0 0 106 24" aria-hidden="true">
+        <polyline fill="none" stroke="#9E3417" stroke-width="1.5" stroke-linejoin="round"
+          points="0,18 8,17 16,18 24,16 32,16 40,15 48,15 56,13 64,13 72,12 80,12 88,10 96,10 104,8"/></svg>
+    </div>
+    <p class="g-why"><em>The ECB cut its 2026 growth forecast to 0.8% while raising rates</em>, and China's Q2 missed target under a record export month that was mostly pulled forward. <a href="#i04">Signal 3 · item 04</a></p>
+    <div class="g-next">next read — euro-area flash GDP, 14 Aug</div>
+  </div>
+
+  <div class="gauge">
+    <div class="g-top">
+      <span class="g-name">Markets<small>market stress · now</small></span>
+      <span class="g-nums"><span class="g-val">58.1</span><span class="g-chg u">▲ 3.4</span></span>
+    </div>
+    <div class="g-mid">
+      <div class="bar"><i style="width:58%"></i><u style="left:55%"></u></div>
+      <svg class="spark" width="106" height="24" viewBox="0 0 106 24" aria-hidden="true">
+        <polyline fill="none" stroke="#9E3417" stroke-width="1.5" stroke-linejoin="round"
+          points="0,17 8,19 16,16 24,18 32,15 40,17 48,14 56,16 64,12 72,14 80,11 88,13 96,9 104,7"/></svg>
+    </div>
+    <p class="g-why"><em>Three Fed dissents for a hike, three more at the Bank of Japan</em> — the long end moved nine basis points on the day, and the yen carries whatever happens tomorrow. <a href="#s-fed">Signals 1 · 2</a></p>
+    <div class="g-next">next read — daily</div>
+  </div>
+
+  <div class="gauge lead">
+    <div class="g-top">
+      <span class="g-name">Conflict<small>conflict risk · now</small></span>
+      <span class="g-nums"><span class="g-val">76.2</span><span class="g-chg u">▲ 5.2</span></span>
+    </div>
+    <div class="g-mid">
+      <div class="bar"><i style="width:76%"></i><u style="left:71%"></u></div>
+      <svg class="spark" width="106" height="24" viewBox="0 0 106 24" aria-hidden="true">
+        <polyline fill="none" stroke="#9E3417" stroke-width="1.5" stroke-linejoin="round"
+          points="0,16 8,17 16,15 24,16 32,13 40,14 48,12 56,13 64,10 72,11 80,8 88,9 96,5 104,2"/></svg>
+    </div>
+    <p class="g-why"><em>Four countries were struck or struck back inside 24 hours</em>, and Saudi Arabia moved from intercepting to flying strike missions — the first new combatant since February. <a href="#i01">items 01 · 02 · 09</a></p>
+    <div class="g-next">next read — daily</div>
+  </div>
+
+  <div class="p-foot">
+    <b>ZEXL Index v0.5 — the method is still changing.</b> Each reading is a rules-based function of the day's primary sources. Components and weights are published; when they change, the whole series is recalculated and the revision logged. Marker on each bar = yesterday. Line = 30 days.
+  </div>
+</section>
+
+<div class="signals">
+  <div class="ml">The five signals in this story</div>
+
+  <details class="sig" id="s-fed">
+    <summary>Fed holds a fifth time, but three presidents vote to raise</summary>
+    <div class="l2">
+      <p class="blk"><b>What happened</b><span>The FOMC kept its range at 3.50–3.75% on a 9–3 vote. Hammack, Kashkari and Logan dissented in favour of an immediate quarter-point increase.</span></p>
+      <p class="blk"><b>Why now</b><span>The statement names the Middle East conflict as a source of elevated uncertainty and points to supply shocks driving prices in specific sectors, energy among them. Inflation has run above the 2% target for more than five years. Under Chair Warsh the statement has been cut back sharply and forward guidance withdrawn, so the vote split is now the clearest signal the Committee gives.</span></p>
+      <p class="blk"><b>What's at stake</b><span>Markets are pricing two hikes this year; the June projections showed one. If the split widens in September, the repricing runs through the long end — the 30-year already moved nine basis points on the day.</span></p>
+      <div class="watch"><b>Watch</b><span>Whether the September meeting produces four or more dissents, or a hike.</span><time>Resolves 2026-09-16 · Federal Reserve statement</time></div>
+      <p class="src">Federal Reserve, FOMC statement, 29 Jul 2026 · <a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm">federalreserve.gov</a></p>
+    </div>
+  </details>
+
+  <details class="sig" id="s-boj">
+    <summary>Bank of Japan decides tomorrow with three members already dissenting</summary>
+    <div class="l2">
+      <p class="blk"><b>What happened</b><span>The Policy Board meets 30–31 July, with the decision and quarterly Outlook Report due Friday. June's meeting lifted the overnight call rate to 1.0% on a 7–1 vote — the first time at that level in three decades.</span></p>
+      <p class="blk"><b>Why now</b><span>The June statement committed to continuing to raise the policy rate while explicitly monitoring how the Middle East situation feeds into Japanese activity and prices. Deputy Governor Himino said in late June that wholesale inflation is accelerating as firms pass on conflict-driven costs, and that underlying inflation could overshoot the 2% target.</span></p>
+      <p class="blk"><b>What's at stake</b><span>Japan is the last major economy with deeply negative real rates. A move tomorrow confirms the tightening turn is global rather than American, and the yen carries the adjustment either way.</span></p>
+      <div class="watch"><b>Watch</b><span>A hike above 1.00%, or a vote split that moves further toward tightening.</span><time>Resolves 2026-07-31 · Bank of Japan statement</time></div>
+      <p class="src">Bank of Japan, policy statement 16 Jun 2026 · <a href="https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260616a.pdf">boj.or.jp</a></p>
+    </div>
+  </details>
+
+  <details class="sig" id="s-ecb">
+    <summary>ECB puts 2026 inflation at 3.0% — and cut growth at the same meeting</summary>
+    <div class="l2">
+      <p class="blk"><b>What happened</b><span>The Governing Council lifted its three key rates by a quarter point in June. Staff projections show headline inflation averaging 3.0% this year, 2.3% in 2027 and 2.0% in 2028, with 2026 growth revised down to 0.8%.</span></p>
+      <p class="blk"><b>Why now</b><span>Both revisions trace to a higher energy price path. The Council called the decision robust across a range of scenarios for how the shock might evolve — the language of a bank raising into weakening growth deliberately.</span></p>
+      <p class="blk"><b>What's at stake</b><span>Upside risk to inflation and downside risk to growth at once is the configuration with no comfortable answer. Europe is furthest along this path of the three.</span></p>
+      <div class="watch"><b>Watch</b><span>Whether the August flash estimate comes in above the 3.0% projection path.</span><time>Resolves 2026-09-01 · Eurostat HICP flash</time></div>
+      <p class="src">ECB monetary policy decisions, 11 Jun 2026 · <a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260611~4d41bd5e83.en.html">ecb.europa.eu</a></p>
+    </div>
+  </details>
+
+  <details class="sig" id="s-oil">
+    <summary>Brent above $100, from $71 at the start of the month</summary>
+    <div class="l2">
+      <p class="blk"><b>What happened</b><span>Brent settled at $100.69 on 23 July, about 7% higher on the day and a fifth straight session of gains. WTI settled at $92.19. Brent opened the month at $71.57.</span></p>
+      <p class="blk"><b>Why now</b><span>Houthi forces threatened to blockade Bab al-Mandeb, the main bypass for Hormuz. With both routes under threat at once, the market stopped pricing an alternative.</span></p>
+      <p class="blk"><b>What's at stake</b><span>A 40% move in a month is the mechanism connecting every geopolitical item below to every monetary one above. The IEA put spare crude capacity near 4.4 million barrels a day, but more than three-quarters of it sits inside the war zone.</span></p>
+      <div class="watch"><b>Watch</b><span>Whether US crude inventories draw down for a third consecutive week.</span><time>Resolves 2026-08-05 · EIA Weekly Petroleum Status Report</time></div>
+      <p class="src">CNN, 23 Jul 2026 · Congressional Research Service R45281 · <a href="https://www.congress.gov/crs-product/R45281">congress.gov</a></p>
+    </div>
+  </details>
+
+  <details class="sig" id="s-strikes">
+    <summary>US strikes IRGC targets after Iranian missiles hit bases in Jordan</summary>
+    <div class="l2">
+      <p class="blk"><b>What happened</b><span>US forces hit dozens of Islamic Revolutionary Guard Corps sites overnight in retaliation for strikes on American bases in Jordan, which Amman says it intercepted. Washington also designated ten entities and eight tankers.</span></p>
+      <p class="blk"><b>Why now</b><span>The war began with US and Israeli strikes on 28 February. A June memorandum of understanding was meant to close it within sixty days, but fighting resumed in July after Iran struck three commercial vessels that had bypassed its approved routing.</span></p>
+      <p class="blk"><b>What's at stake</b><span>The exchange has now drawn in Jordan, Iraq, Saudi Arabia and Egypt. Each new participant lengthens the list of exposed energy assets and shipping lanes — the channel that reaches everything above.</span></p>
+      <p class="src">Pentagon / CENTCOM statements, 29–30 Jul 2026</p>
+    </div>
+  </details>
+</div>
+
+<section class="qs">
+  <div class="ml">Two questions</div>
+
+  <div class="q">
+    <div class="q-tag">Inflation · monthly</div>
+    <h3>Will US core CPI for July come in above 3.4%?</h3>
+    <p class="q-meta">Resolves 12 Aug · BLS · consensus 3.3%</p>
+    <div class="bands" role="group" aria-label="Probability for core CPI above 3.4 percent">
+      <button type="button" data-q="cpi" data-p="5" aria-pressed="false">5%</button>
+      <button type="button" data-q="cpi" data-p="20" aria-pressed="false">20%</button>
+      <button type="button" data-q="cpi" data-p="35" aria-pressed="false">35%</button>
+      <button type="button" data-q="cpi" data-p="50" aria-pressed="false">50%</button>
+      <button type="button" data-q="cpi" data-p="65" aria-pressed="false">65%</button>
+      <button type="button" data-q="cpi" data-p="80" aria-pressed="false">80%</button>
+      <button type="button" data-q="cpi" data-p="95" aria-pressed="false">95%</button>
+    </div>
+    <div class="band-scale"><span>almost certainly not</span><span>almost certainly</span></div>
+    <p class="q-ack" data-ack="cpi"></p>
+  </div>
+
+  <div class="q">
+    <div class="q-tag">Resolves tomorrow</div>
+    <h3>Will the yen close stronger against the dollar tomorrow than it does today?</h3>
+    <p class="q-meta">Resolves 31 Jul · after the Bank of Japan decision</p>
+    <div class="bands" role="group" aria-label="Probability the yen strengthens tomorrow">
+      <button type="button" data-q="jpy" data-p="5" aria-pressed="false">5%</button>
+      <button type="button" data-q="jpy" data-p="20" aria-pressed="false">20%</button>
+      <button type="button" data-q="jpy" data-p="35" aria-pressed="false">35%</button>
+      <button type="button" data-q="jpy" data-p="50" aria-pressed="false">50%</button>
+      <button type="button" data-q="jpy" data-p="65" aria-pressed="false">65%</button>
+      <button type="button" data-q="jpy" data-p="80" aria-pressed="false">80%</button>
+      <button type="button" data-q="jpy" data-p="95" aria-pressed="false">95%</button>
+    </div>
+    <div class="band-scale"><span>almost certainly not</span><span>almost certainly</span></div>
+    <p class="q-ack" data-ack="jpy"></p>
+  </div>
+</section>
+
+<details class="fold">
+<summary><span>Also today</span><em>9 more items</em></summary>
+<main>
+
+  <article class="item" id="i01">
+    <div class="item-head"><div class="num">01</div><div>
+      <h2>US and Saudi forces jointly strike Iran-aligned militias in Iraq</h2>
+      <p class="lede">CENTCOM says the militias fired more than thirty drones at American troops and Saudi oil facilities over three days. Riyadh flying alongside US forces is new.</p>
+      <details class="more"><summary class="more-sum">Read more</summary><div class="l2">
+        <p class="blk"><b>What happened</b><span>American and Saudi aircraft struck Iran-backed groups operating in Iraq after a sustained drone campaign against US positions and Saudi energy infrastructure.</span></p>
+        <p class="blk"><b>Why now</b><span>Saudi Arabia had absorbed Iranian missile and drone strikes since March, including attempts on the Shaybah oil field, without joining offensive operations. Moving from interception to participation is a threshold crossing.</span></p>
+        <p class="blk"><b>What's at stake</b><span>Saudi facilities are the world's spare capacity. An adversary with a declared reason to target them changes the risk premium in every barrel priced today.</span></p>
+        <p class="src">US Central Command, 29 Jul 2026</p>
+      </div></details>
+    </div></div>
+  </article>
+
+  <article class="item" id="i02">
+    <div class="item-head"><div class="num">02</div><div>
+      <h2>Drone hits US-owned gas tanker at Damietta, Egypt</h2>
+      <p class="lede">A vessel was struck at the Mediterranean port on Wednesday — the first hit this far west, well past both Hormuz and Bab al-Mandeb.</p>
+      <details class="more"><summary class="more-sum">Read more</summary><div class="l2">
+        <p class="blk"><b>What happened</b><span>A drone struck a US-owned gas storage tanker at Damietta on Egypt's Mediterranean coast.</span></p>
+        <p class="blk"><b>Why now</b><span>Shipping risk in this war has been concentrated at two chokepoints. Damietta sits on the far side of Suez, at the end of the route ships have been using precisely to avoid the Red Sea.</span></p>
+        <p class="blk"><b>What's at stake</b><span>If the Mediterranean approach is no longer safe, the Cape of Good Hope detour stops being a workaround and becomes the only option — roughly ten extra days on every Asia–Europe voyage, and a freight cost that lands in European inflation prints.</span></p>
+        <div class="watch"><b>Watch</b><span>Suez transit counts and the Cape re-routing share in the next weekly reading.</span><time>Resolves weekly · Suez Canal Authority</time></div>
+        <p class="src">Reported 29–30 Jul 2026</p>
+      </div></details>
+    </div></div>
+  </article>
+
+  <article class="item" id="i03">
+    <div class="item-head"><div class="num">03</div><div>
+      <h2>China widens rare-earth controls to fourteen EU firms</h2>
+      <p class="lede">Beijing added ten US companies in June and fourteen European ones in July. A second wave covering five more elements is scheduled for November.</p>
+      <details class="more"><summary class="more-sum">Read more</summary><div class="l2">
+        <p class="blk"><b>What happened</b><span>China's commerce ministry extended export restrictions to fourteen EU firms in July, after ten US firms in June. Controls on holmium, erbium, thulium, europium and ytterbium are set to take effect on 10 November after an earlier delay.</span></p>
+        <p class="blk"><b>Why now</b><span>China accounts for around 60% of global rare-earth mining and roughly 92% of processing. The pattern of the past two years has been escalate, negotiate, partially roll back. Running restrictions at full effect against a G7 economy for an extended stretch is the departure.</span></p>
+        <p class="blk"><b>What's at stake</b><span>The IEA estimated on 16 July that $6.5 trillion of downstream production outside China sits within reach of full implementation — an exposure figure, not a realised loss, spanning autos, semiconductors, defence and energy.</span></p>
+        <div class="watch"><b>Watch</b><span>Whether the second wave takes effect on schedule or slips again — the clearest single signal on whether 2026's escalation continues.</span><time>Resolves 2026-11-10 · MOFCOM announcement</time></div>
+        <p class="src">MOFCOM notices; IEA estimate 16 Jul 2026</p>
+      </div></details>
+    </div></div>
+  </article>
+
+  <article class="item" id="i04">
+    <div class="item-head"><div class="num">04</div><div>
+      <h2>Record Chinese exports, and a missed growth target underneath</h2>
+      <p class="lede">June exports hit $412bn, up 27% on AI-chip supply-chain demand. Second-quarter GDP missed Beijing's target for the first time this year.</p>
+      <details class="more"><summary class="more-sum">Read more</summary><div class="l2">
+        <p class="blk"><b>What happened</b><span>Exports reached a record in June, with US-bound shipments up around 14% year on year after a long stretch of double-digit declines. Q2 growth came in below target.</span></p>
+        <p class="blk"><b>Why now</b><span>Manufacturers pulled US-bound shipments forward into June to beat anticipated tariffs. The June figure therefore measures the timing of a deadline more than it measures demand.</span></p>
+        <p class="blk"><b>What's at stake</b><span>Two economies show up in one dataset: an AI supply chain running at capacity, and a domestic economy still weighed down by property. Export strength that is really front-running reverses the following month by construction.</span></p>
+        <div class="watch"><b>Watch</b><span>July exports — the first reading without pull-forward distortion.</span><time>Resolves 2026-08-07 · General Administration of Customs</time></div>
+        <p class="src">China customs data, June 2026</p>
+      </div></details>
+    </div></div>
+  </article>
+
+  <article class="item" id="i05">
+    <div class="item-head"><div class="num">05</div><div>
+      <h2>Section 122 tariff authority expires this month</h2>
+      <p class="lede">USTR has been racing to convert temporary measures into durable Section 301 tariffs before the emergency authority lapses.</p>
+      <details class="more"><summary class="more-sum">Read more</summary><div class="l2">
+        <p class="blk"><b>What happened</b><span>The Section 122 authority runs out in July. New Section 301 investigations were opened to put more durable tariffs in place first, including a June report on whether sixty economies failed to enforce prohibitions on forced-labour imports.</span></p>
+        <p class="blk"><b>Why now</b><span>Section 301 requires documented findings and remedies tied to specific damage. It is slower and moves country by country — but its outcomes are far more predictable than tariff-setting under emergency powers.</span></p>
+        <p class="blk"><b>What's at stake</b><span>This is the difference between tariffs that change by announcement and tariffs that require a proceeding to alter. For anyone planning a supply chain, the second kind is the one worth modelling.</span></p>
+        <div class="watch"><b>Watch</b><span>Which rates survive the lapse, and which Section 301 determinations land first.</span><time>Resolves from 2026-07-31 · Federal Register</time></div>
+        <p class="src">USTR Section 301 report, 2 Jun 2026</p>
+      </div></details>
+    </div></div>
+  </article>
+
+  <article class="item" id="i06">
+    <div class="item-head"><div class="num">06</div><div>
+      <h2>Russian missile strike hits an apartment building in Lviv</h2>
+      <p class="lede">Rescuers worked through Thursday at the site in western Ukraine, hundreds of kilometres from the front.</p>
+      <details class="more"><summary class="more-sum">Read more</summary><div class="l2">
+        <p class="blk"><b>What happened</b><span>A Russian missile struck a residential building in Lviv, with rescue operations continuing through the day.</span></p>
+        <p class="blk"><b>Why now</b><span>Strikes this far west are a deliberate reminder that no part of the country is out of range, and they arrive while Western attention and munitions inventories are pulled toward the Gulf.</span></p>
+        <p class="blk"><b>What's at stake</b><span>Two simultaneous theatres compete for the same interceptor stockpiles and the same appropriations. That competition, not battlefield lines, usually determines which war gets resourced.</span></p>
+        <p class="src">Reuters, 30 Jul 2026</p>
+      </div></details>
+    </div></div>
+  </article>
+
+  <article class="item" id="i07">
+    <div class="item-head"><div class="num">07</div><div>
+      <h2>Ebola and hunger compound in eastern Congo</h2>
+      <p class="lede">Over 3,300 confirmed cases and more than 1,400 deaths. The UN reports ten million people acutely food insecure, three million one step from famine.</p>
+      <details class="more"><summary class="more-sum">Read more</summary><div class="l2">
+        <p class="blk"><b>What happened</b><span>The outbreak has passed 3,300 confirmed cases and 1,400 deaths, with fifty deaths recorded in a single recent day. A veteran humanitarian official was appointed this week to coordinate the response.</span></p>
+        <p class="blk"><b>Why now</b><span>The World Food Programme's acting director put ten million people in eastern DRC at acute food insecurity, with three million at IPC-4 — the classification immediately below famine.</span></p>
+        <p class="blk"><b>What's at stake</b><span>Outbreak control depends on people staying put and reachable. Food insecurity moves them. The two crises worsen each other, which is why a single coordinator matters more than it sounds.</span></p>
+        <p class="src">UN OCHA / WFP briefings, 29–30 Jul 2026</p>
+      </div></details>
+    </div></div>
+  </article>
+
+  <article class="item" id="i08">
+    <div class="item-head"><div class="num">08</div><div>
+      <h2>Kumamoto earthquake toll rises as search continues</h2>
+      <p class="lede">The magnitude 7.1 quake struck Kyushu on Tuesday. Reported deaths range from the mid-twenties to thirty-four, with rescue work continuing at a collapsed shopping centre.</p>
+      <details class="more"><summary class="more-sum">Read more</summary><div class="l2">
+        <p class="blk"><b>What happened</b><span>A magnitude 7.1 earthquake hit the Kumamoto area of Kyushu late Tuesday afternoon local time, causing structural collapses and an explosion at a shopping centre in Kashima.</span></p>
+        <p class="blk"><b>Why now</b><span>The search is at the point where survival probability falls sharply, and casualty figures are still being reconciled across sources.</span></p>
+        <p class="blk"><b>What's at stake</b><span>Kyushu carries semiconductor fabrication and port capacity. Industrial damage assessments typically lag casualty reporting by several days, so the economic reading of this event has not arrived yet.</span></p>
+        <p class="src">Kyodo News / AP, 28–30 Jul 2026</p>
+      </div></details>
+    </div></div>
+  </article>
+
+  <article class="item" id="i09">
+    <div class="item-head"><div class="num">09</div><div>
+      <h2>Washington designates ten entities and eight tankers over Iran</h2>
+      <p class="lede">The latest sanctions round targets the shadow fleet moving Iranian crude — alongside the military strikes rather than in place of them.</p>
+      <details class="more"><summary class="more-sum">Read more</summary><div class="l2">
+        <p class="blk"><b>What happened</b><span>Ten entities and eight vessels were added to the designated list in a package announced alongside this week's strikes.</span></p>
+        <p class="blk"><b>Why now</b><span>Tanker designations are the instrument that survives a ceasefire. They stay in force after the shooting stops, so the cumulative count reads the intended duration of pressure better than any single strike.</span></p>
+        <p class="blk"><b>What's at stake</b><span>Every designated hull has to be replaced somewhere in the global fleet, and the replacement is priced into freight for cargoes with no connection to Iran.</span></p>
+        <p class="src">US Treasury OFAC, 29 Jul 2026</p>
+      </div></details>
+    </div></div>
+  </article>
+
+</main>
+</details>
+
+<section class="tracking">
+  <div class="ml"><span>Also tracking</span><em>7 open · 2 land this week</em></div>
+  <ul>
+    <li><time>31 Jul</time><span>Section 122 tariff authority lapses</span></li>
+    <li><time>05 Aug</time><span>EIA weekly crude stocks — first read after Damietta</span></li>
+    <li><time>07 Aug</time><span>China July trade — first clean read without front-running</span></li>
+    <li><time>01 Sep</time><span>Euro-area HICP flash — does the pass-through show up?</span></li>
+    <li><time>16 Sep</time><span>FOMC — three dissents becomes how many?</span></li>
+    <li><time>10 Nov</time><span>China's second rare-earth wave takes effect, or slips again</span></li>
+  </ul>
+</section>
+
+<footer>
+  <p>Sourced from primary documents where they exist — central bank statements, official releases, regulatory filings — and from wire reporting where they don't. Every item links out. Nothing here is reproduced from another publication.</p>
+  <p>Tomorrow, same time. The Bank of Japan answers first.</p>
+  <p class="sign">ZEXL · No. 001 · Compiled 30 Jul 2026, 07:00 ET</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.bands').forEach(function(g){
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b)return;
+      g.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed','true');
+      var ack=document.querySelector('[data-ack="'+b.dataset.q+'"]');
+      if(ack) ack.innerHTML='Your answer: <b>'+b.dataset.p+'%</b>. '+'<a href="mailto:zexl.brief@gmail.com?subject=WB%20001%20answer&body="+encodeURIComponent(b.dataset.q.toUpperCase()+': '+b.dataset.p+'%')+'">Send it</a>'+' — tomorrow\u2019s brief opens with how the answers compared.';
+    });
+  });
+})();
+</script>
+
+<!-- ── measurement ────────────────────────────────────────────────
+     GoatCounter: no cookies, no IP storage, GDPR-safe.
+     Replace YOURCODE below with your GoatCounter site code.        -->
+<script data-goatcounter="https://YOURCODE.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  function ev(name){
+    if(window.goatcounter && window.goatcounter.count)
+      window.goatcounter.count({path:'ev/'+name, title:name, event:true});
+  }
+  // who opened it (?r=01 .. ?r=15 per recipient)
+  var r=new URLSearchParams(location.search).get('r');
+  if(r) ev('open-r'+r);
+
+  // did they expand a signal?
+  document.querySelectorAll('details.sig').forEach(function(d,i){
+    d.addEventListener('toggle',function(){ if(d.open) ev('signal-'+(i+1)); });
+  });
+  // did they open the folded nine?
+  var f=document.querySelector('details.fold');
+  if(f) f.addEventListener('toggle',function(){ if(f.open) ev('fold-open'); });
+  // did they expand an item?
+  document.querySelectorAll('details.more').forEach(function(d,i){
+    d.addEventListener('toggle',function(){ if(d.open) ev('item-'+(i+1)); });
+  });
+  // did they answer?
+  document.querySelectorAll('.bands button').forEach(function(b){
+    b.addEventListener('click',function(){ ev('answer-'+b.dataset.q+'-'+b.dataset.p); });
+  });
+  // did they reach the bottom?
+  var seen=false;
+  window.addEventListener('scroll',function(){
+    if(seen)return;
+    if((window.innerHeight+window.scrollY)>=document.body.offsetHeight-80){seen=true;ev('reached-end');}
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
