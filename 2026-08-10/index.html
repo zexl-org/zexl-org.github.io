@@ -95,6 +95,36 @@ body.explain .plain{display:block}
 .record p:last-child{margin-bottom:0}
 .record .big{font-family:var(--f-display);font-size:1.14rem;line-height:1.34;font-weight:600;
   color:var(--ink);letter-spacing:-.01em;margin-bottom:.7rem}
+
+/* link from slot to brief */
+.tobrief{display:inline-flex;align-items:center;gap:.3rem;font-size:.7rem;letter-spacing:.05em;
+  text-transform:uppercase;font-weight:600;color:var(--watch);text-decoration:none;
+  border:1px solid var(--rule);border-radius:2px;padding:.32rem .55rem;margin-top:.7rem;background:var(--paper)}
+.tobrief:hover,.tobrief:focus-visible{border-color:var(--watch);background:var(--watch-tint);outline:none}
+.tobrief::after{content:"↓"}
+
+/* brief */
+.brief{margin-top:2.4rem;border-top:1.5px solid var(--ink);padding-top:1.1rem}
+.brief>.ml{color:var(--up)}
+.brief h2{font-family:var(--f-display);font-size:1.42rem;line-height:1.24;letter-spacing:-.018em;
+  font-weight:500;margin:.5rem 0 .5rem}
+.brief .intro{color:var(--ink-soft);font-size:.94rem;line-height:1.62;margin:0 0 .3rem}
+.sec{border-top:1px solid var(--rule);padding:1.25rem 0 .3rem}
+.sec-tag{font-size:.6rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;color:var(--ink-faint)}
+.sec-tag i{font-style:normal;color:var(--up)}
+.sec h3{font-family:var(--f-display);font-size:1.1rem;line-height:1.3;font-weight:600;margin:.32rem 0 .55rem}
+.sec p{margin:0 0 .7rem;font-size:.92rem;line-height:1.62;color:var(--ink)}
+.sec p.q{color:var(--ink-soft)}
+.sec .watchline{background:var(--watch-tint);border-left:2px solid var(--watch);padding:.55rem .8rem;margin:.2rem 0 .7rem}
+.sec .watchline b{display:block;font-size:.6rem;letter-spacing:var(--track);text-transform:uppercase;
+  color:var(--watch);font-weight:600;margin-bottom:.12rem}
+.sec .watchline span{font-size:.87rem;line-height:1.5;color:var(--ink)}
+.sec .src{font-family:var(--f-data);font-size:.66rem;color:var(--ink-faint);margin:0}
+.backup{display:inline-block;font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;font-weight:600;
+  color:var(--ink-faint);text-decoration:none;margin-top:.5rem}
+.backup:hover{color:var(--ink)}
+.backup::before{content:"↑ "}
+
 .record p{margin:0}
 .record b{color:var(--ink);font-weight:600}
 .record .stamp a{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--rule)}
@@ -136,23 +166,24 @@ body.explain .plain{display:block}
 
 <!-- 1 -->
 <div class="item">
-  <div class="i-top"><span class="slot">Anchor · <i>Prices</i></span><span class="res">resolves 16 Sep</span></div>
+  <div class="i-top" id="s1"><span class="slot">Anchor · <i>Prices</i></span><span class="res">resolves 16 Sep</span></div>
   <div class="q">Will the Fed raise rates at the September meeting?</div>
 
   <div class="normal">
     <div class="refs">
-      <div class="ref"><span>Fed funds futures</span><b>65%</b><span class="track"><i style="width:65%"></i></span></div>
+      <div class="ref"><span>Fed funds futures</span><b>44%</b><span class="track"><i style="width:44%"></i></span></div>
       <div class="ref alt"><span>Economist consensus</span><b>~0%</b><span class="track"><i style="width:3%"></i></span></div>
       <div class="ref"><span>Polymarket</span><b>53%</b><span class="track"><i style="width:53%"></i></span></div>
     </div>
-    <div class="gap">65 points apart — the widest split on the board.</div>
-    <p class="why"><b>Why they differ:</b> futures price the risk that oil above $100 forces the Fed's hand; economists still assume energy unwinds before September. Three regional presidents dissented for a hike in July.</p>
+    <div class="gap">Futures moved 14 points on Friday's jobs report. Forecasters have not moved at all.</div>
+    <p class="why"><b>Why they differ:</b> a weak July payroll report cut the odds from 58% to 44% in one session, but energy costs from the war are still feeding through. Three regional presidents dissented for a hike on 29 July.</p>
+    <a class="tobrief" href="#b1">Why they disagree </a>
   </div>
 
   <div class="plain">
     <p class="stake">On 16 September, America's central bank decides whether to make borrowing more expensive. That decision reaches mortgage rates, savings rates, and the value of the dollar against every other currency.</p>
     <div class="sides">
-      <div class="side a"><em>Traders — 65% likely</em><span>People with their own money at risk think expensive oil will force the Fed to act.</span></div>
+      <div class="side a"><em>Traders — 44% likely</em><span>People with their own money at risk see it as close to a coin flip, and Friday's weak jobs number moved them.</span></div>
       <div class="side b"><em>Forecasters — near 0%</em><span>Economists who publish outlooks think oil falls back first, so no move is needed.</span></div>
     </div>
     <p class="ask">One of these two groups is about to be wrong in public. Which one?</p>
@@ -173,7 +204,7 @@ body.explain .plain{display:block}
 
 <!-- 2 -->
 <div class="item">
-  <div class="i-top"><span class="slot">Fast · <i>Prices</i></span><span class="res">resolves Wed 12 Aug, 8:30 ET</span></div>
+  <div class="i-top" id="s2"><span class="slot">Fast · <i>Prices</i></span><span class="res">resolves Wed 12 Aug, 8:30 ET</span></div>
   <div class="q">Will core inflation come in above the street forecast?</div>
 
   <div class="normal">
@@ -181,8 +212,9 @@ body.explain .plain{display:block}
       <div class="ref"><span>Street consensus</span><b>2.8%</b><span class="track"><i style="width:56%"></i></span></div>
       <div class="ref alt"><span>Cleveland Fed nowcast</span><b>3.0%</b><span class="track"><i style="width:60%"></i></span></div>
     </div>
-    <div class="gap">June surprised low — 2.6% against a 2.9% consensus.</div>
+    <div class="gap">June surprised low — 2.6% against a 2.9% consensus, the largest miss in a year.</div>
     <p class="why"><b>Why they differ:</b> the nowcast carries daily energy pass-through; the street assumes shelter keeps cooling. Forecasters rarely miss the same way twice.</p>
+    <a class="tobrief" href="#b2">Why they disagree </a>
   </div>
 
   <div class="plain">
@@ -204,29 +236,30 @@ body.explain .plain{display:block}
 </div>
 
 <!-- 3 -->
-<div class="item">
-  <div class="i-top"><span class="slot">Story · <i>Conflict</i></span><span class="res">resolves 30 Sep</span></div>
-  <div class="q">Will a formal ceasefire be in force by 30 September?</div>
+<div class="item" id="s3">
+  <div class="i-top"><span class="slot">Story · <i>Growth</i></span><span class="res">resolves 4 Sep</span></div>
+  <div class="q">Will August payrolls come in negative again?</div>
 
   <div class="normal">
     <div class="refs">
-      <div class="ref"><span>Oil risk premium implies</span><b>~25%</b><span class="track"><i style="width:25%"></i></span></div>
-      <div class="ref alt"><span>OPEC+ output plan assumes</span><b>~60%</b><span class="track"><i style="width:60%"></i></span></div>
+      <div class="ref"><span>July result</span><b>negative</b><span class="track"><i style="width:20%"></i></span></div>
+      <div class="ref alt"><span>Unemployment rate</span><b>4.2%</b><span class="track"><i style="width:42%"></i></span></div>
     </div>
-    <div class="gap">Two industries are budgeting for different wars.</div>
-    <p class="why"><b>Why they differ:</b> the futures curve prices continued disruption; OPEC+ quotas for Q4 assume the Hormuz route normalises.</p>
+    <div class="gap">Jobs fell in July, yet the unemployment rate has not moved all summer.</div>
+    <p class="why"><b>Why they differ:</b> a falling payroll count and a flat unemployment rate cannot both describe the same labour market for long. One of the two series is about to catch up to the other.</p>
+    <a class="tobrief" href="#b3">Why they disagree </a>
   </div>
 
   <div class="plain">
-    <p class="stake">The war in its sixth month is the single largest reason fuel costs more this year. Whether it stops by the end of September changes what you pay to heat and drive.</p>
+    <p class="stake">On Friday the US reported that the number of jobs actually fell last month — the first outright decline in this cycle. It is the main reason borrowing costs may now stay where they are.</p>
     <div class="sides">
-      <div class="side a"><em>Oil traders — about 25%</em><span>Prices imply they expect the disruption to continue through autumn.</span></div>
-      <div class="side b"><em>Oil producers — about 60%</em><span>Their production plans for the last quarter assume shipping returns to normal.</span></div>
+      <div class="side a"><em>The jobs count — falling</em><span>Employers cut more positions than they added in July.</span></div>
+      <div class="side b"><em>The unemployment rate — 4.2%, unchanged</em><span>Yet the share of people out of work has not risen at all this summer.</span></div>
     </div>
-    <p class="ask">The people who sell it and the people who trade it disagree. Who is planning correctly?</p>
+    <p class="ask">These two numbers are telling opposite stories. One of them gives way on 4 September.</p>
   </div>
 
-  <div class="bands" role="group" aria-label="Ceasefire">
+  <div class="bands" role="group" aria-label="August payrolls">
     <button type="button" aria-pressed="false">5%</button><button type="button" aria-pressed="false">20%</button>
     <button type="button" aria-pressed="false">35%</button><button type="button" aria-pressed="false">50%</button>
     <button type="button" aria-pressed="false">65%</button><button type="button" aria-pressed="false">80%</button>
@@ -235,27 +268,27 @@ body.explain .plain{display:block}
   <div class="scale"><span class="normal">almost certainly not</span><span class="plain">very unlikely</span><span class="normal">almost certainly</span><span class="plain">very likely</span></div>
 </div>
 
-<!-- 4 -->
 <div class="item">
-  <div class="i-top"><span class="slot">Rotate · <i>Markets</i></span><span class="res">resolves 31 Aug</span></div>
+  <div class="i-top" id="s4"><span class="slot">Rotate · <i>Markets</i></span><span class="res">resolves 31 Aug</span></div>
   <div class="q">Will the VIX close above 25 on any day this month?</div>
 
   <div class="normal">
     <div class="refs">
-      <div class="ref"><span>VIX futures curve</span><b>38%</b><span class="track"><i style="width:38%"></i></span></div>
-      <div class="ref alt"><span>Options-implied</span><b>51%</b><span class="track"><i style="width:51%"></i></span></div>
+      <div class="ref"><span>VIX today</span><b>15.5</b><span class="track"><i style="width:20%"></i></span></div>
+      <div class="ref alt"><span>Needs to reach</span><b>25.0</b><span class="track"><i style="width:60%"></i></span></div>
     </div>
-    <div class="gap">A threshold, not a direction — curve and skew disagree.</div>
-    <p class="why"><b>Why they differ:</b> the curve reads a calm August; the skew is paying up for tail protection into the September meeting.</p>
+    <div class="gap">The market is calm. Two of the four questions above resolve inside five weeks.</div>
+    <p class="why"><b>Why they differ:</b> the index sits at a normal risk-on level while an inflation print, a coin-flip Fed meeting and a sixth month of war all sit in front of it.</p>
+    <a class="tobrief" href="#b4">Why they disagree </a>
   </div>
 
   <div class="plain">
-    <p class="stake">The VIX measures how nervous the stock market is about the next month. Above 25 means real fear — the level it hit during the spring energy shock.</p>
+    <p class="stake">The VIX measures how nervous the stock market is about the coming month. Today it sits at 15.5, which is calm. Above 25 means real fear — where it went in March when the war spiked oil.</p>
     <div class="sides">
-      <div class="side a"><em>The main market — 38%</em><span>Pricing points to a quiet August with no shock before September.</span></div>
-      <div class="side b"><em>The insurance market — 51%</em><span>Investors are paying unusually high prices for protection against a sharp fall.</span></div>
+      <div class="side a"><em>Where it is now — 15.5</em><span>A normal, calm level. Shares are near record highs.</span></div>
+      <div class="side b"><em>Where it must reach — 25.0</em><span>The level that signals real fear. It has gone there twice this year, both times within days.</span></div>
     </div>
-    <p class="ask">One market is buying calm, the other is buying insurance. Which is right?</p>
+    <p class="ask">Calm markets are not wrong very often. But when they are, it happens in a single day.</p>
   </div>
 
   <div class="bands" role="group" aria-label="VIX">
@@ -269,8 +302,59 @@ body.explain .plain{display:block}
 
 <div class="foot">
   <span>4 questions · about 40 seconds</span>
-  <span><a href="#">Why they disagree — today's brief ▾</a></span>
+  <span><a href="#brief">Read today's brief ▾</a></span>
 </div>
+
+
+<section class="brief" id="brief">
+  <div class="ml">Today's brief</div>
+  <h2>The jobs number moved the Fed. The inflation number, in two days, moves it back or seals it.</h2>
+  <p class="intro">Four questions above, four short pieces below. Each one explains why two sets of informed people are looking at the same facts and reaching different answers — and what would settle it.</p>
+
+  <div class="sec" id="b1">
+    <div class="sec-tag">01 · <i>Prices</i> — the Fed in September</div>
+    <h3>Traders moved 14 points in a session. Forecasters have not moved at all.</h3>
+    <p>Friday's employment report did something unusual: July payrolls declined outright and average hourly earnings rose less than expected. Bond yields fell, the ten-year settling three basis points lower at 4.65%, and the market's odds of a September rate rise dropped from 58% to 44% in a single session.</p>
+    <p>That is the labour half of the Fed's mandate easing. The price half has not. Energy costs from a war now in its sixth month are still working through the economy, and on 29 July three regional presidents — Hammack, Kashkari and Logan — dissented in favour of an immediate quarter-point rise while the Committee held at 3.50–3.75%.</p>
+    <p>So futures sit at 44% and the published economist consensus sits at effectively zero. The disagreement is not about the data; both groups have the same data. It is about which half of the mandate a stripped-down Committee weights when the two halves point in opposite directions.</p>
+    <div class="watchline"><b>Watch</b><span>Whether any of the three dissenters speaks publicly before 16 September. Under this chair the vote split is the clearest guidance the Committee gives.</span></div>
+    <p class="src">Sources: FOMC statement 29 Jul 2026 · US employment report, Aug 2026 · fed funds futures pricing</p>
+    <a class="backup" href="#s1">back to the question</a>
+  </div>
+
+  <div class="sec" id="b2">
+    <div class="sec-tag">02 · <i>Prices</i> — Wednesday's inflation print</div>
+    <h3>June missed low by the widest margin in a year. Both sides drew opposite lessons.</h3>
+    <p>Core inflation came in at 2.6% against a 2.9% consensus in June, with the headline rate at 3.5%. Energy explains most of the gap between the two forecasts now on the table. It fell 5.7% month-on-month in June but was still 15.7% higher than a year earlier, with petrol alone up 26.7%.</p>
+    <p>A nowcast model that tracks fuel prices daily reads that as pass-through still arriving, and puts the number higher. The street's consensus assumes shelter costs keep cooling fast enough to absorb it, and puts the number lower. Both cannot be right at 8:30 on Wednesday morning.</p>
+    <p>This is the single largest input into the question above. A hot print and the 44% moves up sharply; a second soft one and the September argument is effectively over before the Committee meets.</p>
+    <div class="watchline"><b>Watch</b><span>The shelter component specifically, not the headline. If it decelerates again the street is right and the energy pass-through is being absorbed.</span></div>
+    <p class="src">Sources: BLS Consumer Price Index, June 2026 · release schedule, bls.gov</p>
+    <a class="backup" href="#s2">back to the question</a>
+  </div>
+
+  <div class="sec" id="b3">
+    <div class="sec-tag">03 · <i>Growth</i> — the payroll shock</div>
+    <h3>Jobs fell. Unemployment did not. One of the two is wrong.</h3>
+    <p>The unemployment rate has held at 4.2% through the summer. In July, the payroll count declined outright. These two series are measured from different surveys — one of employers, one of households — and they can drift apart for a month or two. They cannot describe opposite labour markets for a quarter.</p>
+    <p>The reconciliation usually runs one of two ways. Either the payroll fall was noise and August rebounds, or the household survey catches up and the unemployment rate starts climbing — which is the sequence that ends rate-rise conversations entirely.</p>
+    <p>What makes this the story rather than a data footnote is the timing. It landed three days before an inflation print and five weeks before a meeting the market prices as a coin flip. A central bank facing rising prices and falling employment at the same time has no comfortable option, and it is exactly the position the ECB has already been in since June.</p>
+    <div class="watchline"><b>Watch</b><span>Weekly jobless claims each Thursday between now and 4 September. If claims rise for three consecutive weeks, the household survey is about to move.</span></div>
+    <p class="src">Sources: US employment report, Aug 2026 · Department of Labor weekly claims</p>
+    <a class="backup" href="#s3">back to the question</a>
+  </div>
+
+  <div class="sec" id="b4">
+    <div class="sec-tag">04 · <i>Markets</i> — the calm</div>
+    <h3>The strange number today is not the Fed's. It is the one that has not moved.</h3>
+    <p>The VIX closed at 14.90 on Friday and traded near 15.5 this morning — a normal, risk-on level. The S&amp;P 500 sits at 7,757 and the Nasdaq at 26,690, both close to records. On its own that is unremarkable.</p>
+    <p>What it sits next to is not. An inflation print lands in two days. A Fed meeting five weeks out is priced as a coin flip by the same market. A war that began on 28 February has now failed to hold three separate ceasefires, and the energy agency's working assumption is that Gulf shipping does not return to pre-conflict levels until early 2027.</p>
+    <p>Calm markets are usually right, which is why they are calm. The asymmetry is what matters: the index cannot fall much below 12 without signalling outright complacency, but it can reach 30 or 40 on a single bad print. It went above 31 in March on the oil spike.</p>
+    <div class="watchline"><b>Watch</b><span>Whether equity and Treasury volatility diverge. Persistent gaps between the two have preceded regime shifts more reliably than either on its own.</span></div>
+    <p class="src">Sources: Cboe VIX, 7–10 Aug 2026 · EIA Short-Term Energy Outlook</p>
+    <a class="backup" href="#s4">back to the question</a>
+  </div>
+</section>
 
 <div class="record">
   <p class="normal"><b>Four answers saved.</b> The first one resolves Wednesday at 8:30 ET, and Thursday's issue opens with the result.<br>
