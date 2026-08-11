@@ -34,11 +34,12 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body)
 .bhead{display:flex;justify-content:space-between;align-items:center;gap:.8rem;
   padding:1.5rem 0 .8rem;flex-wrap:wrap}
 .bhead .ml{color:var(--up)}
-#toggle{font-family:var(--f-body);font-size:.72rem;font-weight:600;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--ink);background:var(--card);border:1.5px solid var(--ink);
-  border-radius:2px;padding:.4rem .7rem;cursor:pointer;line-height:1}
-#toggle:hover{background:var(--ink);color:var(--paper)}
-#toggle:focus-visible{outline:2px solid var(--up);outline-offset:2px}
+#toggle{font-family:var(--f-body);font-size:.68rem;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-faint);background:none;border:none;
+  padding:.2rem 0;cursor:pointer;line-height:1;transition:color .12s ease}
+#toggle:hover{color:var(--ink)}
+#toggle[aria-pressed="true"]{color:var(--up)}
+#toggle:focus-visible{outline:1px solid var(--ink-faint);outline-offset:4px}
 
 /* challenge line */
 .challenge{background:var(--card);border-left:3px solid var(--up);padding:.85rem 1rem;margin-bottom:1.2rem}
@@ -61,9 +62,9 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body)
 .ref .track i{position:absolute;left:0;top:0;bottom:0;background:var(--dn);border-radius:2px}
 .ref.alt .track i{background:var(--up)}
 .gap{font-family:var(--f-data);font-size:.68rem;color:var(--up);font-weight:600;margin-bottom:.5rem}
-.why{font-size:.85rem;color:var(--ink-soft);line-height:1.5;margin:0 0 .75rem}
+.why{font-size:.85rem;color:var(--ink-soft);line-height:1.5;margin:0 0 .62rem}
 .why b{color:var(--ink);font-weight:500}
-.bands{display:grid;grid-template-columns:repeat(7,1fr);gap:.25rem}
+.bands{display:grid;grid-template-columns:repeat(7,1fr);gap:.25rem;margin-top:.5rem}
 .bands button{font-family:var(--f-data);font-size:.75rem;font-weight:600;color:var(--ink-soft);
   background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:.48rem .1rem;cursor:pointer;line-height:1}
 .bands button:hover{border-color:var(--ink);color:var(--ink)}
@@ -83,7 +84,7 @@ body.explain .plain{display:block}
 .side em{font-style:normal;display:block;font-family:var(--f-data);font-size:.68rem;
   letter-spacing:.03em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:.15rem}
 .side span{font-size:.87rem;line-height:1.5;color:var(--ink)}
-.plain .ask{font-size:.9rem;line-height:1.55;color:var(--ink);font-weight:500;margin:0 0 .75rem}
+.plain .ask{font-size:.9rem;line-height:1.55;color:var(--ink);font-weight:500;margin:0 0 .55rem}
 
 .foot{border-top:1px solid var(--rule);padding:.8rem 1rem;background:var(--card);
   display:flex;justify-content:space-between;gap:.8rem;font-size:.8rem;color:var(--ink-soft);flex-wrap:wrap}
@@ -106,10 +107,10 @@ body.explain .plain{display:block}
   color:var(--ink);letter-spacing:-.01em;margin-bottom:.7rem}
 
 /* link from slot to brief */
-.tobrief{display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;letter-spacing:.04em;
-  text-transform:uppercase;font-weight:600;color:var(--watch);text-decoration:none;margin-top:.55rem}
-.tobrief:hover,.tobrief:focus-visible{color:var(--ink);outline:none}
-.tobrief::after{content:"↓"}
+.tobrief{display:inline-flex;align-items:center;gap:.28rem;font-size:.62rem;letter-spacing:.11em;
+  text-transform:uppercase;font-weight:600;color:var(--watch);text-decoration:none;margin:0}
+.tobrief:focus-visible{outline:1px solid var(--watch);outline-offset:3px}
+.tobrief::after{content:"↓";font-size:.85em}
 
 /* brief */
 .brief{margin-top:2.4rem;border-top:1.5px solid var(--ink);padding-top:1.1rem}
@@ -128,9 +129,9 @@ body.explain .plain{display:block}
   color:var(--watch);font-weight:600;margin-bottom:.12rem}
 .sec .watchline span{font-size:.87rem;line-height:1.5;color:var(--ink)}
 .sec .src{font-family:var(--f-data);font-size:.66rem;color:var(--ink-faint);margin:0}
-.backup{display:inline-block;font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;font-weight:600;
-  color:var(--ink-faint);text-decoration:none;margin-top:.5rem}
-.backup:hover{color:var(--ink)}
+.backup{display:inline-block;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;font-weight:600;
+  color:var(--ink-faint);text-decoration:none;margin-top:.5rem;transition:color .12s ease}
+.backup:hover,.backup:focus-visible{color:var(--watch);outline:none}
 .backup::before{content:"↑ "}
 
 .record p{margin:0}
