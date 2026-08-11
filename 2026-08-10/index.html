@@ -88,6 +88,15 @@ body.explain .plain{display:block}
 .foot{border-top:1px solid var(--rule);padding:.8rem 1rem;background:var(--card);
   display:flex;justify-content:space-between;gap:.8rem;font-size:.8rem;color:var(--ink-soft);flex-wrap:wrap}
 .foot a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);font-weight:500}
+.send{background:var(--card);border-bottom:1px solid var(--rule);padding:.9rem 1rem;
+  display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap}
+.send-count{font-family:var(--f-data);font-size:.78rem;color:var(--ink-soft)}
+.send-count b{color:var(--ink);font-weight:600}
+.send a{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
+  color:#fff;background:var(--up);border:1.5px solid var(--up);border-radius:2px;
+  padding:.5rem .85rem;text-decoration:none;line-height:1}
+.send a:hover{background:#7E2911;border-color:#7E2911}
+.send a.off{background:transparent;color:var(--ink-faint);border-color:var(--rule);pointer-events:none}
 
 .record{margin-top:1.6rem;border-top:1.5px solid var(--ink);padding-top:.9rem;
   font-size:.85rem;color:var(--ink-soft);line-height:1.6}
@@ -97,10 +106,9 @@ body.explain .plain{display:block}
   color:var(--ink);letter-spacing:-.01em;margin-bottom:.7rem}
 
 /* link from slot to brief */
-.tobrief{display:inline-flex;align-items:center;gap:.3rem;font-size:.7rem;letter-spacing:.05em;
-  text-transform:uppercase;font-weight:600;color:var(--watch);text-decoration:none;
-  border:1px solid var(--rule);border-radius:2px;padding:.32rem .55rem;margin-top:.7rem;background:var(--paper)}
-.tobrief:hover,.tobrief:focus-visible{border-color:var(--watch);background:var(--watch-tint);outline:none}
+.tobrief{display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;letter-spacing:.04em;
+  text-transform:uppercase;font-weight:600;color:var(--watch);text-decoration:none;margin-top:.55rem}
+.tobrief:hover,.tobrief:focus-visible{color:var(--ink);outline:none}
 .tobrief::after{content:"↓"}
 
 /* brief */
@@ -300,6 +308,11 @@ body.explain .plain{display:block}
   <div class="scale"><span class="normal">almost certainly not</span><span class="plain">very unlikely</span><span class="normal">almost certainly</span><span class="plain">very likely</span></div>
 </div>
 
+<div class="send">
+  <span class="send-count"><b id="cnt">0</b> of 4 answered</span>
+  <a id="sendlink" class="off" href="#">Send my answers</a>
+</div>
+
 <div class="foot">
   <span>4 questions · about 40 seconds</span>
   <span><a href="#brief">Read today's brief ▾</a></span>
@@ -368,21 +381,43 @@ body.explain .plain{display:block}
 
 <script>
 (function(){
+  // Explain 토글
   var t=document.getElementById('toggle');
   t.addEventListener('click',function(){
     var on=document.body.classList.toggle('explain');
     t.textContent=on?'Back':'Explain';
     t.setAttribute('aria-pressed',on?'true':'false');
   });
-  document.querySelectorAll('.bands').forEach(function(g){
+
+  // 응답 수집
+  var answers={};
+  var labels={};
+  document.querySelectorAll('.bands').forEach(function(g,i){
+    var name=g.getAttribute('aria-label')||('Q'+(i+1));
+    labels[name]=name;
     g.addEventListener('click',function(e){
       var b=e.target.closest('button'); if(!b)return;
       g.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')});
       b.setAttribute('aria-pressed','true');
+      answers[name]=b.textContent.trim();
+
       var n=document.getElementById('nudge');
-      if(n && !window.__firstAnswer){window.__firstAnswer=true;n.classList.add('show');}
+      if(n && !window.__first){window.__first=true;n.classList.add('show');}
+      refresh();
     });
   });
+
+  function refresh(){
+    var keys=Object.keys(answers);
+    document.getElementById('cnt').textContent=keys.length;
+    var a=document.getElementById('sendlink');
+    if(!keys.length){a.className='off';a.href='#';return;}
+    a.className='';
+    var body=keys.map(function(k){return k+': '+answers[k];}).join('\n');
+    body+='\n\nIssue No. 001 · 10 Aug 2026';
+    a.href='mailto:zexl.brief@gmail.com?subject='+
+      encodeURIComponent('ZEXL 001 — my answers')+'&body='+encodeURIComponent(body);
+  }
 })();
 </script>
 </body>
