@@ -168,9 +168,9 @@ body.explain .plain{display:block}
   transition:background .09s ease}
 .bars.signed b.pos::after{bottom:var(--zero);height:var(--h)}
 .bars.signed b.neg::after{top:calc(100% - var(--zero));height:var(--h)}
-.dial.set .bars b.on{background:#C89685}
-.dial.set .bars b.cur{background:var(--up)}
-.dial .bars b.demo{background:#C89685}
+.dial.set .bars:not(.signed) b.on{background:#C89685}
+.dial.set .bars:not(.signed) b.cur{background:var(--up)}
+.dial .bars:not(.signed) b.demo{background:#C89685}
 .dial.set .bars.signed b.on::after{background:#C89685}
 .dial.set .bars.signed b.cur::after{background:var(--up)}
 .dial .bars.signed b.demo::after{background:#C89685}
