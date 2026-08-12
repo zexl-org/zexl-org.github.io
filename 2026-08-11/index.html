@@ -55,6 +55,14 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body)
 .slot{font-size:.6rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;color:var(--ink-faint)}
 .slot i{font-style:normal;color:var(--up)}
 .res{font-family:var(--f-data);font-size:.68rem;color:var(--watch);font-weight:600}
+.carried[data-new],.carried{font-family:var(--f-data);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;
+  font-weight:600;color:var(--ink-faint);border:1px solid var(--rule);border-radius:2px;
+  padding:.12rem .3rem;margin-left:.4rem;white-space:nowrap}
+.chg{font-family:var(--f-data);font-size:.63rem;font-weight:600;margin-left:.34rem;white-space:nowrap}
+.chg.u{color:var(--up)} .chg.d{color:var(--dn)} .chg.f{color:var(--ink-faint);font-weight:500}
+.fix{margin:.1rem 0 .55rem;font-size:.76rem;line-height:1.5;color:var(--ink-soft);
+  border-left:2px solid var(--ink-faint);padding-left:.6rem}
+.fix b{color:var(--ink);font-weight:600}
 .q{font-family:var(--f-display);font-size:1.08rem;line-height:1.32;font-weight:600;margin:.3rem 0 .55rem}
 .refs{display:grid;gap:.24rem;margin-bottom:.55rem}
 .ref{display:grid;grid-template-columns:11rem 3.1rem 1fr;gap:.5rem;align-items:center;
@@ -262,11 +270,11 @@ body.explain .plain{display:block}
 
 <!-- 1 -->
 <div class="item">
-  <div class="i-top" id="s1"><span class="slot">Anchor · <i>Prices</i></span><span class="res">resolves 16 Sep</span></div>
+  <div class="i-top" id="s1"><span class="slot">Anchor · <i>Prices</i><span class="carried">Day 2</span></span><span class="res">resolves 16 Sep</span></div>
   <div class="q">Will the Fed raise rates at the September meeting?</div>
 
   <div class="normal">
-    <div class="refs"><div class="ref g1"><span><k>F</k>ed funds futures</span><b>62%</b><span class="track"><i style="width:62%"></i></span></div><div class="ref g2"><span><k>E</k>conomist consensus</span><b>~0%</b><span class="track"><i style="width:2%"></i></span></div><div class="ref g3"><span><k>L</k>ast Wednesday</span><b>44%</b><span class="track"><i style="width:44%"></i></span></div></div>
+    <div class="refs"><div class="ref g1"><span><k>F</k>ed funds futures</span><b>62%<span class="chg u">▲18</span></b><span class="track"><i style="width:62%"></i></span></div><div class="ref g2"><span><k>E</k>conomist consensus</span><b>~0%<span class="chg f">— flat</span></b><span class="track"><i style="width:2%"></i></span></div><div class="ref g3"><span><k>L</k>ast Wednesday</span><b>44%</b><span class="track"><i style="width:44%"></i></span></div></div>
     <div class="gap">Up 18 points in three sessions — all of it from oil, none of it from data.</div>
     <p class="why"><b>Why they differ:</b> Friday's weak payrolls knocked the odds down to 44%. Then Brent rose four days straight and took it all back. The Committee has to weigh a shrinking labour market against a fresh energy shock, and the market now thinks energy wins. <a class="tobrief" href="#b1">the full case</a></p>
   </div>
@@ -296,12 +304,13 @@ body.explain .plain{display:block}
 
 <!-- 2 -->
 <div class="item">
-  <div class="i-top" id="s2"><span class="slot">Fast · <i>Prices</i></span><span class="res">resolves tomorrow, 8:30 ET</span></div>
+  <div class="i-top" id="s2"><span class="slot">Fast · <i>Prices</i><span class="carried">Day 2 · corrected</span></span><span class="res">resolves tomorrow, 8:30 ET</span></div>
   <div class="q">Where will core inflation land?</div>
 
   <div class="normal">
     <div class="refs"><div class="ref g1"><span><k>S</k>treet consensus</span><b>2.5%</b><span class="track"><i style="width:42%"></i></span></div><div class="ref g2"><span><k>J</k>une actual</span><b>2.6%</b><span class="track"><i style="width:50%"></i></span></div></div>
     <div class="gap">Locks in under 24 hours. The largest single input into the question above.</div>
+    <p class="fix"><b>Correction.</b> Yesterday this question showed a street consensus of 2.80%. The Reuters poll figure is <b>2.5%</b>, and the scale below has been rebuilt around it. Answers given yesterday will be scored against the corrected reference, not the wrong one.</p>
     <p class="why"><b>Why they differ:</b> Reuters polling puts core at 2.5% year-on-year, down from June's 2.6%. But June itself undershot by the widest margin in a year, and the energy pass-through everyone expected has not shown up yet. Forecasters rarely miss the same way twice. <a class="tobrief" href="#b2">the full case</a></p>
   </div>
 
@@ -330,11 +339,11 @@ body.explain .plain{display:block}
 
 <!-- 3 -->
 <div class="item">
-  <div class="i-top" id="s3"><span class="slot">Story · <i>Energy</i></span><span class="res">resolves 31 Aug</span></div>
+  <div class="i-top" id="s3"><span class="slot">Story · <i>Energy</i><span class="carried">New</span></span><span class="res">resolves 31 Aug</span></div>
   <div class="q">Where will Brent close at the end of August?</div>
 
   <div class="normal">
-    <div class="refs"><div class="ref g1"><span><k>T</k>oday</span><b>$87.8</b><span class="track"><i style="width:44%"></i></span></div><div class="ref g2"><span><k>L</k>ast week's low</span><b>$78.4</b><span class="track"><i style="width:21%"></i></span></div><div class="ref g3"><span><k>J</k>uly peak</span><b>$100.7</b><span class="track"><i style="width:77%"></i></span></div></div>
+    <div class="refs"><div class="ref g1"><span><k>T</k>oday</span><b>$87.8<span class="chg u">▲12%</span></b><span class="track"><i style="width:44%"></i></span></div><div class="ref g2"><span><k>L</k>ast week's low</span><b>$78.4</b><span class="track"><i style="width:21%"></i></span></div><div class="ref g3"><span><k>J</k>uly peak</span><b>$100.7</b><span class="track"><i style="width:77%"></i></span></div></div>
     <div class="gap">Four straight sessions higher. Up 12% from last week's low.</div>
     <p class="why"><b>Why they differ:</b> Washington added a demand for compensation from Iran as a condition of any settlement, and the market read it as the end of a quick reopening. Hormuz traffic returning to normal now looks unlikely inside the month — this is no longer a reopening story but a stalemate with a rising risk premium. <a class="tobrief" href="#b3">the full case</a></p>
   </div>
@@ -364,19 +373,22 @@ body.explain .plain{display:block}
 
 <!-- 4 -->
 <div class="item">
-  <div class="i-top" id="s4"><span class="slot">Rotate · <i>Growth</i></span><span class="res">resolves 4 Sep</span></div>
-  <div class="q">How many jobs will August add?</div>
+  <div class="i-top" id="s4"><span class="slot">Rotate · <i>Markets</i><span class="carried">New</span></span><span class="res">resolves 31 Aug</span></div>
+  <div class="q">Where will the 10-year Treasury yield close this month?</div>
 
   <div class="normal">
-    <div class="refs"><div class="ref g1"><span><k>J</k>uly actual</span><b>−23k</b><span class="track"><i style="width:28%"></i></span></div><div class="ref g3"><span><k>A</k>12-month average</span><b>+34k</b><span class="track"><i style="width:41%"></i></span></div><div class="ref g2"><span><k>S</k>treet had forecast</span><b>+83k</b><span class="track"><i style="width:52%"></i></span></div></div>
-    <div class="gap">Carried from yesterday. Small-business hiring plans jumped this morning.</div>
-    <p class="why"><b>Why they differ:</b> July's fall was almost entirely 53,000 lost government jobs; private firms still added 30,000. This morning the NFIB small-business index rose to 99.8, its best since August 2025, with hiring plans at the highest since 2022. That points to a rebound — but the same survey stayed optimistic through three months of downward revisions. <a class="tobrief" href="#b4">the full case</a></p>
+    <div class="refs"><div class="ref g1"><span><k>T</k>oday</span><b>4.71%<span class="chg u">▲6bp</span></b><span class="track"><i style="width:51%"></i></span></div><div class="ref g2"><span><k>Y</k>esterday</span><b>4.65%</b><span class="track"><i style="width:44%"></i></span></div><div class="ref g3"><span><k>J</k>uly high</span><b>4.78%</b><span class="track"><i style="width:60%"></i></span></div></div>
+    <div class="gap">Six basis points overnight, and the selloff started in Asia before New York opened.</div>
+    <p class="why"><b>Why they differ:</b> long-dated yields answer to inflation expectations rather than to the policy rate, so they have been rising on oil while the front end waited for tomorrow's CPI. Bond markets sold off across Asia-Pacific overnight and the dollar held firm — the combination that says inflation, not growth. Mortgage rates are already near a one-year high. <a class="tobrief" href="#b4">the full case</a></p>
   </div>
 
   <div class="plain">
-    <p class="stake">Whether employers are still hiring decides whether the central bank can raise rates at all, whatever oil does.</p>
-    <div class="sides"><div class="side a"><em>July came in at −23,000</em><span>The first outright decline this cycle, against a forecast of +83,000.</span></div><div class="side b"><em>Small firms plan to hire</em><span>Hiring intentions this morning hit their highest reading since 2022.</span></div></div>
-    <p class="ask">Was July the turn, or a one-month distortion?</p>
+    <p class="stake">The ten-year yield is what sets mortgage rates, car loans and the cost of company borrowing. It moves on what people expect inflation to be years from now, not on what the central bank does next month.</p>
+    <div class="sides">
+      <div class="side a"><em>Yesterday it was 4.65%</em><span>Friday's weak jobs report had pulled it lower, as slower hiring usually means cheaper money.</span></div>
+      <div class="side b"><em>Today it is 4.71%</em><span>Four days of rising oil undid that in a session, and the selling began overnight in Asia.</span></div>
+    </div>
+    <p class="ask">Bond markets move before central banks do. Where does this one settle by month end?</p>
   </div>
 
   <div class="ans">
@@ -386,13 +398,13 @@ body.explain .plain{display:block}
         <span class="stepper"><button type="button" data-dir="-1">−</button><button type="button" data-dir="1">+</button></span>
       </span>
     </div>
-    <div class="dial" id="d4" data-key="August payrolls" data-lo="-150" data-hi="300"
-         data-step="5" data-dec="0" data-sfx="k" data-unit="" data-n="34"
-         style="height:2.30rem" role="slider" tabindex="0" aria-label="August payrolls">
-      <span class="mk g1 c" style="left:28.22%;bottom:0.68rem"><k>J</k></span><span class="mk g3 c" style="left:40.89%;bottom:0.68rem"><k>A</k></span><span class="mk g2 c" style="left:51.78%;bottom:0.68rem"><k>S</k></span>
-      <div class="bars signed" style="--zero:33.33%"><b class="neg" style="--h:33.3%"></b><b class="neg" style="--h:31.2%"></b><b class="neg" style="--h:29.0%"></b><b class="neg" style="--h:26.9%"></b><b class="neg" style="--h:24.6%"></b><b class="neg" style="--h:22.3%"></b><b class="neg" style="--h:20.0%"></b><b class="neg" style="--h:17.6%"></b><b class="neg" style="--h:15.1%"></b><b class="neg" style="--h:12.4%"></b><b class="neg" style="--h:9.6%"></b><b class="pos" style="--h:12.0%"></b><b class="pos" style="--h:16.0%"></b><b class="pos" style="--h:19.1%"></b><b class="pos" style="--h:22.1%"></b><b class="pos" style="--h:24.8%"></b><b class="pos" style="--h:27.5%"></b><b class="pos" style="--h:30.1%"></b><b class="pos" style="--h:32.7%"></b><b class="pos" style="--h:35.1%"></b><b class="pos" style="--h:37.6%"></b><b class="pos" style="--h:40.0%"></b><b class="pos" style="--h:42.3%"></b><b class="pos" style="--h:44.7%"></b><b class="pos" style="--h:47.0%"></b><b class="pos" style="--h:49.2%"></b><b class="pos" style="--h:51.5%"></b><b class="pos" style="--h:53.7%"></b><b class="pos" style="--h:55.9%"></b><b class="pos" style="--h:58.1%"></b><b class="pos" style="--h:60.3%"></b><b class="pos" style="--h:62.4%"></b><b class="pos" style="--h:64.5%"></b><b class="pos" style="--h:66.7%"></b><span class="zeroline" style="--zero:33.33%"></span></div>
+    <div class="dial" id="d4" data-key="10-year yield" data-lo="4.3" data-hi="5.1"
+         data-step="0.01" data-dec="2" data-sfx="%" data-unit="" data-n="34"
+         style="height:2.30rem" role="slider" tabindex="0" aria-label="10-year yield">
+      <span class="mk g2 c" style="left:43.75%;bottom:1.17rem"><k>Y</k></span><span class="mk g1 c" style="left:51.25%;bottom:1.17rem"><k>T</k></span><span class="mk g3 c" style="left:60.00%;bottom:1.17rem"><k>J</k></span>
+      <div class="bars"><b style="height:30%"></b><b style="height:42%"></b><b style="height:50%"></b><b style="height:57%"></b><b style="height:63%"></b><b style="height:69%"></b><b style="height:74%"></b><b style="height:79%"></b><b style="height:83%"></b><b style="height:87%"></b><b style="height:90%"></b><b style="height:93%"></b><b style="height:95%"></b><b style="height:97%"></b><b style="height:99%"></b><b style="height:99%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:99%"></b><b style="height:99%"></b><b style="height:97%"></b><b style="height:95%"></b><b style="height:93%"></b><b style="height:90%"></b><b style="height:87%"></b><b style="height:83%"></b><b style="height:79%"></b><b style="height:74%"></b><b style="height:69%"></b><b style="height:63%"></b><b style="height:57%"></b><b style="height:50%"></b><b style="height:42%"></b><b style="height:30%"></b></div>
     </div>
-    <div class="foot-line"><span class="end l">−150k</span><span class="end r">+300k</span></div>
+    <div class="foot-line"><span class="end l">4.30%</span><span class="end r">5.10%</span></div>
   </div>
 </div>
 
@@ -444,13 +456,13 @@ body.explain .plain{display:block}
   </div>
 
   <div class="sec" id="b4">
-    <div class="sec-tag">04 · <i>Growth</i> — the payroll question</div>
-    <h3>The firms doing the hiring are more optimistic than the data they produced.</h3>
-    <p>July's payroll count fell by 23,000. But 53,000 of that was local government, largely education, and economists read it as a seasonal misfire likely to reverse. Private employers still added 30,000.</p>
-    <p>This morning the NFIB small-business index rose 2.4 points to 99.8, its best reading since August 2025, and hiring intentions reached their highest level since October 2022. Small firms are the marginal employer in this economy, and they say they are hiring.</p>
-    <p>Against that: May and June were revised down by a combined 103,000, pushing the three-month average to 20,000 — close to the breakeven rate. Optimism surveys have been running ahead of the actual prints for a quarter now.</p>
-    <div class="watchline"><b>Watch</b><span>Weekly jobless claims each Thursday until 4 September. Three consecutive rises and the household survey is about to follow the payroll count down.</span></div>
-    <p class="src">Sources: US employment report, Aug 2026 · NFIB Small Business Optimism Index, 11 Aug 2026</p>
+    <div class="sec-tag">04 · <i>Markets</i> — the long end</div>
+    <h3>The bond market has already decided, and it did not wait for the data.</h3>
+    <p>The ten-year yield sits at 4.71%, up six basis points overnight, after government bonds sold off across Asia-Pacific before New York opened. The dollar held firm and gold broke higher at the same time — a combination that reads as inflation anxiety rather than growth anxiety.</p>
+    <p>This matters because the long end answers to a different question than the policy rate does. The front end is waiting for tomorrow's CPI to tell it what the Committee will do in September. The long end is pricing what inflation looks like years out, and four consecutive days of rising crude has been enough to move it without any new data at all.</p>
+    <p>The practical edge of this is already visible. Mortgage rates are near a one-year high, and they follow the ten-year rather than the Fed. Equity valuations sit at their most stretched in decades against exactly this backdrop, which is why the index slipped today while oil and gas stocks led.</p>
+    <div class="watchline"><b>Watch</b><span>Whether the ten-year and the two-year move together after tomorrow's print. If the long end keeps rising while the front end falls, the market is telling you it does not believe inflation is contained.</span></div>
+    <p class="src">Sources: US Treasury daily yield curve, 10–11 Aug 2026 · Asia-Pacific bond market reports</p>
     <a class="backup" href="#s4">back to the question</a>
   </div>
 </details>
@@ -459,7 +471,7 @@ body.explain .plain{display:block}
   <summary><span class="ml">Also today</span><em>6 items</em></summary>
   <div class="also"><h3>US 10-year yield tops 4.72% as bonds sell off</h3><p>Yields rose six basis points overnight, with government bonds falling across Asia-Pacific. Mortgage rates are already near a one-year high.</p></div>
   <div class="also"><h3>S&amp;P 500 slips from record ahead of CPI</h3><p>The index closed at 7,728, down 0.32%. Oil and gas stocks led gains at 1.1%; travel and leisure lagged at −0.8%.</p></div>
-  <div class="also"><h3>Small-business optimism hits a one-year high</h3><p>The NFIB index rose 2.4 points to 99.8, above its 52-year average, with a net 20% of owners planning to add jobs.</p></div>
+  <div class="also"><h3>Small-business optimism hits a one-year high</h3><p>The NFIB index rose 2.4 points to 99.8, above its 52-year average, with a net 20% of owners planning to add jobs — the strongest hiring intentions since 2022. It sits awkwardly against July's payroll fall of 23,000, and August's number lands on 4 September.</p></div>
   <div class="also"><h3>Producer prices follow on Thursday</h3><p>PPI is seen rising 0.2% in July after a 0.3% decline, with the annual rate easing to 4.9% from 5.5%.</p></div>
   <div class="also"><h3>Intel raises its stock offering to $20 billion</h3><p>Priced at $95 a share, a 2.5% discount to Monday's close, to fund AI computing capacity. Shares fell 4% on dilution concerns.</p></div>
   <div class="also"><h3>Gold breaks higher as the dollar holds firm</h3><p>The move came alongside the bond selloff and a weaker yen — a combination that usually signals inflation rather than growth anxiety.</p></div>
