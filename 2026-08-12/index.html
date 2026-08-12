@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZEXL Brief — No. 003 · 12 August 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E7EBED;--card:#F7F9FA;--ink:#12212A;--ink-soft:#53656F;--ink-faint:#8497A0;
+  --rule:#C6CFD4;--up:#9E3417;--dn:#2C5A7A;--watch:#0B6B6B;--watch-tint:#E2EFEE;
+  --f-display:"Newsreader",Georgia,serif;--f-body:"IBM Plex Sans",system-ui,sans-serif;--f-data:"IBM Plex Mono",monospace;
+  --track:.13em;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.6}
+.wrap{max-width:41rem;margin:0 auto;padding:0 1.15rem 4rem}
+.ml{font-size:.66rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;line-height:1}
+
+/* masthead */
+.masthead{border-bottom:1.5px solid var(--ink);padding:1.5rem 0 .7rem}
+.mh-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--f-display);font-weight:600;font-size:1.5rem;letter-spacing:-.022em;line-height:1}
+.logo b{letter-spacing:.02em;margin-right:.12em}
+.logo span{color:var(--ink-faint);font-weight:400}
+.date{font-family:var(--f-data);font-size:.68rem;color:var(--ink-soft)}
+.standing{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;
+  margin-top:.55rem;flex-wrap:wrap;font-size:.82rem;color:var(--ink-soft);line-height:1.4}
+.standing b{display:block;color:var(--ink);font-weight:600;margin-top:.3rem}
+.standing a{color:var(--ink-faint);text-decoration:none;font-family:var(--f-data);font-size:.66rem;
+  letter-spacing:.05em;border-bottom:1px solid var(--rule);white-space:nowrap}
+.standing a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* board head + toggle */
+.bhead{display:flex;justify-content:space-between;align-items:center;gap:.8rem;
+  padding:1.5rem 0 .8rem;flex-wrap:wrap}
+.bhead .ml{color:var(--up)}
+#toggle{font-family:var(--f-body);font-size:.68rem;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-faint);background:none;border:none;
+  padding:.2rem 0;cursor:pointer;line-height:1;transition:color .12s ease}
+#toggle:hover{color:var(--ink)}
+#toggle[aria-pressed="true"]{color:var(--up)}
+#toggle:focus-visible{outline:1px solid var(--ink-faint);outline-offset:4px}
+
+/* challenge line */
+.resolved{background:var(--watch-tint);border-left:3px solid var(--watch);
+  padding:.85rem 1rem .95rem;margin:1.4rem 0 0}
+.resolved .ml{color:var(--watch);margin-bottom:.4rem;display:block}
+.resolved p{margin:0;font-size:.92rem;line-height:1.58;color:var(--ink)}
+.resolved b{font-weight:600}
+.resolved .score{display:block;margin-top:.5rem;font-family:var(--f-data);font-size:.76rem;color:var(--watch)}
+.challenge{background:var(--card);border-left:3px solid var(--up);padding:.85rem 1rem;margin-bottom:1.2rem}
+.challenge p{margin:0;font-size:.92rem;line-height:1.55;color:var(--ink)}
+.challenge b{font-weight:600}
+.challenge .sml{display:block;margin-top:.4rem;font-size:.78rem;color:var(--ink-soft)}
+
+/* item */
+.item{background:var(--card);border:1px solid var(--rule);border-radius:3px;
+  padding:.95rem 1rem 1.05rem;margin-bottom:.7rem}
+.i-top{display:flex;justify-content:space-between;align-items:baseline;gap:.7rem;flex-wrap:wrap}
+.slot{font-size:.6rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;color:var(--ink-faint)}
+.slot i{font-style:normal;color:var(--up)}
+.res{font-family:var(--f-data);font-size:.68rem;color:var(--watch);font-weight:600}
+.carried[data-new],.turn{display:block;font-family:var(--f-display);font-size:.92rem;font-weight:600;
+  color:var(--watch);opacity:.5;letter-spacing:-.008em;line-height:1.3;margin:.55rem 0 -.16rem}
+.carried{font-family:var(--f-data);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;
+  font-weight:600;color:var(--ink-faint);border:1px solid var(--rule);border-radius:2px;
+  padding:.12rem .3rem;margin-left:.4rem;white-space:nowrap}
+.chg{font-family:var(--f-data);font-size:.62rem;font-weight:600;white-space:nowrap;margin-right:.26rem}
+.chg.u{color:var(--up)} .chg.d{color:var(--dn)} .chg.f{color:var(--ink-faint);font-weight:500}
+.fix{margin:.1rem 0 .55rem;font-size:.76rem;line-height:1.5;color:var(--ink-soft);
+  border-left:2px solid var(--ink-faint);padding-left:.6rem}
+.fix b{color:var(--ink);font-weight:600}
+.q em{font-style:normal;letter-spacing:.02em;font-weight:600}
+.resolved .hl{font-family:var(--f-display);font-size:1.34rem;font-weight:600;
+  color:var(--ink);letter-spacing:-.015em}
+.q{font-family:var(--f-display);font-size:1.08rem;line-height:1.32;font-weight:600;margin:.12rem 0 .72rem}
+.refs{display:grid;gap:.24rem;margin-bottom:.55rem}
+.ref{display:grid;grid-template-columns:9.4rem 5.3rem 1fr;gap:.45rem;align-items:center;
+  font-family:var(--f-data);font-size:.72rem;color:var(--ink-soft)}
+.ref b{color:var(--ink);font-weight:600;text-align:right;white-space:nowrap;
+  display:flex;justify-content:flex-end;align-items:baseline}
+.ref k{font-style:normal;text-decoration:none;font-weight:700;font-size:.86rem;
+  letter-spacing:0;margin-right:.02em}
+.ref.g1 k,.tops span.g1{color:#2C5A7A}
+.ref.g2 k,.tops span.g2{color:#8A6A2F}
+.ref.g3 k,.tops span.g3{color:#0B6B6B}
+.ref.g1 .track i{background:#2C5A7A}
+.ref.g2 .track i{background:#8A6A2F}
+.ref.g3 .track i{background:#0B6B6B}
+.ref .track{height:4px;background:#D5DCE0;border-radius:2px;position:relative}
+.ref .track i{position:absolute;left:0;top:0;bottom:0;background:var(--dn);border-radius:2px;opacity:.85}
+.ref.alt .track i{background:var(--ink-soft)}
+.gap{font-family:var(--f-data);font-size:.68rem;color:var(--up);font-weight:600;margin-bottom:.5rem}
+.why{font-size:.85rem;color:var(--ink-soft);line-height:1.55;margin:0}
+.why b{color:var(--ink);font-weight:500}
+.bands{display:grid;grid-template-columns:repeat(7,1fr);gap:.25rem;margin-top:.45rem}
+.bands button{font-family:var(--f-data);font-size:.75rem;font-weight:600;color:var(--ink-soft);
+  background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:.48rem .1rem;cursor:pointer;line-height:1}
+.bands button:hover{border-color:var(--ink);color:var(--ink)}
+.bands button[aria-pressed="true"]{background:var(--up);border-color:var(--up);color:#fff}
+.bands button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.scale{display:flex;justify-content:space-between;font-size:.63rem;color:var(--ink-faint);margin-top:.35rem}
+
+/* explain layer */
+.plain{display:none}
+body.explain .normal{display:none}
+body.explain .plain{display:block}
+.plain .stake{font-size:.9rem;line-height:1.6;color:var(--ink);margin:0 0 .7rem}
+.plain .sides{display:grid;gap:.5rem;margin-bottom:.7rem}
+.side{border-left:2px solid var(--rule);padding-left:.75rem}
+.side.a{border-left-color:var(--dn)}
+.side.b{border-left-color:var(--up)}
+.side em{font-style:normal;display:block;font-family:var(--f-data);font-size:.68rem;
+  letter-spacing:.03em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:.15rem}
+.side span{font-size:.87rem;line-height:1.5;color:var(--ink)}
+.plain .ask{font-size:.9rem;line-height:1.55;color:var(--ink);font-weight:500;margin:0}
+
+.foot{border-top:1px solid var(--rule);padding:.85rem 1rem;background:var(--card);
+  display:flex;justify-content:space-between;align-items:center;gap:.8rem;font-size:.8rem;
+  color:var(--ink-soft);flex-wrap:wrap}
+.foot b{font-family:var(--f-data);color:var(--ink);font-weight:600}
+.foot .right{display:flex;align-items:center;gap:.55rem}
+.foot a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);font-weight:500}
+.send{background:var(--card);border-bottom:1px solid var(--rule);padding:.9rem 1rem;
+  display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap}
+.send-count{font-family:var(--f-data);font-size:.78rem;color:var(--ink-soft)}
+.send-count b{color:var(--ink);font-weight:600}
+.foot #sendlink{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
+  color:#fff;background:var(--up);border:1.5px solid var(--up);border-radius:2px;
+  padding:.5rem .85rem;text-decoration:none;line-height:1}
+.foot #sendlink:hover{background:#7E2911;border-color:#7E2911}
+.foot #sendlink.off{background:transparent;color:var(--ink-faint);border-color:var(--rule);pointer-events:none}
+
+.record{margin-top:1.6rem;border-top:1.5px solid var(--ink);padding-top:.9rem;
+  font-size:.85rem;color:var(--ink-soft);line-height:1.6}
+.record p{margin:0 0 .6rem}
+.record p:last-child{margin-bottom:0}
+.record .big{font-family:var(--f-display);font-size:1.14rem;line-height:1.34;font-weight:600;
+  color:var(--ink);letter-spacing:-.01em;margin-bottom:.7rem}
+
+/* link from slot to brief */
+.tobrief{font-size:.63rem;letter-spacing:.03em;text-transform:uppercase;font-weight:600;
+  color:var(--watch);text-decoration:none;white-space:nowrap;margin-left:.15rem}
+.tobrief:focus-visible{outline:1px solid var(--watch);outline-offset:3px}
+.tobrief::after{content:" ↓";font-size:.9em}
+
+/* prompt above the bands */
+.prompt{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;
+  border-top:1px solid var(--rule);margin-top:1rem;padding-top:.7rem;flex-wrap:wrap}
+.prompt span{font-size:.82rem;font-weight:600;color:var(--ink)}
+.prompt em{font-style:normal;font-family:var(--f-data);font-size:.66rem;color:var(--ink-faint)}
+
+
+/* also today */
+.fold{border-top:1px solid var(--rule);margin-top:1.4rem}
+.fold>summary{list-style:none;cursor:pointer;padding:.9rem 0;display:flex;
+  justify-content:space-between;align-items:baseline;gap:.8rem}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary .ml{color:var(--ink-faint);transition:color .15s ease}
+.fold>summary em{font-style:normal;font-family:var(--f-data);font-size:.7rem;color:var(--ink-faint)}
+.fold>summary:hover .ml,.fold>summary:focus-visible .ml{color:var(--up)}
+.fold>summary:focus-visible{outline:none}
+.fold[open]>summary em::after{content:"  ↑"} .fold:not([open])>summary em::after{content:"  ↓"}
+.also{border-top:1px solid var(--rule);padding:.85rem 0}
+.also:first-of-type{border-top:none}
+.also h3{font-family:var(--f-display);font-size:1rem;line-height:1.3;font-weight:600;margin:0 0 .25rem}
+.also p{margin:0;font-size:.88rem;line-height:1.55;color:var(--ink-soft)}
+
+/* ── answer dial ──────────────────────────────── */
+.ans{border-top:1px solid #DCC4BC;margin-top:.8rem;padding-top:.55rem}
+.ans-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.55rem}
+.ans-head .ask2{font-family:var(--f-display);font-size:.92rem;color:var(--ink-soft);
+  letter-spacing:-.005em}
+.ans-head .ask2 b{color:var(--ink);font-weight:600}
+.ans-head .ask2 i{font-family:var(--f-body);font-style:normal;font-size:.78rem;
+  color:var(--ink-soft);margin-left:.62rem}
+.val{display:flex;align-items:center;gap:.34rem;font-family:var(--f-data)}
+.val .num{font-size:1.12rem;font-weight:600;color:var(--ink-faint);letter-spacing:-.01em;line-height:1}
+.val.set .num{color:var(--up)}
+
+.dial{position:relative;cursor:pointer;touch-action:none;-webkit-tap-highlight-color:transparent}
+
+/* markers sitting on top of the bars */
+.mk{position:absolute;z-index:3;white-space:nowrap;font-family:var(--f-data);
+  line-height:1;color:var(--ink-soft);pointer-events:none;
+  background:rgba(247,249,250,.88);padding:.12rem .1rem;border-radius:2px}
+.mk k{font-style:normal;font-weight:700;text-decoration:none;font-size:.82rem;
+  letter-spacing:0;color:inherit}
+.mk.c{transform:translateX(-50%)} .mk.l{transform:translateX(0)} .mk.rr{transform:translateX(-100%)}
+.mk.g1{color:#2C5A7A} .mk.g2{color:#8A6A2F} .mk.g3{color:#0B6B6B}
+
+.bars{position:absolute;z-index:1;left:0;right:0;bottom:0;display:flex;align-items:flex-end;gap:6px;height:1.95rem}
+.bars.thin{gap:4px}
+.bars.thin b{border-radius:1px}
+.bars.signed{align-items:stretch;position:relative}
+.bars b{flex:1;background:#CFD6DA;border-radius:1.5px;transition:background .09s ease;min-width:1px}
+.bars.signed b{position:relative;background:none;border-radius:0}
+.bars.signed b::after{content:"";position:absolute;left:0;right:0;background:#CFD6DA;border-radius:2px;
+  transition:background .09s ease}
+.bars.signed b.pos::after{bottom:var(--zero);height:var(--h)}
+.bars.signed b.neg::after{top:calc(100% - var(--zero));height:var(--h)}
+.dial.set .bars:not(.signed) b.on{background:#C89685}
+.dial.set .bars:not(.signed) b.cur{background:var(--up)}
+.dial .bars:not(.signed) b.demo{background:#C89685}
+.dial .bars:not(.signed) b.hov{background:#D9BDB2}
+.dial .bars.signed b.hov::after{background:#D9BDB2}
+.val .num.preview{color:var(--ink-faint);opacity:.75}
+.dial.set .bars.signed b.on::after{background:#C89685}
+.dial.set .bars.signed b.cur::after{background:var(--up)}
+.dial .bars.signed b.demo::after{background:#C89685}
+.bars.signed b:not(.pos):not(.neg){background:none}
+.zeroline{position:absolute;left:0;right:0;height:1px;background:var(--ink-faint);opacity:.3;
+  bottom:var(--zero);pointer-events:none}
+
+.foot-line{position:relative;height:.85rem;margin-top:.28rem;font-family:var(--f-data);font-size:.6rem}
+.foot-line .end{position:absolute;top:0;color:var(--ink-faint)}
+.foot-line .end.l{left:0} .foot-line .end.r{right:0}
+
+/* brief */
+.brief{margin-top:1.6rem;border-top:1.5px solid var(--ink);padding-top:0}
+.brief>summary{list-style:none;cursor:pointer;padding:1rem 0 .75rem;position:relative;
+  transition:opacity .15s ease}
+.brief>summary::-webkit-details-marker{display:none}
+.brief>summary .ml{color:var(--up);display:block}
+.brief>summary h2{color:var(--ink);transition:color .15s ease}
+.brief>summary .cue{display:block;margin-top:.4rem;font-family:var(--f-data);font-size:.66rem;
+  letter-spacing:.05em;color:var(--ink-faint);transition:color .15s ease}
+.brief>summary .cue::after{content:"  ↓"}
+.brief[open]>summary .cue::after{content:"  ↑"}
+.brief>summary:hover .cue,.brief>summary:focus-visible .cue{color:var(--watch)}
+.brief>summary:focus-visible{outline:none}
+.brief h2{font-family:var(--f-display);font-size:1.42rem;line-height:1.24;letter-spacing:-.018em;
+  font-weight:500;margin:.68rem 0 0}
+.brief .intro{color:var(--ink-soft);font-size:.94rem;line-height:1.62;margin:0 0 .3rem}
+.sec{border-top:1px solid var(--rule);padding:1.25rem 0 .3rem}
+.sec-tag{font-size:.6rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;color:var(--ink-faint)}
+.sec-tag i{font-style:normal;color:var(--up)}
+.sec h3{font-family:var(--f-display);font-size:1.1rem;line-height:1.3;font-weight:600;margin:.32rem 0 .55rem}
+.sec p{margin:0 0 .7rem;font-size:.92rem;line-height:1.62;color:var(--ink)}
+.sec p.q{color:var(--ink-soft)}
+.sec .watchline{background:var(--watch-tint);border-left:2px solid var(--watch);padding:.55rem .8rem;margin:.2rem 0 .7rem}
+.sec .watchline b{display:block;font-size:.6rem;letter-spacing:var(--track);text-transform:uppercase;
+  color:var(--watch);font-weight:600;margin-bottom:.12rem}
+.sec .watchline span{font-size:.87rem;line-height:1.5;color:var(--ink)}
+.sec .src{font-family:var(--f-data);font-size:.66rem;color:var(--ink-faint);margin:0}
+.backup{display:inline-block;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;font-weight:600;
+  color:var(--ink-faint);text-decoration:none;margin-top:.5rem;transition:color .12s ease}
+.backup:hover,.backup:focus-visible{color:var(--watch);outline:none}
+.backup::before{content:"↑ "}
+
+.record p{margin:0}
+.record b{color:var(--ink);font-weight:600}
+.record .stamp a{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--rule)}
+.nudge{display:none;margin-top:.7rem;border-left:2px solid var(--up);padding:.5rem .75rem;
+  background:var(--paper);font-size:.84rem;line-height:1.5;color:var(--ink)}
+.nudge.show{display:block}
+.nudge b{font-weight:600}
+.record .stamp{font-family:var(--f-data);font-size:.68rem;color:var(--ink-faint);display:block;margin-top:.5rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="mh-row">
+    <div class="logo"><b>ZEXL</b>Brief<span>.</span></div>
+    <div class="date">Wed 12 Aug 2026 · No. 003</div>
+  </div>
+  <div class="standing">
+    <span>Where informed people disagree about the world — and who turns out right.
+      <b>Four questions below. Give your own number on each — the answers land on dates you can see.</b></span>
+    <a href="/about/">What is this?</a>
+  </div>
+</header>
+
+
+<div class="resolved">
+  <span class="ml">Resolved this morning</span>
+  <p class="normal"><b>Core inflation came in at <span class="hl">2.5%</span></b> — exactly the street consensus, down from 2.6% in June. Headline fell to 3.4% from 3.5%. Shelter accounted for two-thirds of the monthly rise; energy fell 1.5% on the month but is still 14.7% higher than a year ago.
+    <span class="score">Yesterday's question, settled in 21 hours. Reader answers are being compared now.</span></p>
+  <p class="plain"><b>The inflation number came in at <span class="hl">2.5%</span></b>, which is exactly what forecasters had said. Prices are still rising, but a little slower than last month.
+    <span class="score">That was yesterday's question. It took 21 hours to find out.</span></p>
+</div>
+
+<div class="bhead">
+  <span class="ml">Today's Board</span>
+  <button id="toggle" type="button" aria-pressed="false">Explain</button>
+</div>
+
+<!-- 1 -->
+<div class="item">
+  <div class="i-top" id="s1"><span class="slot">Anchor · <i>Prices</i><span class="carried">Day 3</span></span><span class="res">resolves 16 Sep</span></div>
+  <span class="turn">The data cooled this morning. The argument did not.</span>
+  <div class="q">Will the Fed raise <em>RATES</em> at the September meeting?</div>
+
+  <div class="normal">
+    <div class="refs"><div class="ref g1"><span><k>F</k>ed funds futures</span><b><span class="chg d">▼8</span>54%</b><span class="track"><i style="width:54%"></i></span></div><div class="ref g2"><span><k>E</k>conomist consensus</span><b><span class="chg f">flat</span>~0%</b><span class="track"><i style="width:2%"></i></span></div><div class="ref g3"><span><k>H</k>ammack, yesterday</span><b>act now</b><span class="track"><i style="width:88%"></i></span></div></div>
+    <div class="gap">Down eight points on the print, but a sitting president of the Cleveland Fed spent yesterday arguing the opposite.</div>
+    <p class="why"><b>Why they differ:</b> This morning's data took some urgency out — core at 2.5% is not a number that forces anyone's hand. Yet Beth Hammack, who dissented for a hike on 29 July, wrote publicly on Tuesday that "now is the time to act", arguing delay makes the return to 2% more expensive. Truist's US economics head said the same data supports staying on hold. Two professionals, one dataset, opposite conclusions. <a class="tobrief" href="#b1">the full case</a></p>
+  </div>
+
+  <div class="plain">
+    <p class="stake">On 16 September, America's central bank decides whether to make borrowing more expensive. That decision reaches mortgage rates, savings rates, and the dollar.</p>
+    <div class="sides"><div class="side a"><em>Traders — about 54%</em><span>They moved lower this morning: cooler inflation means less pressure to act.</span></div><div class="side b"><em>One voting member — act now</em><span>A Cleveland Fed president argued publicly this week that waiting costs more.</span></div></div>
+    <p class="ask">The data cooled and the argument did not. Where do you put it?</p>
+  </div>
+
+  <div class="ans">
+    <div class="ans-head">
+      <span class="ask2"><b>Your call?</b><i>Tap where you'd put it</i></span>
+      <span class="val" id="v1"><span class="num">—</span>
+      </span>
+    </div>
+    <div class="dial" id="d1" data-key="Fed September" data-lo="0" data-hi="100"
+         data-step="1" data-dec="0" data-sfx="%" data-unit="" data-n="34"
+         style="height:2.30rem" role="slider" tabindex="0" aria-label="Fed September">
+      <span class="mk g2 l" style="left:0.00%;bottom:0.68rem"><k>E</k></span><span class="mk g1 c" style="left:54.00%;bottom:0.68rem"><k>F</k></span><span class="mk g3 c" style="left:88.00%;bottom:0.68rem"><k>H</k></span>
+      <div class="bars"><b style="height:26%"></b><b style="height:29%"></b><b style="height:31%"></b><b style="height:34%"></b><b style="height:36%"></b><b style="height:38%"></b><b style="height:41%"></b><b style="height:43%"></b><b style="height:45%"></b><b style="height:48%"></b><b style="height:50%"></b><b style="height:52%"></b><b style="height:54%"></b><b style="height:57%"></b><b style="height:59%"></b><b style="height:61%"></b><b style="height:63%"></b><b style="height:65%"></b><b style="height:68%"></b><b style="height:70%"></b><b style="height:72%"></b><b style="height:74%"></b><b style="height:76%"></b><b style="height:79%"></b><b style="height:81%"></b><b style="height:83%"></b><b style="height:85%"></b><b style="height:87%"></b><b style="height:89%"></b><b style="height:91%"></b><b style="height:94%"></b><b style="height:96%"></b><b style="height:98%"></b><b style="height:100%"></b></div>
+    </div>
+    <div class="foot-line"><span class="end l">0%</span><span class="end r">100%</span></div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="item">
+  <div class="i-top" id="s2"><span class="slot">Fast · <i>Prices</i><span class="carried">New</span></span><span class="res">resolves tomorrow, 8:30 ET</span></div>
+  <div class="q">Where will producer price <em>INFLATION</em> land?</div>
+
+  <div class="normal">
+    <div class="refs"><div class="ref g1"><span><k>S</k>treet consensus</span><b>4.9%</b><span class="track"><i style="width:47%"></i></span></div><div class="ref g2"><span><k>J</k>une actual</span><b>5.5%</b><span class="track"><i style="width:67%"></i></span></div><div class="ref g3"><span><k>C</k>onsumer side, today</span><b>3.4%</b><span class="track"><i style="width:2%"></i></span></div></div>
+    <div class="gap">Producer prices have run above consumer prices all year. Tomorrow shows whether the gap is closing.</div>
+    <p class="why"><b>Why they differ:</b> Producer inflation is what firms pay before they decide what to charge you. It has been running 2 points above the consumer rate, which usually means either margins are absorbing it or consumer prices follow later. Energy is 14.7% higher than a year ago and gasoline 24.6%, so the input side has not cooled the way the output side just did. <a class="tobrief" href="#b2">the full case</a></p>
+  </div>
+
+  <div class="plain">
+    <p class="stake">This is inflation measured at the factory gate rather than the checkout. When it runs far above consumer prices, one of the two has to give.</p>
+    <div class="sides"><div class="side a"><em>Forecasters say 4.9%</em><span>Down from 5.5% — the same cooling story this morning's consumer number told.</span></div><div class="side b"><em>But inputs are still hot</em><span>Energy costs are up 14.7% on the year, and that lands on producers first.</span></div></div>
+    <p class="ask">Does the factory gate cool as fast as the checkout did?</p>
+  </div>
+
+  <div class="ans">
+    <div class="ans-head">
+      <span class="ask2"><b>Your call?</b><i>Tap where you'd put it</i></span>
+      <span class="val" id="v2"><span class="num">—</span>
+      </span>
+    </div>
+    <div class="dial" id="d2" data-key="PPI" data-lo="3.0" data-hi="6.0"
+         data-step="0.1" data-dec="1" data-sfx="%" data-unit="" data-n="46"
+         style="height:2.30rem" role="slider" tabindex="0" aria-label="PPI">
+      <span class="mk g3 c" style="left:13.33%;bottom:1.17rem"><k>C</k></span><span class="mk g1 c" style="left:63.33%;bottom:1.17rem"><k>S</k></span><span class="mk g2 c" style="left:83.33%;bottom:1.17rem"><k>J</k></span>
+      <div class="bars thin"><b style="height:30%"></b><b style="height:40%"></b><b style="height:46%"></b><b style="height:52%"></b><b style="height:57%"></b><b style="height:61%"></b><b style="height:66%"></b><b style="height:70%"></b><b style="height:73%"></b><b style="height:77%"></b><b style="height:80%"></b><b style="height:83%"></b><b style="height:86%"></b><b style="height:89%"></b><b style="height:91%"></b><b style="height:93%"></b><b style="height:95%"></b><b style="height:96%"></b><b style="height:97%"></b><b style="height:98%"></b><b style="height:99%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:99%"></b><b style="height:98%"></b><b style="height:97%"></b><b style="height:96%"></b><b style="height:95%"></b><b style="height:93%"></b><b style="height:91%"></b><b style="height:89%"></b><b style="height:86%"></b><b style="height:83%"></b><b style="height:80%"></b><b style="height:77%"></b><b style="height:73%"></b><b style="height:70%"></b><b style="height:66%"></b><b style="height:61%"></b><b style="height:57%"></b><b style="height:52%"></b><b style="height:46%"></b><b style="height:40%"></b><b style="height:30%"></b></div>
+    </div>
+    <div class="foot-line"><span class="end l">3.0%</span><span class="end r">6.0%</span></div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="item">
+  <div class="i-top" id="s3"><span class="slot">Story · <i>Growth</i><span class="carried">New</span></span><span class="res">resolves 4 Sep</span></div>
+  <div class="q">Will <em>WAGES</em> beat inflation in August?</div>
+
+  <div class="normal">
+    <div class="refs"><div class="ref g1"><span><k>T</k>oday</span><b>−0.2pt</b><span class="track"><i style="width:42%"></i></span></div><div class="ref g2"><span><k>B</k>reak-even</span><b>0.0pt</b><span class="track"><i style="width:50%"></i></span></div><div class="ref g3"><span><k>M</k>ay, the worst</span><b>−0.4pt</b><span class="track"><i style="width:33%"></i></span></div></div>
+    <div class="gap">Four straight months in the red. May was the worst of them, and July is not far off it.</div>
+    <p class="why"><b>Why they differ:</b> Wages are growing at 3.2% a year while prices rise at 3.4% — a gap of −0.2 points, and the fourth consecutive month it has been negative. It widened again this morning: average hourly earnings fell 0.2% from a year earlier in the same release that showed inflation cooling. This is the number that decides whether the cooling everyone is describing is felt by anyone. <a class="tobrief" href="#b3">the full case</a></p>
+  </div>
+
+  <div class="plain">
+    <p class="stake">If prices rise faster than pay, you are getting poorer whatever the headline says. That has now been true for four months running.</p>
+    <div class="sides"><div class="side a"><em>Prices are cooling — now 3.4%</em><span>Down from 3.5%, with core at 2.5%. On paper that should help.</span></div><div class="side b"><em>But pay is at 3.2% and falling</em><span>Earnings slipped again this morning, so the gap widened instead of closing.</span></div></div>
+    <p class="ask">Zero means pay finally keeps up. Where does August land?</p>
+  </div>
+
+  <div class="ans">
+    <div class="ans-head">
+      <span class="ask2"><b>Your call?</b><i>Tap where you'd put it</i></span>
+      <span class="val" id="v3"><span class="num">—</span>
+      </span>
+    </div>
+    <div class="dial" id="d3" data-key="Real wages" data-lo="-1.2" data-hi="1.2"
+         data-step="0.1" data-dec="1" data-sfx="pt" data-unit="" data-n="40"
+         style="height:2.30rem" role="slider" tabindex="0" aria-label="Real wages">
+      <span class="mk g3 c" style="left:33.33%;bottom:0.68rem"><k>M</k></span><span class="mk g1 c" style="left:41.67%;bottom:0.68rem"><k>T</k></span><span class="mk g2 c" style="left:50.00%;bottom:0.68rem"><k>B</k></span>
+      <div class="bars signed thin" style="--zero:50%"><b class="neg" style="--h:50.0%"></b><b class="neg" style="--h:48.2%"></b><b class="neg" style="--h:46.4%"></b><b class="neg" style="--h:44.6%"></b><b class="neg" style="--h:42.7%"></b><b class="neg" style="--h:40.9%"></b><b class="neg" style="--h:39.0%"></b><b class="neg" style="--h:37.1%"></b><b class="neg" style="--h:35.2%"></b><b class="neg" style="--h:33.2%"></b><b class="neg" style="--h:31.2%"></b><b class="neg" style="--h:29.2%"></b><b class="neg" style="--h:27.2%"></b><b class="neg" style="--h:25.1%"></b><b class="neg" style="--h:23.0%"></b><b class="neg" style="--h:20.8%"></b><b class="neg" style="--h:18.5%"></b><b class="neg" style="--h:16.2%"></b><b class="neg" style="--h:13.6%"></b><b class="neg" style="--h:10.8%"></b><b class="pos" style="--h:10.8%"></b><b class="pos" style="--h:13.6%"></b><b class="pos" style="--h:16.2%"></b><b class="pos" style="--h:18.5%"></b><b class="pos" style="--h:20.8%"></b><b class="pos" style="--h:23.0%"></b><b class="pos" style="--h:25.1%"></b><b class="pos" style="--h:27.2%"></b><b class="pos" style="--h:29.2%"></b><b class="pos" style="--h:31.2%"></b><b class="pos" style="--h:33.2%"></b><b class="pos" style="--h:35.2%"></b><b class="pos" style="--h:37.1%"></b><b class="pos" style="--h:39.0%"></b><b class="pos" style="--h:40.9%"></b><b class="pos" style="--h:42.7%"></b><b class="pos" style="--h:44.6%"></b><b class="pos" style="--h:46.4%"></b><b class="pos" style="--h:48.2%"></b><b class="pos" style="--h:50.0%"></b><span class="zeroline" style="--zero:50%"></span></div>
+    </div>
+    <div class="foot-line"><span class="end l">−1.2pt</span><span class="end r">+1.2pt</span></div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="item">
+  <div class="i-top" id="s4"><span class="slot">Rotate · <i>Energy</i><span class="carried">Day 2</span></span><span class="res">resolves 31 Aug</span></div>
+  <span class="turn">Yesterday it moved the Fed. Today it is holding the whole inflation story up.</span>
+  <div class="q">Where will <em>BRENT</em> close at the end of August?</div>
+
+  <div class="normal">
+    <div class="refs"><div class="ref g1"><span><k>T</k>oday</span><b><span class="chg f">flat</span>$87.8</b><span class="track"><i style="width:44%"></i></span></div><div class="ref g2"><span><k>L</k>ast week's low</span><b>$78.4</b><span class="track"><i style="width:21%"></i></span></div><div class="ref g3"><span><k>J</k>uly peak</span><b>$100.7</b><span class="track"><i style="width:77%"></i></span></div></div>
+    <div class="gap">Held its ground through the inflation print. The energy index itself fell 1.5% on the month.</div>
+    <p class="why"><b>Why they differ:</b> Crude paused today after four sessions higher, but the year-on-year picture is unchanged: energy 14.7% above a year ago, gasoline 24.6%. The monthly fall in the energy index is what made this morning's number look tame — which means the whole cooling story rests on oil staying where it is. Washington's demand for compensation from Iran still blocks the quick reopening. <a class="tobrief" href="#b4">the full case</a></p>
+  </div>
+
+  <div class="plain">
+    <p class="stake">Brent sets what you pay for fuel, and through freight part of what you pay for everything else. It opened July at $71 and touched $100 in the same month.</p>
+    <div class="sides"><div class="side a"><em>A settlement reopens Hormuz</em><span>Shipping normalises, the premium drains, prices fall back toward $78.</span></div><div class="side b"><em>The stalemate holds</em><span>Every week without agreement adds premium — and this morning's inflation relief goes with it.</span></div></div>
+    <p class="ask">Three weeks to month end. Where does it settle?</p>
+  </div>
+
+  <div class="ans">
+    <div class="ans-head">
+      <span class="ask2"><b>Your call?</b><i>Tap where you'd put it</i></span>
+      <span class="val" id="v4"><span class="num">—</span>
+      </span>
+    </div>
+    <div class="dial" id="d4" data-key="Brent month end" data-lo="74" data-hi="104"
+         data-step="0.5" data-dec="1" data-sfx="" data-unit="" data-n="46"
+         style="height:2.30rem" role="slider" tabindex="0" aria-label="Brent month end">
+      <span class="mk g2 c" style="left:14.67%;bottom:1.17rem"><k>L</k></span><span class="mk g1 c" style="left:46.00%;bottom:1.17rem"><k>T</k></span><span class="mk g3 c" style="left:89.00%;bottom:1.17rem"><k>J</k></span>
+      <div class="bars thin"><b style="height:30%"></b><b style="height:40%"></b><b style="height:46%"></b><b style="height:52%"></b><b style="height:57%"></b><b style="height:61%"></b><b style="height:66%"></b><b style="height:70%"></b><b style="height:73%"></b><b style="height:77%"></b><b style="height:80%"></b><b style="height:83%"></b><b style="height:86%"></b><b style="height:89%"></b><b style="height:91%"></b><b style="height:93%"></b><b style="height:95%"></b><b style="height:96%"></b><b style="height:97%"></b><b style="height:98%"></b><b style="height:99%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:99%"></b><b style="height:98%"></b><b style="height:97%"></b><b style="height:96%"></b><b style="height:95%"></b><b style="height:93%"></b><b style="height:91%"></b><b style="height:89%"></b><b style="height:86%"></b><b style="height:83%"></b><b style="height:80%"></b><b style="height:77%"></b><b style="height:73%"></b><b style="height:70%"></b><b style="height:66%"></b><b style="height:61%"></b><b style="height:57%"></b><b style="height:52%"></b><b style="height:46%"></b><b style="height:40%"></b><b style="height:30%"></b></div>
+    </div>
+    <div class="foot-line"><span class="end l">$74</span><span class="end r">$104</span></div>
+  </div>
+</div>
+
+<div class="foot">
+  <span></span>
+  <span class="right"><b id="cnt">0</b> of 4 &nbsp;<a id="sendlink" class="off" href="#">Send my answers</a></span>
+</div>
+
+
+<details class="brief" id="brief">
+  <summary>
+    <span class="ml">Today's Brief</span>
+    <h2>Inflation cooled exactly as forecast. The argument about what to do is louder than before.</h2>
+    <span class="cue">Read the case behind each question</span>
+  </summary>
+  <p class="intro">Four questions above, four short pieces below. Each explains why two sets of informed people are looking at the same facts and reaching different answers — and what would settle it.</p>
+
+  <div class="sec" id="b1">
+    <div class="sec-tag">01 · <i>Prices</i> — the Fed in September</div>
+    <h3>A voting member spent Tuesday arguing for the opposite of what Wednesday's data suggests.</h3>
+    <p>Core inflation came in at 2.5%, headline at 3.4%, both a tenth below June and both exactly on consensus. Nothing in that forces a central bank to act, and the market moved accordingly — September odds slipped roughly eight points.</p>
+    <p>The day before, Cleveland Fed President Beth Hammack wrote publicly that now is the time to act, arguing that the longer the delay the more expensive the return to 2% becomes. She was one of three who dissented for an immediate rise on 29 July. Against that, Truist's head of US economics read the same release as supporting a hold.</p>
+    <p>This is the disagreement in its purest form: identical data, opposite readings, and a decision five weeks out. The tie-breaker is not this print but the next one — August CPI lands on 11 September, five days before the meeting.</p>
+    <div class="watchline"><b>Watch</b><span>Whether Kashkari or Logan follows Hammack into public argument. Three dissenters speaking is a different signal from one.</span></div>
+    <p class="src">Sources: BLS Consumer Price Index, July 2026 · Hammack public remarks, 11 Aug 2026 · FOMC statement 29 Jul 2026</p>
+    <a class="backup" href="#s1">back to the question</a>
+  </div>
+
+  <div class="sec" id="b2">
+    <div class="sec-tag">02 · <i>Prices</i> — tomorrow at the factory gate</div>
+    <h3>Producer prices have run two points above consumer prices all year. One of them is wrong.</h3>
+    <p>Tomorrow's producer price index is expected at 4.9% year-on-year, down from 5.5%. Even at that level it sits well above the 3.4% consumers are paying, and that gap has persisted through the whole energy episode.</p>
+    <p>A gap like this resolves in one of two ways. Either firms absorb the difference in margins, which shows up later as weaker earnings, or they pass it through, which shows up later as consumer inflation. The second is what the Cleveland Fed nowcast has been waiting for since spring, and it has not arrived.</p>
+    <p>What makes tomorrow worth watching is that energy is still 14.7% higher than a year ago and gasoline 24.6%. Those are input costs. If producer inflation cools as fast as consumer inflation just did, the pass-through argument weakens considerably.</p>
+    <div class="watchline"><b>Watch</b><span>Services PPI rather than goods. Goods track oil directly; services are where a genuine pass-through would show up first.</span></div>
+    <p class="src">Sources: BLS Producer Price Index schedule · economist estimates, Aug 2026</p>
+    <a class="backup" href="#s2">back to the question</a>
+  </div>
+
+  <div class="sec" id="b3">
+    <div class="sec-tag">03 · <i>Growth</i> — the number under the number</div>
+    <h3>Prices have outrun pay for four straight months, and the gap widened again this morning.</h3>
+    <p>Average hourly earnings are growing at 3.2% year-on-year. Consumer prices are rising at 3.4%. The difference is small on paper and total in practice: for four months, the average worker's pay has bought less than it did the year before.</p>
+    <p>This morning's release made it slightly worse. Earnings slipped 0.2% from a year earlier even as the inflation rate fell. Cooling prices and cooling wages arriving together is not relief — it is the same squeeze at a lower temperature.</p>
+    <p>It also explains why the central bank's position is harder than the headline suggests. A committee that raises rates into falling real wages tightens on households that are already losing ground. A committee that waits risks the gap staying negative for a fifth month, then a sixth.</p>
+    <div class="watchline"><b>Watch</b><span>Average hourly earnings in the 4 September employment report, against August CPI on 11 September. Both land before the meeting.</span></div>
+    <p class="src">Sources: BLS Consumer Price Index and earnings data, July 2026</p>
+    <a class="backup" href="#s3">back to the question</a>
+  </div>
+
+  <div class="sec" id="b4">
+    <div class="sec-tag">04 · <i>Energy</i> — what the cooling rests on</div>
+    <h3>The energy index fell 1.5% this month. It is still 14.7% up on the year.</h3>
+    <p>The reason July's inflation looked tame is visible in one line of the release: energy fell 1.5% on the month. Strip that out and the picture is less comfortable — gasoline is 24.6% more expensive than a year ago, and shelter still accounted for two-thirds of what rise there was.</p>
+    <p>So the cooling everyone is describing rests on crude staying roughly where it is. Brent held near $87.75 today after four sessions higher, and Washington's demand for compensation from Iran still blocks the reopening that would drain the risk premium.</p>
+    <p>The asymmetry is what matters for the question above. A settlement takes prices back toward $78 quickly. A stalemate does not spike them — it just adds a little premium each week, which is exactly the shape that keeps inflation elevated without ever producing a headline.</p>
+    <div class="watchline"><b>Watch</b><span>Hormuz transit counts rather than headlines. Traffic returning toward its pre-conflict average is the only confirmation a settlement is real.</span></div>
+    <p class="src">Sources: BLS Consumer Price Index, July 2026 · ICE Brent, 11–12 Aug 2026</p>
+    <a class="backup" href="#s4">back to the question</a>
+  </div>
+</details>
+
+<details class="fold">
+  <summary><span class="ml">Also today</span><em>6 items</em></summary>
+  <div class="also"><h3>Real wages fall for a fourth month</h3><p>Inflation at 3.4% against wage growth of 3.2%. Average hourly earnings slipped 0.2% from a year earlier in the same release.</p></div>
+  <div class="also"><h3>Airline fares jump 2.2% in a month</h3><p>Medical care rose 0.4% and used vehicles 0.4%. Lodging away from home fell 2.8%, holding the shelter component in check.</p></div>
+  <div class="also"><h3>Europe still faces the harder version of this</h3><p>The ECB raised in June into a growth forecast it cut at the same meeting, with 2026 inflation projected at 3.0% and growth at 0.8%.</p></div>
+  <div class="also"><h3>China's rare-earth controls reach fourteen EU firms</h3><p>A second wave covering five more elements is scheduled for 10 November after an earlier delay — the clearest single test of whether 2026's escalation continues.</p></div>
+  <div class="also"><h3>Next CPI lands 11 September</h3><p>Five days before the FOMC decides. That print, not this one, is the tie-breaker.</p></div>
+  <div class="also"><h3>Small-business optimism at a one-year high</h3><p>The NFIB index rose to 99.8 yesterday with the strongest hiring intentions since 2022 — awkward against July's payroll fall of 23,000.</p></div>
+</details>
+
+<div class="record">
+  <p class="normal"><b>Four answers saved.</b> One resolves tomorrow at 8:30 ET, and Friday's issue opens with the result.<br>
+    Nothing here is deleted, including the answers that turn out wrong.</p>
+  <p class="plain"><b>Your four answers are saved with today's date.</b> One of them is settled tomorrow morning, and the next issue shows what actually happened.<br>
+    Wrong answers are kept too — a record that only shows the right ones is not a record.</p>
+  <span class="stamp">Reader since 12 August 2026 · issue No. 003 · <a href="/about/">what this is</a></span>
+</div>
+
+</div>
+
+<script>
+(function(){
+  var t=document.getElementById('toggle');
+  t.addEventListener('click',function(){
+    var on=document.body.classList.toggle('explain');
+    t.textContent=on?'Back':'Explain';
+    t.setAttribute('aria-pressed',on?'true':'false');
+  });
+
+  var answers={};
+
+  document.querySelectorAll('.dial').forEach(function(d,idx){
+    var lo=+d.dataset.lo, hi=+d.dataset.hi, step=+d.dataset.step,
+        dec=+d.dataset.dec, sfx=d.dataset.sfx, key=d.dataset.key, n=+d.dataset.n;
+    var bars=[].slice.call(d.querySelectorAll('.bars b'));
+    var box=document.getElementById('v'+(idx+1));
+    var num=box.querySelector('.num');
+    var cur=null;
+
+    function fmt(v){
+      var s=v.toFixed(dec);
+      if((sfx==='k'||sfx==='pt')&&v>0) s='+'+s;
+      return s+sfx;
+    }
+    function idxAt(e){
+      var r=d.getBoundingClientRect();
+      var x=(e.clientX!==undefined?e.clientX:e.touches[0].clientX)-r.left;
+      return Math.max(0,Math.min(n-1,Math.round((x/r.width)*(n-1))));
+    }
+    function valAt(i){
+      var v=lo+(i/(n-1))*(hi-lo);
+      return Math.round(v/step)*step;
+    }
+    function place(i){
+      i=Math.max(0,Math.min(n-1,i));
+      var v=valAt(i);
+      bars.forEach(function(b,j){
+        b.classList.remove('demo','hov');
+        b.classList.toggle('on', j<=i);
+        b.classList.toggle('cur', j===i);
+      });
+      d.classList.add('set');
+      num.classList.remove('preview');
+      box.classList.add('set');
+      num.textContent=fmt(v);
+      d.setAttribute('aria-valuenow',v.toFixed(dec));
+      answers[key]=fmt(v); cur=i; refresh();
+    }
+
+    // 커서를 올리면 그 자리 값을 미리 보여준다 (데스크톱)
+    if(window.matchMedia('(hover:hover)').matches){
+      d.addEventListener('pointermove',function(e){
+        if(drag){ place(idxAt(e)); return; }
+        var i=idxAt(e);
+        bars.forEach(function(b,j){ b.classList.toggle('hov', j<=i && !b.classList.contains('on')); });
+        if(cur===null){
+          num.textContent=fmt(valAt(i));
+          num.classList.add('preview');
+        }
+      });
+      d.addEventListener('pointerleave',function(){
+        bars.forEach(function(b){ b.classList.remove('hov'); });
+        if(cur===null){ num.textContent='—'; num.classList.remove('preview'); }
+      });
+    }
+
+    var drag=false;
+    d.addEventListener('pointerdown',function(e){drag=true;try{d.setPointerCapture(e.pointerId)}catch(_){}
+      place(idxAt(e));e.preventDefault();});
+    d.addEventListener('pointerup',function(){drag=false;});
+    d.addEventListener('pointercancel',function(){drag=false;});
+    d.addEventListener('keydown',function(e){
+      var i=(cur===null)?Math.floor(n/2):cur;
+      if(e.key==='ArrowRight'||e.key==='ArrowUp'){place(i+1);e.preventDefault();}
+      if(e.key==='ArrowLeft'||e.key==='ArrowDown'){place(i-1);e.preventDefault();}
+      if(e.key==='Enter'||e.key===' '){place(i);e.preventDefault();}
+    });
+
+    if(idx===0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      var k=0, target=Math.round(n*0.55);
+      var iv=setInterval(function(){
+        if(d.classList.contains('set')){clearInterval(iv);return;}
+        bars.forEach(function(b,j){b.classList.toggle('demo', j<=k);});
+        if(++k>target){
+          setTimeout(function(){
+            if(!d.classList.contains('set')) bars.forEach(function(b){b.classList.remove('demo');});
+          },700);
+          clearInterval(iv);
+        }
+      },22);
+    }
+  });
+
+  var brief=document.getElementById('brief');
+  document.querySelectorAll('a[href^="#b"], a[href="#brief"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(brief && !brief.open){
+        e.preventDefault(); brief.open=true;
+        var id=a.getAttribute('href').slice(1);
+        setTimeout(function(){
+          var el=document.getElementById(id);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        },40);
+      }
+    });
+  });
+
+  function refresh(){
+    var keys=Object.keys(answers);
+    document.getElementById('cnt').textContent=keys.length;
+    var nd=document.getElementById('nudge');
+    if(nd&&!window.__first){window.__first=true;nd.classList.add('show');}
+    var a=document.getElementById('sendlink');
+    if(!keys.length){a.className='off';a.href='#';return;}
+    a.className='';
+    var body=keys.map(function(k){return k+': '+answers[k];}).join('\n');
+    body+='\n\nZEXL No. 003 · 12 Aug 2026';
+    a.href='mailto:zexl.brief@gmail.com?subject='+
+      encodeURIComponent('ZEXL 003 — my answers')+'&body='+encodeURIComponent(body);
+  }
+})();
+</script>
+</body>
+</html>
