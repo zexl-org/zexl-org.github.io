@@ -26,6 +26,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body)
 .date{font-family:var(--f-data);font-size:.68rem;color:var(--ink-soft)}
 .standing{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;
   margin-top:.55rem;flex-wrap:wrap;font-size:.82rem;color:var(--ink-soft);line-height:1.4}
+.standing b{display:block;color:var(--ink);font-weight:600;margin-top:.3rem}
 .standing a{color:var(--ink-faint);text-decoration:none;font-family:var(--f-data);font-size:.66rem;
   letter-spacing:.05em;border-bottom:1px solid var(--rule);white-space:nowrap}
 .standing a:hover{color:var(--ink);border-bottom-color:var(--ink)}
@@ -48,7 +49,8 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body)
 .challenge .sml{display:block;margin-top:.4rem;font-size:.78rem;color:var(--ink-soft)}
 
 /* item */
-.item{background:var(--card);border-bottom:1px solid var(--rule);padding:.95rem 1rem 1.05rem}
+.item{background:var(--card);border:1px solid var(--rule);border-radius:3px;
+  padding:.95rem 1rem 1.05rem;margin-bottom:.7rem}
 .i-top{display:flex;justify-content:space-between;align-items:baseline;gap:.7rem;flex-wrap:wrap}
 .slot{font-size:.6rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;color:var(--ink-faint)}
 .slot i{font-style:normal;color:var(--up)}
@@ -58,13 +60,21 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body)
 .ref{display:grid;grid-template-columns:11rem 3.1rem 1fr;gap:.5rem;align-items:center;
   font-family:var(--f-data);font-size:.72rem;color:var(--ink-soft)}
 .ref b{color:var(--ink);font-weight:600;text-align:right}
+.ref k{font-style:normal;text-decoration:none;font-weight:700;font-size:.86rem;
+  letter-spacing:0;margin-right:.02em}
+.ref.g1 k,.tops span.g1{color:#2C5A7A}
+.ref.g2 k,.tops span.g2{color:#8A6A2F}
+.ref.g3 k,.tops span.g3{color:#0B6B6B}
+.ref.g1 .track i{background:#2C5A7A}
+.ref.g2 .track i{background:#8A6A2F}
+.ref.g3 .track i{background:#0B6B6B}
 .ref .track{height:4px;background:#D5DCE0;border-radius:2px;position:relative}
-.ref .track i{position:absolute;left:0;top:0;bottom:0;background:var(--dn);border-radius:2px}
-.ref.alt .track i{background:var(--up)}
+.ref .track i{position:absolute;left:0;top:0;bottom:0;background:var(--dn);border-radius:2px;opacity:.85}
+.ref.alt .track i{background:var(--ink-soft)}
 .gap{font-family:var(--f-data);font-size:.68rem;color:var(--up);font-weight:600;margin-bottom:.5rem}
-.why{font-size:.85rem;color:var(--ink-soft);line-height:1.5;margin:0 0 .62rem}
+.why{font-size:.85rem;color:var(--ink-soft);line-height:1.55;margin:0}
 .why b{color:var(--ink);font-weight:500}
-.bands{display:grid;grid-template-columns:repeat(7,1fr);gap:.25rem;margin-top:.5rem}
+.bands{display:grid;grid-template-columns:repeat(7,1fr);gap:.25rem;margin-top:.45rem}
 .bands button{font-family:var(--f-data);font-size:.75rem;font-weight:600;color:var(--ink-soft);
   background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:.48rem .1rem;cursor:pointer;line-height:1}
 .bands button:hover{border-color:var(--ink);color:var(--ink)}
@@ -84,20 +94,23 @@ body.explain .plain{display:block}
 .side em{font-style:normal;display:block;font-family:var(--f-data);font-size:.68rem;
   letter-spacing:.03em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:.15rem}
 .side span{font-size:.87rem;line-height:1.5;color:var(--ink)}
-.plain .ask{font-size:.9rem;line-height:1.55;color:var(--ink);font-weight:500;margin:0 0 .55rem}
+.plain .ask{font-size:.9rem;line-height:1.55;color:var(--ink);font-weight:500;margin:0}
 
-.foot{border-top:1px solid var(--rule);padding:.8rem 1rem;background:var(--card);
-  display:flex;justify-content:space-between;gap:.8rem;font-size:.8rem;color:var(--ink-soft);flex-wrap:wrap}
+.foot{border-top:1px solid var(--rule);padding:.85rem 1rem;background:var(--card);
+  display:flex;justify-content:space-between;align-items:center;gap:.8rem;font-size:.8rem;
+  color:var(--ink-soft);flex-wrap:wrap}
+.foot b{font-family:var(--f-data);color:var(--ink);font-weight:600}
+.foot .right{display:flex;align-items:center;gap:.55rem}
 .foot a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);font-weight:500}
 .send{background:var(--card);border-bottom:1px solid var(--rule);padding:.9rem 1rem;
   display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap}
 .send-count{font-family:var(--f-data);font-size:.78rem;color:var(--ink-soft)}
 .send-count b{color:var(--ink);font-weight:600}
-.send a{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
+.foot #sendlink{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
   color:#fff;background:var(--up);border:1.5px solid var(--up);border-radius:2px;
   padding:.5rem .85rem;text-decoration:none;line-height:1}
-.send a:hover{background:#7E2911;border-color:#7E2911}
-.send a.off{background:transparent;color:var(--ink-faint);border-color:var(--rule);pointer-events:none}
+.foot #sendlink:hover{background:#7E2911;border-color:#7E2911}
+.foot #sendlink.off{background:transparent;color:var(--ink-faint);border-color:var(--rule);pointer-events:none}
 
 .record{margin-top:1.6rem;border-top:1.5px solid var(--ink);padding-top:.9rem;
   font-size:.85rem;color:var(--ink-soft);line-height:1.6}
@@ -107,16 +120,83 @@ body.explain .plain{display:block}
   color:var(--ink);letter-spacing:-.01em;margin-bottom:.7rem}
 
 /* link from slot to brief */
-.tobrief{display:inline-flex;align-items:center;gap:.28rem;font-size:.62rem;letter-spacing:.11em;
-  text-transform:uppercase;font-weight:600;color:var(--watch);text-decoration:none;margin:0}
+.tobrief{font-size:.63rem;letter-spacing:.03em;text-transform:uppercase;font-weight:600;
+  color:var(--watch);text-decoration:none;white-space:nowrap;margin-left:.15rem}
 .tobrief:focus-visible{outline:1px solid var(--watch);outline-offset:3px}
-.tobrief::after{content:"↓";font-size:.85em}
+.tobrief::after{content:" ↓";font-size:.9em}
+
+/* prompt above the bands */
+.prompt{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;
+  border-top:1px solid var(--rule);margin-top:1rem;padding-top:.7rem;flex-wrap:wrap}
+.prompt span{font-size:.82rem;font-weight:600;color:var(--ink)}
+.prompt em{font-style:normal;font-family:var(--f-data);font-size:.66rem;color:var(--ink-faint)}
+
+/* ── answer dial ──────────────────────────────── */
+.ans{border-top:1px solid #DCC4BC;margin-top:.8rem;padding-top:.55rem}
+.ans-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.55rem}
+.ans-head .ask2{font-family:var(--f-display);font-size:.92rem;color:var(--ink-soft);
+  letter-spacing:-.005em}
+.ans-head .ask2 b{color:var(--ink);font-weight:600}
+.ans-head .ask2 i{font-family:var(--f-body);font-style:normal;font-size:.78rem;
+  color:var(--ink-soft);margin-left:.62rem}
+.val{display:flex;align-items:center;gap:.34rem;font-family:var(--f-data)}
+.val .num{font-size:1.12rem;font-weight:600;color:var(--ink-faint);letter-spacing:-.01em;line-height:1}
+.val.set .num{color:var(--up)}
+.val .stepper{display:none;gap:.14rem;align-items:center}
+.val.set .stepper{display:flex}
+.val .stepper button{font-family:var(--f-data);font-size:.7rem;line-height:1;color:var(--ink-faint);
+  background:none;border:1px solid var(--rule);border-radius:2px;cursor:pointer;
+  width:1.22rem;height:1.22rem;display:flex;align-items:center;justify-content:center;padding:0}
+.val .stepper button:hover{color:var(--ink);border-color:var(--ink-soft)}
+
+.dial{position:relative;cursor:pointer;touch-action:none;-webkit-tap-highlight-color:transparent}
+
+/* markers sitting on top of the bars */
+.mk{position:absolute;z-index:3;white-space:nowrap;font-family:var(--f-data);
+  line-height:1;color:var(--ink-soft);pointer-events:none;
+  background:rgba(247,249,250,.88);padding:.12rem .1rem;border-radius:2px}
+.mk k{font-style:normal;font-weight:700;text-decoration:none;font-size:.82rem;
+  letter-spacing:0;color:inherit}
+.mk.c{transform:translateX(-50%)} .mk.l{transform:translateX(0)} .mk.rr{transform:translateX(-100%)}
+.mk.g1{color:#2C5A7A} .mk.g2{color:#8A6A2F} .mk.g3{color:#0B6B6B}
+
+.bars{position:absolute;z-index:1;left:0;right:0;bottom:0;display:flex;align-items:flex-end;gap:6px;height:1.95rem}
+.bars.signed{align-items:stretch;position:relative}
+.bars b{flex:1;background:#CFD6DA;border-radius:1.5px;transition:background .09s ease;min-width:1px}
+.bars.signed b{position:relative;background:none;border-radius:0}
+.bars.signed b::after{content:"";position:absolute;left:0;right:0;background:#CFD6DA;border-radius:2px;
+  transition:background .09s ease}
+.bars.signed b.pos::after{bottom:var(--zero);height:var(--h)}
+.bars.signed b.neg::after{top:calc(100% - var(--zero));height:var(--h)}
+.dial.set .bars b.on{background:#C89685}
+.dial.set .bars b.cur{background:var(--up)}
+.dial .bars b.demo{background:#C89685}
+.dial.set .bars.signed b.on::after{background:#C89685}
+.dial.set .bars.signed b.cur::after{background:var(--up)}
+.dial .bars.signed b.demo::after{background:#C89685}
+.bars.signed b:not(.pos):not(.neg){background:none}
+.zeroline{position:absolute;left:0;right:0;height:1px;background:var(--ink-faint);opacity:.3;
+  bottom:var(--zero);pointer-events:none}
+
+.foot-line{position:relative;height:.85rem;margin-top:.28rem;font-family:var(--f-data);font-size:.6rem}
+.foot-line .end{position:absolute;top:0;color:var(--ink-faint)}
+.foot-line .end.l{left:0} .foot-line .end.r{right:0}
 
 /* brief */
-.brief{margin-top:2.4rem;border-top:1.5px solid var(--ink);padding-top:1.1rem}
-.brief>.ml{color:var(--up)}
+.brief{margin-top:1.6rem;border-top:1.5px solid var(--ink);padding-top:0}
+.brief>summary{list-style:none;cursor:pointer;padding:1rem 0 .75rem;position:relative;
+  transition:opacity .15s ease}
+.brief>summary::-webkit-details-marker{display:none}
+.brief>summary .ml{color:var(--up);display:block}
+.brief>summary h2{color:var(--ink);transition:color .15s ease}
+.brief>summary .cue{display:block;margin-top:.4rem;font-family:var(--f-data);font-size:.66rem;
+  letter-spacing:.05em;color:var(--ink-faint);transition:color .15s ease}
+.brief>summary .cue::after{content:"  ↓"}
+.brief[open]>summary .cue::after{content:"  ↑"}
+.brief>summary:hover .cue,.brief>summary:focus-visible .cue{color:var(--watch)}
+.brief>summary:focus-visible{outline:none}
 .brief h2{font-family:var(--f-display);font-size:1.42rem;line-height:1.24;letter-spacing:-.018em;
-  font-weight:500;margin:.5rem 0 .5rem}
+  font-weight:500;margin:.68rem 0 0}
 .brief .intro{color:var(--ink-soft);font-size:.94rem;line-height:1.62;margin:0 0 .3rem}
 .sec{border-top:1px solid var(--rule);padding:1.25rem 0 .3rem}
 .sec-tag{font-size:.6rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;color:var(--ink-faint)}
@@ -153,7 +233,8 @@ body.explain .plain{display:block}
     <div class="date">Mon 10 Aug 2026 · No. 001</div>
   </div>
   <div class="standing">
-    <span>Where informed people disagree about the world — and who turns out right.</span>
+    <span>Where informed people disagree about the world — and who turns out right.
+      <b>Four questions below. Give your own number on each — the answers land on dates you can see.</b></span>
     <a href="/about/">What is this?</a>
   </div>
 </header>
@@ -163,16 +244,6 @@ body.explain .plain{display:block}
   <button id="toggle" type="button" aria-pressed="false">Explain</button>
 </div>
 
-<div class="challenge">
-  <p class="normal"><b>Four questions. Two groups of professionals are far apart on each one.</b>
-    Every question below has a date, and on that date one side is wrong.
-    <span class="sml">Nothing is scored against you. Your answers are timestamped and kept — including the wrong ones.</span></p>
-  <p class="plain"><b>Below are four questions about what happens next in the world.</b>
-    For each one, two sets of experts have publicly said different things. They cannot both be right.
-    On the date shown, we find out which side was closer — and so do you.
-    <span class="sml">You are not being tested. You are being asked what you think, and it is written down with today's date on it.</span></p>
-</div>
-
 <!-- 1 -->
 <div class="item">
   <div class="i-top" id="s1"><span class="slot">Anchor · <i>Prices</i></span><span class="res">resolves 16 Sep</span></div>
@@ -180,13 +251,12 @@ body.explain .plain{display:block}
 
   <div class="normal">
     <div class="refs">
-      <div class="ref"><span>Fed funds futures</span><b>44%</b><span class="track"><i style="width:44%"></i></span></div>
-      <div class="ref alt"><span>Economist consensus</span><b>~0%</b><span class="track"><i style="width:3%"></i></span></div>
-      <div class="ref"><span>Polymarket</span><b>53%</b><span class="track"><i style="width:53%"></i></span></div>
+      <div class="ref g1"><span><k>F</k>ed funds futures</span><b>44%</b><span class="track"><i style="width:44%"></i></span></div>
+      <div class="ref g2"><span><k>E</k>conomist consensus</span><b>~0%</b><span class="track"><i style="width:3%"></i></span></div>
+      <div class="ref g3"><span><k>P</k>olymarket</span><b>53%</b><span class="track"><i style="width:53%"></i></span></div>
     </div>
     <div class="gap">Futures moved 14 points on Friday's jobs report. Forecasters have not moved at all.</div>
-    <p class="why"><b>Why they differ:</b> a weak July payroll report cut the odds from 58% to 44% in one session, but energy costs from the war are still feeding through. Three regional presidents dissented for a hike on 29 July.</p>
-    <a class="tobrief" href="#b1">Why they disagree </a>
+    <p class="why"><b>Why they differ:</b> a weak July payroll report cut the odds from 58% to 44% in one session, but energy costs from the war are still feeding through. Three regional presidents dissented for a hike on 29 July. <a class="tobrief" href="#b1">the full case</a></p>
   </div>
 
   <div class="plain">
@@ -198,13 +268,20 @@ body.explain .plain{display:block}
     <p class="ask">One of these two groups is about to be wrong in public. Which one?</p>
   </div>
 
-  <div class="bands" role="group" aria-label="Fed September">
-    <button type="button" aria-pressed="false">5%</button><button type="button" aria-pressed="false">20%</button>
-    <button type="button" aria-pressed="false">35%</button><button type="button" aria-pressed="false">50%</button>
-    <button type="button" aria-pressed="false">65%</button><button type="button" aria-pressed="false">80%</button>
-    <button type="button" aria-pressed="false">95%</button>
+  <div class="ans">
+    <div class="ans-head">
+      <span class="ask2"><b>Your call?</b><i>Tap where you'd put it</i></span>
+      <span class="val" id="v1"><span class="num">—</span>
+        <span class="stepper"><button type="button" data-dir="-1">−</button><button type="button" data-dir="1">+</button></span>
+      </span>
+    </div>
+    <div class="dial" id="d1" data-key="Fed September" data-lo="0" data-hi="100"
+         data-step="1" data-dec="0" data-sfx="%" data-unit="" data-n="34" style="height:2.30rem"
+         role="slider" tabindex="0" aria-label="Fed September" style="height:2.68rem"><span class="mk g2 l" style="left:0.00%;bottom:0.68rem"><k>E</k></span><span class="mk g1 c" style="left:44.00%;bottom:0.68rem"><k>F</k></span><span class="mk g3 c" style="left:53.00%;bottom:0.68rem"><k>P</k></span>
+      <div class="bars"><b style="height:26%"></b><b style="height:29%"></b><b style="height:31%"></b><b style="height:34%"></b><b style="height:36%"></b><b style="height:38%"></b><b style="height:41%"></b><b style="height:43%"></b><b style="height:45%"></b><b style="height:48%"></b><b style="height:50%"></b><b style="height:52%"></b><b style="height:54%"></b><b style="height:57%"></b><b style="height:59%"></b><b style="height:61%"></b><b style="height:63%"></b><b style="height:65%"></b><b style="height:68%"></b><b style="height:70%"></b><b style="height:72%"></b><b style="height:74%"></b><b style="height:76%"></b><b style="height:79%"></b><b style="height:81%"></b><b style="height:83%"></b><b style="height:85%"></b><b style="height:87%"></b><b style="height:89%"></b><b style="height:91%"></b><b style="height:94%"></b><b style="height:96%"></b><b style="height:98%"></b><b style="height:100%"></b></div>
+    </div>
+    <div class="foot-line"><span class="end l">0%</span><span class="end r">100%</span></div>
   </div>
-  <div class="scale"><span class="normal">almost certainly not</span><span class="plain">very unlikely</span><span class="normal">almost certainly</span><span class="plain">very likely</span></div>
   <div class="nudge" id="nudge">
     <span class="normal"><b>That's your first one on the record.</b> Answer fifty and you'll know where you're sharp. Answer two hundred and so will everyone else.</span>
     <span class="plain"><b>That's your first answer saved.</b> After fifty you'll start to see what you're good at. After two hundred, other people can see it too.</span>
@@ -214,16 +291,15 @@ body.explain .plain{display:block}
 <!-- 2 -->
 <div class="item">
   <div class="i-top" id="s2"><span class="slot">Fast · <i>Prices</i></span><span class="res">resolves Wed 12 Aug, 8:30 ET</span></div>
-  <div class="q">Will core inflation come in above the street forecast?</div>
+  <div class="q">Where will core inflation land?</div>
 
   <div class="normal">
     <div class="refs">
-      <div class="ref"><span>Street consensus</span><b>2.8%</b><span class="track"><i style="width:56%"></i></span></div>
-      <div class="ref alt"><span>Cleveland Fed nowcast</span><b>3.0%</b><span class="track"><i style="width:60%"></i></span></div>
+      <div class="ref g1"><span><k>S</k>treet consensus</span><b>2.8%</b><span class="track"><i style="width:56%"></i></span></div>
+      <div class="ref g2"><span>Cleveland Fed <k>n</k>owcast</span><b>3.0%</b><span class="track"><i style="width:60%"></i></span></div>
     </div>
     <div class="gap">June surprised low — 2.6% against a 2.9% consensus, the largest miss in a year.</div>
-    <p class="why"><b>Why they differ:</b> the nowcast carries daily energy pass-through; the street assumes shelter keeps cooling. Forecasters rarely miss the same way twice.</p>
-    <a class="tobrief" href="#b2">Why they disagree </a>
+    <p class="why"><b>Why they differ:</b> the nowcast carries daily energy pass-through; the street assumes shelter keeps cooling. Forecasters rarely miss the same way twice. <a class="tobrief" href="#b2">the full case</a></p>
   </div>
 
   <div class="plain">
@@ -235,94 +311,111 @@ body.explain .plain{display:block}
     <p class="ask">Will the real number land above what Wall Street expects? You find out in two days.</p>
   </div>
 
-  <div class="bands" role="group" aria-label="Core CPI">
-    <button type="button" aria-pressed="false">5%</button><button type="button" aria-pressed="false">20%</button>
-    <button type="button" aria-pressed="false">35%</button><button type="button" aria-pressed="false">50%</button>
-    <button type="button" aria-pressed="false">65%</button><button type="button" aria-pressed="false">80%</button>
-    <button type="button" aria-pressed="false">95%</button>
+  <div class="ans">
+    <div class="ans-head">
+      <span class="ask2"><b>Your call?</b><i>Tap where you'd put it</i></span>
+      <span class="val" id="v2"><span class="num">—</span>
+        <span class="stepper"><button type="button" data-dir="-1">−</button><button type="button" data-dir="1">+</button></span>
+      </span>
+    </div>
+    <div class="dial" id="d2" data-key="Core CPI" data-lo="2.3" data-hi="3.6"
+         data-step="0.05" data-dec="2" data-sfx="%" data-unit="" data-n="34" style="height:2.30rem"
+         role="slider" tabindex="0" aria-label="Core CPI" style="height:2.82rem"><span class="mk g1 c" style="left:38.46%;bottom:1.17rem"><k>S</k></span><span class="mk g2 c" style="left:53.85%;bottom:1.17rem"><k>N</k></span>
+      <div class="bars"><b style="height:30%"></b><b style="height:42%"></b><b style="height:50%"></b><b style="height:57%"></b><b style="height:63%"></b><b style="height:69%"></b><b style="height:74%"></b><b style="height:79%"></b><b style="height:83%"></b><b style="height:87%"></b><b style="height:90%"></b><b style="height:93%"></b><b style="height:95%"></b><b style="height:97%"></b><b style="height:99%"></b><b style="height:99%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:99%"></b><b style="height:99%"></b><b style="height:97%"></b><b style="height:95%"></b><b style="height:93%"></b><b style="height:90%"></b><b style="height:87%"></b><b style="height:83%"></b><b style="height:79%"></b><b style="height:74%"></b><b style="height:69%"></b><b style="height:63%"></b><b style="height:57%"></b><b style="height:50%"></b><b style="height:42%"></b><b style="height:30%"></b></div>
+    </div>
+    <div class="foot-line"><span class="end l">2.30</span><span class="end r">3.60</span></div>
   </div>
-  <div class="scale"><span class="normal">almost certainly not</span><span class="plain">very unlikely</span><span class="normal">almost certainly</span><span class="plain">very likely</span></div>
 </div>
 
 <!-- 3 -->
 <div class="item" id="s3">
   <div class="i-top"><span class="slot">Story · <i>Growth</i></span><span class="res">resolves 4 Sep</span></div>
-  <div class="q">Will August payrolls come in negative again?</div>
+  <div class="q">How many jobs will August add?</div>
 
   <div class="normal">
     <div class="refs">
-      <div class="ref"><span>July result</span><b>negative</b><span class="track"><i style="width:20%"></i></span></div>
-      <div class="ref alt"><span>Unemployment rate</span><b>4.2%</b><span class="track"><i style="width:42%"></i></span></div>
+      <div class="ref g1"><span><k>J</k>uly actual</span><b>−23k</b><span class="track"><i style="width:18%"></i></span></div>
+      <div class="ref g2"><span><k>S</k>treet had forecast</span><b>+83k</b><span class="track"><i style="width:48%"></i></span></div>
     </div>
-    <div class="gap">Jobs fell in July, yet the unemployment rate has not moved all summer.</div>
-    <p class="why"><b>Why they differ:</b> a falling payroll count and a flat unemployment rate cannot both describe the same labour market for long. One of the two series is about to catch up to the other.</p>
-    <a class="tobrief" href="#b3">Why they disagree </a>
+    <div class="gap">A miss of 106,000 against forecast — and May–June were revised down another 103,000.</div>
+    <p class="why"><b>Why they differ:</b> the payroll fall was driven by 53,000 lost government jobs that economists expect to reverse, while private hiring still added 30,000. Whether August rebounds depends on which of those two readings is the signal. <a class="tobrief" href="#b3">the full case</a></p>
   </div>
 
   <div class="plain">
-    <p class="stake">On Friday the US reported that the number of jobs actually fell last month — the first outright decline in this cycle. It is the main reason borrowing costs may now stay where they are.</p>
+    <p class="stake">On Friday the US reported that employers cut 23,000 jobs in July, when forecasters had expected 83,000 to be added. It is the main reason borrowing costs may now stay where they are.</p>
     <div class="sides">
-      <div class="side a"><em>The jobs count — falling</em><span>Employers cut more positions than they added in July.</span></div>
-      <div class="side b"><em>The unemployment rate — 4.2%, unchanged</em><span>Yet the share of people out of work has not risen at all this summer.</span></div>
+      <div class="side a"><em>July came in at −23,000</em><span>The first outright decline this cycle, against a forecast of +83,000.</span></div>
+      <div class="side b"><em>But private firms added 30,000</em><span>The fall was almost entirely government jobs, which may bounce straight back.</span></div>
     </div>
-    <p class="ask">These two numbers are telling opposite stories. One of them gives way on 4 September.</p>
+    <p class="ask">So: was July the turn, or a one-month distortion? Your answer is a number for August.</p>
   </div>
 
-  <div class="bands" role="group" aria-label="August payrolls">
-    <button type="button" aria-pressed="false">5%</button><button type="button" aria-pressed="false">20%</button>
-    <button type="button" aria-pressed="false">35%</button><button type="button" aria-pressed="false">50%</button>
-    <button type="button" aria-pressed="false">65%</button><button type="button" aria-pressed="false">80%</button>
-    <button type="button" aria-pressed="false">95%</button>
+  <div class="ans">
+    <div class="ans-head">
+      <span class="ask2"><b>Your call?</b><i>Tap where you'd put it</i></span>
+      <span class="val" id="v3"><span class="num">—</span>
+        <span class="stepper"><button type="button" data-dir="-1">−</button><button type="button" data-dir="1">+</button></span>
+      </span>
+    </div>
+    <div class="dial" id="d3" data-key="August payrolls" data-lo="-150" data-hi="300"
+         data-step="5" data-dec="0" data-sfx="k" data-unit="" data-n="34" style="height:2.30rem"
+         role="slider" tabindex="0" aria-label="August payrolls" style="height:2.62rem"><span class="mk g1 c" style="left:28.22%;bottom:0.68rem"><k>J</k></span><span class="mk g3 c" style="left:40.89%;bottom:0.68rem"><k>A</k></span><span class="mk g2 c" style="left:51.78%;bottom:0.68rem"><k>S</k></span>
+      <div class="bars signed" style="--zero:33.33%"><b class="neg" style="--h:33.3%"></b><b class="neg" style="--h:31.2%"></b><b class="neg" style="--h:29.0%"></b><b class="neg" style="--h:26.9%"></b><b class="neg" style="--h:24.6%"></b><b class="neg" style="--h:22.3%"></b><b class="neg" style="--h:20.0%"></b><b class="neg" style="--h:17.6%"></b><b class="neg" style="--h:15.1%"></b><b class="neg" style="--h:12.4%"></b><b class="neg" style="--h:9.6%"></b><b class="pos" style="--h:12.0%"></b><b class="pos" style="--h:16.0%"></b><b class="pos" style="--h:19.1%"></b><b class="pos" style="--h:22.1%"></b><b class="pos" style="--h:24.8%"></b><b class="pos" style="--h:27.5%"></b><b class="pos" style="--h:30.1%"></b><b class="pos" style="--h:32.7%"></b><b class="pos" style="--h:35.1%"></b><b class="pos" style="--h:37.6%"></b><b class="pos" style="--h:40.0%"></b><b class="pos" style="--h:42.3%"></b><b class="pos" style="--h:44.7%"></b><b class="pos" style="--h:47.0%"></b><b class="pos" style="--h:49.2%"></b><b class="pos" style="--h:51.5%"></b><b class="pos" style="--h:53.7%"></b><b class="pos" style="--h:55.9%"></b><b class="pos" style="--h:58.1%"></b><b class="pos" style="--h:60.3%"></b><b class="pos" style="--h:62.4%"></b><b class="pos" style="--h:64.5%"></b><b class="pos" style="--h:66.7%"></b><span class="zeroline" style="--zero:33.33%"></span></div>
+    </div>
+    <div class="foot-line"><span class="end l">−150k</span><span class="end r">+300k</span></div>
   </div>
-  <div class="scale"><span class="normal">almost certainly not</span><span class="plain">very unlikely</span><span class="normal">almost certainly</span><span class="plain">very likely</span></div>
 </div>
 
 <div class="item">
   <div class="i-top" id="s4"><span class="slot">Rotate · <i>Markets</i></span><span class="res">resolves 31 Aug</span></div>
-  <div class="q">Will the VIX close above 25 on any day this month?</div>
+  <div class="q">Where will the VIX close at the end of August?</div>
 
   <div class="normal">
     <div class="refs">
-      <div class="ref"><span>VIX today</span><b>15.5</b><span class="track"><i style="width:20%"></i></span></div>
-      <div class="ref alt"><span>Needs to reach</span><b>25.0</b><span class="track"><i style="width:60%"></i></span></div>
+      <div class="ref g1"><span>VIX <k>t</k>oday</span><b>15.5</b><span class="track"><i style="width:21%"></i></span></div>
+      <div class="ref g2"><span><k>M</k>arch high</span><b>31.0</b><span class="track"><i style="width:81%"></i></span></div>
     </div>
-    <div class="gap">The market is calm. Two of the four questions above resolve inside five weeks.</div>
-    <p class="why"><b>Why they differ:</b> the index sits at a normal risk-on level while an inflation print, a coin-flip Fed meeting and a sixth month of war all sit in front of it.</p>
-    <a class="tobrief" href="#b4">Why they disagree </a>
+    <div class="gap">Calm now — but it moved from 13 to 31 in under a week in March.</div>
+    <p class="why"><b>Why they differ:</b> the index sits at a normal risk-on level while an inflation print, a coin-flip Fed meeting and a sixth month of war all sit in front of it. <a class="tobrief" href="#b4">the full case</a></p>
   </div>
 
   <div class="plain">
-    <p class="stake">The VIX measures how nervous the stock market is about the coming month. Today it sits at 15.5, which is calm. Above 25 means real fear — where it went in March when the war spiked oil.</p>
+    <p class="stake">The VIX measures how nervous the stock market is about the coming month. Today it sits at 15.5, which is calm. It went above 31 in March when the war spiked oil, and below 13 in the quiet weeks before that.</p>
     <div class="sides">
-      <div class="side a"><em>Where it is now — 15.5</em><span>A normal, calm level. Shares are near record highs.</span></div>
-      <div class="side b"><em>Where it must reach — 25.0</em><span>The level that signals real fear. It has gone there twice this year, both times within days.</span></div>
+      <div class="side a"><em>Today — 15.5</em><span>A normal, calm level. Shares are near record highs.</span></div>
+      <div class="side b"><em>March peak — 31</em><span>Where it went when the war first hit oil prices, in a matter of days.</span></div>
     </div>
     <p class="ask">Calm markets are not wrong very often. But when they are, it happens in a single day.</p>
   </div>
 
-  <div class="bands" role="group" aria-label="VIX">
-    <button type="button" aria-pressed="false">5%</button><button type="button" aria-pressed="false">20%</button>
-    <button type="button" aria-pressed="false">35%</button><button type="button" aria-pressed="false">50%</button>
-    <button type="button" aria-pressed="false">65%</button><button type="button" aria-pressed="false">80%</button>
-    <button type="button" aria-pressed="false">95%</button>
+  <div class="ans">
+    <div class="ans-head">
+      <span class="ask2"><b>Your call?</b><i>Tap where you'd put it</i></span>
+      <span class="val" id="v4"><span class="num">—</span>
+        <span class="stepper"><button type="button" data-dir="-1">−</button><button type="button" data-dir="1">+</button></span>
+      </span>
+    </div>
+    <div class="dial" id="d4" data-key="VIX at month end" data-lo="10" data-hi="36"
+         data-step="0.5" data-dec="1" data-sfx="" data-unit="VIX" data-n="34" style="height:2.30rem"
+         role="slider" tabindex="0" aria-label="VIX at month end" style="height:2.41rem"><span class="mk g1 c" style="left:21.15%;bottom:1.17rem"><k>T</k></span><span class="mk g2 c" style="left:80.77%;bottom:1.17rem"><k>M</k></span>
+      <div class="bars"><b style="height:30%"></b><b style="height:42%"></b><b style="height:50%"></b><b style="height:57%"></b><b style="height:63%"></b><b style="height:69%"></b><b style="height:74%"></b><b style="height:79%"></b><b style="height:83%"></b><b style="height:87%"></b><b style="height:90%"></b><b style="height:93%"></b><b style="height:95%"></b><b style="height:97%"></b><b style="height:99%"></b><b style="height:99%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:99%"></b><b style="height:99%"></b><b style="height:97%"></b><b style="height:95%"></b><b style="height:93%"></b><b style="height:90%"></b><b style="height:87%"></b><b style="height:83%"></b><b style="height:79%"></b><b style="height:74%"></b><b style="height:69%"></b><b style="height:63%"></b><b style="height:57%"></b><b style="height:50%"></b><b style="height:42%"></b><b style="height:30%"></b></div>
+    </div>
+    <div class="foot-line"><span class="end l">10</span><span class="end r">36</span></div>
   </div>
-  <div class="scale"><span class="normal">almost certainly not</span><span class="plain">very unlikely</span><span class="normal">almost certainly</span><span class="plain">very likely</span></div>
-</div>
-
-<div class="send">
-  <span class="send-count"><b id="cnt">0</b> of 4 answered</span>
-  <a id="sendlink" class="off" href="#">Send my answers</a>
 </div>
 
 <div class="foot">
-  <span>4 questions · about 40 seconds</span>
-  <span><a href="#brief">Read today's brief ▾</a></span>
+  <span></span>
+  <span class="right"><b id="cnt">0</b> of 4 &nbsp;<a id="sendlink" class="off" href="#">Send my answers</a></span>
 </div>
 
 
-<section class="brief" id="brief">
-  <div class="ml">Today's brief</div>
-  <h2>The jobs number moved the Fed. The inflation number, in two days, moves it back or seals it.</h2>
+<details class="brief" id="brief">
+  <summary>
+    <span class="ml">Today's Brief</span>
+    <h2>The jobs number moved the Fed. The inflation number, in two days, moves it back or seals it.</h2>
+    <span class="cue">Read the case behind each question</span>
+  </summary>
   <p class="intro">Four questions above, four short pieces below. Each one explains why two sets of informed people are looking at the same facts and reaching different answers — and what would settle it.</p>
 
   <div class="sec" id="b1">
@@ -368,7 +461,7 @@ body.explain .plain{display:block}
     <p class="src">Sources: Cboe VIX, 7–10 Aug 2026 · EIA Short-Term Energy Outlook</p>
     <a class="backup" href="#s4">back to the question</a>
   </div>
-</section>
+</details>
 
 <div class="record">
   <p class="normal"><b>Four answers saved.</b> The first one resolves Wednesday at 8:30 ET, and Thursday's issue opens with the result.<br>
@@ -382,7 +475,6 @@ body.explain .plain{display:block}
 
 <script>
 (function(){
-  // Explain 토글
   var t=document.getElementById('toggle');
   t.addEventListener('click',function(){
     var on=document.body.classList.toggle('explain');
@@ -390,32 +482,105 @@ body.explain .plain{display:block}
     t.setAttribute('aria-pressed',on?'true':'false');
   });
 
-  // 응답 수집
   var answers={};
-  var labels={};
-  document.querySelectorAll('.bands').forEach(function(g,i){
-    var name=g.getAttribute('aria-label')||('Q'+(i+1));
-    labels[name]=name;
-    g.addEventListener('click',function(e){
-      var b=e.target.closest('button'); if(!b)return;
-      g.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')});
-      b.setAttribute('aria-pressed','true');
-      answers[name]=b.textContent.trim();
 
-      var n=document.getElementById('nudge');
-      if(n && !window.__first){window.__first=true;n.classList.add('show');}
-      refresh();
+  document.querySelectorAll('.dial').forEach(function(d,idx){
+    var lo=+d.dataset.lo, hi=+d.dataset.hi, step=+d.dataset.step,
+        dec=+d.dataset.dec, sfx=d.dataset.sfx, unit=d.dataset.unit,
+        key=d.dataset.key, n=+d.dataset.n;
+    var bars=[].slice.call(d.querySelectorAll('.bars b'));
+    var box=document.getElementById('v'+(idx+1));
+    var num=box.querySelector('.num');
+    var cur=null;
+
+    function fmt(v){
+      var s=v.toFixed(dec);
+      if(sfx==='k'&&v>0) s='+'+s;
+      return s+sfx;
+    }
+    function paint(i){
+      bars.forEach(function(b,j){
+        b.classList.remove('demo');
+        b.classList.toggle('on', j<=i);
+        b.classList.toggle('cur', j===i);
+      });
+    }
+    function place(i){
+      i=Math.max(0,Math.min(n-1,i));
+      var v=lo+(i/(n-1))*(hi-lo);
+      v=Math.round(v/step)*step;
+      paint(i);
+      d.classList.add('set'); box.classList.add('set');
+      num.textContent=fmt(v)+(unit&&sfx!=='%'&&sfx!=='k'?' '+unit:'');
+      d.setAttribute('aria-valuenow',v.toFixed(dec));
+      answers[key]=fmt(v); cur=i; refresh();
+    }
+    function fromEvent(e){
+      var r=d.getBoundingClientRect();
+      var x=(e.clientX!==undefined?e.clientX:e.touches[0].clientX)-r.left;
+      place(Math.round((x/r.width)*(n-1)));
+    }
+    var drag=false;
+    d.addEventListener('pointerdown',function(e){drag=true;try{d.setPointerCapture(e.pointerId)}catch(_){}
+      fromEvent(e);e.preventDefault();});
+    d.addEventListener('pointermove',function(e){if(drag)fromEvent(e);});
+    d.addEventListener('pointerup',function(){drag=false;});
+    d.addEventListener('pointercancel',function(){drag=false;});
+    d.addEventListener('keydown',function(e){
+      var i=(cur===null)?Math.floor(n/2):cur;
+      if(e.key==='ArrowRight'||e.key==='ArrowUp'){place(i+1);e.preventDefault();}
+      if(e.key==='ArrowLeft'||e.key==='ArrowDown'){place(i-1);e.preventDefault();}
+      if(e.key==='Enter'||e.key===' '){place(i);e.preventDefault();}
+    });
+    box.querySelectorAll('.stepper button').forEach(function(b){
+      b.addEventListener('click',function(e){
+        e.stopPropagation();
+        if(cur!==null) place(cur+ (+b.dataset.dir));
+      });
+    });
+
+    // 첫 dial에서 한 번 시연 — 어떻게 답하는지 보여준다
+    if(idx===0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      var k=0, target=Math.round(n*0.55);
+      var iv=setInterval(function(){
+        if(d.classList.contains('set')){clearInterval(iv);return;}
+        bars.forEach(function(b,j){b.classList.toggle('demo', j<=k);});
+        if(++k>target){
+          setTimeout(function(){
+            if(!d.classList.contains('set')) bars.forEach(function(b){b.classList.remove('demo');});
+          },700);
+          clearInterval(iv);
+        }
+      },22);
+    }
+  });
+
+  // 브리프 링크: 접혀 있으면 열고 이동
+  var brief=document.getElementById('brief');
+  document.querySelectorAll('a[href^="#b"], a[href="#brief"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(brief && !brief.open){
+        e.preventDefault();
+        brief.open=true;
+        var id=a.getAttribute('href').slice(1);
+        setTimeout(function(){
+          var el=document.getElementById(id);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        },40);
+      }
     });
   });
 
   function refresh(){
     var keys=Object.keys(answers);
     document.getElementById('cnt').textContent=keys.length;
+    var nd=document.getElementById('nudge');
+    if(nd&&!window.__first){window.__first=true;nd.classList.add('show');}
     var a=document.getElementById('sendlink');
     if(!keys.length){a.className='off';a.href='#';return;}
     a.className='';
     var body=keys.map(function(k){return k+': '+answers[k];}).join('\n');
-    body+='\n\nIssue No. 001 · 10 Aug 2026';
+    body+='\n\nZEXL No. 001 · 10 Aug 2026';
     a.href='mailto:zexl.brief@gmail.com?subject='+
       encodeURIComponent('ZEXL 001 — my answers')+'&body='+encodeURIComponent(body);
   }
