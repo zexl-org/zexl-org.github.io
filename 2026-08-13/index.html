@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZEXL Brief — No. 004 · 13 August 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E7EBED;--card:#F7F9FA;--ink:#12212A;--ink-soft:#53656F;--ink-faint:#8497A0;
+  --rule:#C6CFD4;--up:#9E3417;--dn:#2C5A7A;--watch:#0B6B6B;--watch-tint:#E2EFEE;
+  --f-display:"Newsreader",Georgia,serif;--f-body:"IBM Plex Sans",system-ui,sans-serif;--f-data:"IBM Plex Mono",monospace;
+  --track:.13em;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.6}
+.wrap{max-width:41rem;margin:0 auto;padding:0 1.15rem 4rem}
+.ml{font-size:.66rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;line-height:1}
+
+/* masthead */
+.masthead{border-bottom:1.5px solid var(--ink);padding:1.5rem 0 .7rem}
+.mh-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--f-display);font-weight:600;font-size:1.5rem;letter-spacing:-.022em;line-height:1}
+.logo b{letter-spacing:.02em;margin-right:.12em}
+.logo span{color:var(--ink-faint);font-weight:400}
+.date{font-family:var(--f-data);font-size:.68rem;color:var(--ink-soft)}
+.standing{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;
+  margin-top:.55rem;flex-wrap:wrap;font-size:.82rem;color:var(--ink-soft);line-height:1.4}
+.standing b{display:block;color:var(--ink);font-weight:600;margin-top:.3rem}
+.standing a{color:var(--ink-faint);text-decoration:none;font-family:var(--f-data);font-size:.66rem;
+  letter-spacing:.05em;border-bottom:1px solid var(--rule);white-space:nowrap}
+.standing a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* board head + toggle */
+.bhead{display:flex;justify-content:space-between;align-items:center;gap:.8rem;
+  padding:1.5rem 0 .8rem;flex-wrap:wrap}
+.bhead .ml{color:var(--up)}
+#toggle{font-family:var(--f-body);font-size:.68rem;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-faint);background:none;border:none;
+  padding:.2rem 0;cursor:pointer;line-height:1;transition:color .12s ease}
+#toggle:hover{color:var(--ink)}
+#toggle[aria-pressed="true"]{color:var(--up)}
+#toggle:focus-visible{outline:1px solid var(--ink-faint);outline-offset:4px}
+
+/* challenge line */
+.resolved{background:var(--watch-tint);border-left:3px solid var(--watch);
+  padding:.85rem 1rem .95rem;margin:1.4rem 0 0}
+.resolved .ml{color:var(--watch);margin-bottom:.4rem;display:block}
+.resolved p{margin:0;font-size:.92rem;line-height:1.58;color:var(--ink)}
+.resolved b{font-weight:600}
+.resolved .score{display:block;margin-top:.5rem;font-family:var(--f-data);font-size:.76rem;color:var(--watch)}
+.challenge{background:var(--card);border-left:3px solid var(--up);padding:.85rem 1rem;margin-bottom:1.2rem}
+.challenge p{margin:0;font-size:.92rem;line-height:1.55;color:var(--ink)}
+.challenge b{font-weight:600}
+.challenge .sml{display:block;margin-top:.4rem;font-size:.78rem;color:var(--ink-soft)}
+
+/* item */
+.item{background:var(--card);border:1px solid var(--rule);border-radius:3px;
+  padding:.95rem 1rem 1.05rem;margin-bottom:.7rem}
+.i-top{display:flex;justify-content:space-between;align-items:baseline;gap:.7rem;flex-wrap:wrap}
+.slot{font-size:.6rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;color:var(--ink-faint)}
+.slot i{font-style:normal;color:var(--up)}
+.res{font-family:var(--f-data);font-size:.68rem;color:var(--watch);font-weight:600}
+.carried[data-new],.turn{display:block;font-family:var(--f-display);font-size:.92rem;font-weight:600;
+  color:var(--watch);opacity:.5;letter-spacing:-.008em;line-height:1.3;margin:.55rem 0 -.16rem}
+.carried{font-family:var(--f-data);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;
+  font-weight:600;color:var(--ink-faint);border:1px solid var(--rule);border-radius:2px;
+  padding:.12rem .3rem;margin-left:.4rem;white-space:nowrap}
+.chg{font-family:var(--f-data);font-size:.62rem;font-weight:600;white-space:nowrap;margin-right:.26rem}
+.chg.u{color:var(--up)} .chg.d{color:var(--dn)} .chg.f{color:var(--ink-faint);font-weight:500}
+.fix{margin:.1rem 0 .55rem;font-size:.76rem;line-height:1.5;color:var(--ink-soft);
+  border-left:2px solid var(--ink-faint);padding-left:.6rem}
+.fix b{color:var(--ink);font-weight:600}
+.q em{font-style:normal;letter-spacing:.02em;font-weight:600}
+.resolved .hl{font-family:var(--f-display);font-size:1.34rem;font-weight:600;
+  color:var(--ink);letter-spacing:-.015em}
+.q{font-family:var(--f-display);font-size:1.08rem;line-height:1.32;font-weight:600;margin:.12rem 0 .72rem}
+.refs{display:grid;gap:.24rem;margin-bottom:.55rem}
+.ref{display:grid;grid-template-columns:9.4rem 5.3rem 1fr;gap:.45rem;align-items:center;
+  font-family:var(--f-data);font-size:.72rem;color:var(--ink-soft)}
+.ref b{color:var(--ink);font-weight:600;text-align:right;white-space:nowrap;
+  display:flex;justify-content:flex-end;align-items:baseline}
+.ref k{font-style:normal;text-decoration:none;font-weight:700;font-size:.86rem;
+  letter-spacing:0;margin-right:.02em}
+.ref.g1 k,.tops span.g1{color:#2C5A7A}
+.ref.g2 k,.tops span.g2{color:#8A6A2F}
+.ref.g3 k,.tops span.g3{color:#0B6B6B}
+.ref.g1 .track i{background:#2C5A7A}
+.ref.g2 .track i{background:#8A6A2F}
+.ref.g3 .track i{background:#0B6B6B}
+.ref .track{height:4px;background:#D5DCE0;border-radius:2px;position:relative}
+.ref .track i{position:absolute;left:0;top:0;bottom:0;background:var(--dn);border-radius:2px;opacity:.85}
+.ref.alt .track i{background:var(--ink-soft)}
+.gap{font-family:var(--f-data);font-size:.68rem;color:var(--up);font-weight:600;margin-bottom:.5rem}
+.why{font-size:.85rem;color:var(--ink-soft);line-height:1.55;margin:0}
+.why b{color:var(--ink);font-weight:500}
+.bands{display:grid;grid-template-columns:repeat(7,1fr);gap:.25rem;margin-top:.45rem}
+.bands button{font-family:var(--f-data);font-size:.75rem;font-weight:600;color:var(--ink-soft);
+  background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:.48rem .1rem;cursor:pointer;line-height:1}
+.bands button:hover{border-color:var(--ink);color:var(--ink)}
+.bands button[aria-pressed="true"]{background:var(--up);border-color:var(--up);color:#fff}
+.bands button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.scale{display:flex;justify-content:space-between;font-size:.63rem;color:var(--ink-faint);margin-top:.35rem}
+
+/* explain layer */
+.plain{display:none}
+body.explain .normal{display:none}
+body.explain .plain{display:block}
+.plain .stake{font-size:.9rem;line-height:1.6;color:var(--ink);margin:0 0 .7rem}
+.plain .sides{display:grid;gap:.5rem;margin-bottom:.7rem}
+.side{border-left:2px solid var(--rule);padding-left:.75rem}
+.side.a{border-left-color:var(--dn)}
+.side.b{border-left-color:var(--up)}
+.side em{font-style:normal;display:block;font-family:var(--f-data);font-size:.68rem;
+  letter-spacing:.03em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:.15rem}
+.side span{font-size:.87rem;line-height:1.5;color:var(--ink)}
+.plain .ask{font-size:.9rem;line-height:1.55;color:var(--ink);font-weight:500;margin:0}
+
+.foot{border-top:1px solid var(--rule);padding:.85rem 1rem;background:var(--card);
+  display:flex;justify-content:space-between;align-items:center;gap:.8rem;font-size:.8rem;
+  color:var(--ink-soft);flex-wrap:wrap}
+.foot b{font-family:var(--f-data);color:var(--ink);font-weight:600}
+.foot .right{display:flex;align-items:center;gap:.55rem}
+.foot a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);font-weight:500}
+.send{background:var(--card);border-bottom:1px solid var(--rule);padding:.9rem 1rem;
+  display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap}
+.send-count{font-family:var(--f-data);font-size:.78rem;color:var(--ink-soft)}
+.send-count b{color:var(--ink);font-weight:600}
+.foot #sendlink{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
+  color:#fff;background:var(--up);border:1.5px solid var(--up);border-radius:2px;
+  padding:.5rem .85rem;text-decoration:none;line-height:1}
+.foot #sendlink:hover{background:#7E2911;border-color:#7E2911}
+.foot #sendlink.off{background:transparent;color:var(--ink-faint);border-color:var(--rule);pointer-events:none}
+
+.record{margin-top:1.6rem;border-top:1.5px solid var(--ink);padding-top:.9rem;
+  font-size:.85rem;color:var(--ink-soft);line-height:1.6}
+.record p{margin:0 0 .6rem}
+.record p:last-child{margin-bottom:0}
+.record .big{font-family:var(--f-display);font-size:1.14rem;line-height:1.34;font-weight:600;
+  color:var(--ink);letter-spacing:-.01em;margin-bottom:.7rem}
+
+/* link from slot to brief */
+.tobrief{font-size:.63rem;letter-spacing:.03em;text-transform:uppercase;font-weight:600;
+  color:var(--watch);text-decoration:none;white-space:nowrap;margin-left:.15rem}
+.tobrief:focus-visible{outline:1px solid var(--watch);outline-offset:3px}
+.tobrief::after{content:" ↓";font-size:.9em}
+
+/* prompt above the bands */
+.prompt{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;
+  border-top:1px solid var(--rule);margin-top:1rem;padding-top:.7rem;flex-wrap:wrap}
+.prompt span{font-size:.82rem;font-weight:600;color:var(--ink)}
+.prompt em{font-style:normal;font-family:var(--f-data);font-size:.66rem;color:var(--ink-faint)}
+
+
+/* also today */
+.fold{border-top:1px solid var(--rule);margin-top:1.4rem}
+.fold>summary{list-style:none;cursor:pointer;padding:.9rem 0;display:flex;
+  justify-content:space-between;align-items:baseline;gap:.8rem}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary .ml{color:var(--ink-faint);transition:color .15s ease}
+.fold>summary em{font-style:normal;font-family:var(--f-data);font-size:.7rem;color:var(--ink-faint)}
+.fold>summary:hover .ml,.fold>summary:focus-visible .ml{color:var(--up)}
+.fold>summary:focus-visible{outline:none}
+.fold[open]>summary em::after{content:"  ↑"} .fold:not([open])>summary em::after{content:"  ↓"}
+.also{border-top:1px solid var(--rule);padding:.85rem 0}
+.also:first-of-type{border-top:none}
+.also h3{font-family:var(--f-display);font-size:1rem;line-height:1.3;font-weight:600;margin:0 0 .25rem}
+.also p{margin:0;font-size:.88rem;line-height:1.55;color:var(--ink-soft)}
+
+/* ── answer dial ──────────────────────────────── */
+.ans{border-top:1px solid #DCC4BC;margin-top:.8rem;padding-top:.55rem}
+.ans-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.55rem}
+.ans-head .ask2{font-family:var(--f-display);font-size:.92rem;color:var(--ink-soft);
+  letter-spacing:-.005em}
+.ans-head .ask2 b{color:var(--ink);font-weight:600}
+.ans-head .ask2 i{font-family:var(--f-body);font-style:normal;font-size:.78rem;
+  color:var(--ink-soft);margin-left:.62rem}
+.val{display:flex;align-items:center;gap:.34rem;font-family:var(--f-data)}
+.val .num{font-size:1.12rem;font-weight:600;color:var(--ink-faint);letter-spacing:-.01em;line-height:1}
+.val.set .num{color:var(--up)}
+
+.dial{position:relative;cursor:pointer;touch-action:none;-webkit-tap-highlight-color:transparent}
+
+/* markers sitting on top of the bars */
+.mk{position:absolute;z-index:3;white-space:nowrap;font-family:var(--f-data);
+  line-height:1;color:var(--ink-soft);pointer-events:none;
+  background:rgba(247,249,250,.88);padding:.12rem .1rem;border-radius:2px}
+.mk k{font-style:normal;font-weight:700;text-decoration:none;font-size:.82rem;
+  letter-spacing:0;color:inherit}
+.mk.c{transform:translateX(-50%)} .mk.l{transform:translateX(0)} .mk.rr{transform:translateX(-100%)}
+.mk.g1{color:#2C5A7A} .mk.g2{color:#8A6A2F} .mk.g3{color:#0B6B6B}
+
+.bars{position:absolute;z-index:1;left:0;right:0;bottom:0;display:flex;align-items:flex-end;gap:6px;height:1.95rem}
+.bars.thin{gap:4px}
+.bars.thin b{border-radius:1px}
+.bars.signed{align-items:stretch;position:relative}
+.bars b{flex:1;background:#CFD6DA;border-radius:1.5px;transition:background .09s ease;min-width:1px}
+.bars.signed b{position:relative;background:none;border-radius:0}
+.bars.signed b::after{content:"";position:absolute;left:0;right:0;background:#CFD6DA;border-radius:2px;
+  transition:background .09s ease}
+.bars.signed b.pos::after{bottom:var(--zero);height:var(--h)}
+.bars.signed b.neg::after{top:calc(100% - var(--zero));height:var(--h)}
+.dial.set .bars:not(.signed) b.on{background:#C89685}
+.dial.set .bars:not(.signed) b.cur{background:var(--up)}
+.dial .bars:not(.signed) b.demo{background:#C89685}
+.dial .bars:not(.signed) b.hov{background:#D9BDB2}
+.dial .bars.signed b.hov::after{background:#D9BDB2}
+.val .num.preview{color:var(--ink-faint);opacity:.75}
+.dial.set .bars.signed b.on::after{background:#C89685}
+.dial.set .bars.signed b.cur::after{background:var(--up)}
+.dial .bars.signed b.demo::after{background:#C89685}
+.bars.signed b:not(.pos):not(.neg){background:none}
+.zeroline{position:absolute;left:0;right:0;height:1px;background:var(--ink-faint);opacity:.3;
+  bottom:var(--zero);pointer-events:none}
+
+.foot-line{position:relative;height:.85rem;margin-top:.28rem;font-family:var(--f-data);font-size:.6rem}
+.foot-line .end{position:absolute;top:0;color:var(--ink-faint)}
+.foot-line .end.l{left:0} .foot-line .end.r{right:0}
+
+/* brief */
+.brief{margin-top:1.6rem;border-top:1.5px solid var(--ink);padding-top:0}
+.brief>summary{list-style:none;cursor:pointer;padding:1rem 0 .75rem;position:relative;
+  transition:opacity .15s ease}
+.brief>summary::-webkit-details-marker{display:none}
+.brief>summary .ml{color:var(--up);display:block}
+.brief>summary h2{color:var(--ink);transition:color .15s ease}
+.brief>summary .cue{display:block;margin-top:.4rem;font-family:var(--f-data);font-size:.66rem;
+  letter-spacing:.05em;color:var(--ink-faint);transition:color .15s ease}
+.brief>summary .cue::after{content:"  ↓"}
+.brief[open]>summary .cue::after{content:"  ↑"}
+.brief>summary:hover .cue,.brief>summary:focus-visible .cue{color:var(--watch)}
+.brief>summary:focus-visible{outline:none}
+.brief h2{font-family:var(--f-display);font-size:1.42rem;line-height:1.24;letter-spacing:-.018em;
+  font-weight:500;margin:.68rem 0 0}
+.brief .intro{color:var(--ink-soft);font-size:.94rem;line-height:1.62;margin:0 0 .3rem}
+.sec{border-top:1px solid var(--rule);padding:1.25rem 0 .3rem}
+.sec-tag{font-size:.6rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;color:var(--ink-faint)}
+.sec-tag i{font-style:normal;color:var(--up)}
+.sec h3{font-family:var(--f-display);font-size:1.1rem;line-height:1.3;font-weight:600;margin:.32rem 0 .55rem}
+.sec p{margin:0 0 .7rem;font-size:.92rem;line-height:1.62;color:var(--ink)}
+.sec p.q{color:var(--ink-soft)}
+.sec .watchline{background:var(--watch-tint);border-left:2px solid var(--watch);padding:.55rem .8rem;margin:.2rem 0 .7rem}
+.sec .watchline b{display:block;font-size:.6rem;letter-spacing:var(--track);text-transform:uppercase;
+  color:var(--watch);font-weight:600;margin-bottom:.12rem}
+.sec .watchline span{font-size:.87rem;line-height:1.5;color:var(--ink)}
+.sec .src{font-family:var(--f-data);font-size:.66rem;color:var(--ink-faint);margin:0}
+.backup{display:inline-block;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;font-weight:600;
+  color:var(--ink-faint);text-decoration:none;margin-top:.5rem;transition:color .12s ease}
+.backup:hover,.backup:focus-visible{color:var(--watch);outline:none}
+.backup::before{content:"↑ "}
+
+.record p{margin:0}
+.record b{color:var(--ink);font-weight:600}
+.record .stamp a{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--rule)}
+.nudge{display:none;margin-top:.7rem;border-left:2px solid var(--up);padding:.5rem .75rem;
+  background:var(--paper);font-size:.84rem;line-height:1.5;color:var(--ink)}
+.nudge.show{display:block}
+.nudge b{font-weight:600}
+.record .stamp{font-family:var(--f-data);font-size:.68rem;color:var(--ink-faint);display:block;margin-top:.5rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="mh-row">
+    <div class="logo"><b>ZEXL</b>Brief<span>.</span></div>
+    <div class="date">Thu 13 Aug 2026 · No. 004</div>
+  </div>
+  <div class="standing">
+    <span>Where informed people disagree about the world — and who turns out right.
+      <b>Four questions below. Give your own number on each — the answers land on dates you can see.</b></span>
+    <a href="/about/">What is this?</a>
+  </div>
+</header>
+
+
+<div class="resolved">
+  <span class="ml">Landing in the next hour</span>
+  <p class="normal"><b>US producer prices at</b> <span class="hl">8:30 ET</span> — the second question below closes then, and Friday's issue opens with the result.
+    <span class="score">Japan's figure already landed overnight. It went the other way.</span></p>
+  <p class="plain"><b>The US factory-gate inflation number arrives at</b> <span class="hl">8:30</span> this morning. That is the second question below — you can still answer until then.
+    <span class="score">Japan published its version overnight, and it moved in the opposite direction.</span></p>
+</div>
+
+<div class="bhead">
+  <span class="ml">Today's Board</span>
+  <button id="toggle" type="button" aria-pressed="false">Explain</button>
+</div>
+
+<!-- 1 -->
+<div class="item">
+  <div class="i-top" id="s1"><span class="slot">Anchor · <i>Prices</i><span class="carried">Day 4</span></span><span class="res">resolves 16 Sep</span></div>
+  <span class="turn">Two days of cooling data, and the split has not narrowed by a single vote.</span>
+  <div class="q">Will the Fed raise <em>RATES</em> at the September meeting?</div>
+
+  <div class="normal">
+    <div class="refs"><div class="ref g1"><span><k>F</k>ed funds futures</span><b><span class="chg d">▼3</span>51%</b><span class="track"><i style="width:51%"></i></span></div><div class="ref g2"><span><k>E</k>conomist consensus</span><b><span class="chg f">flat</span>~0%</b><span class="track"><i style="width:2%"></i></span></div><div class="ref g3"><span><k>H</k>ammack, Tuesday</span><b>act now</b><span class="track"><i style="width:88%"></i></span></div></div>
+    <div class="gap">Three more points off since yesterday. Still fifty points above where forecasters sit.</div>
+    <p class="why"><b>Why they differ:</b> Yesterday's consumer print gave no one a reason to act. This morning's producer figure is the last input before the August data cycle closes, and after that nothing new arrives until 4 September. A committee that spent July split three ways now has three weeks of silence to fill. <a class="tobrief" href="#b1">the full case</a></p>
+  </div>
+
+  <div class="plain">
+    <p class="stake">On 16 September, America's central bank decides whether to make borrowing more expensive. That decision reaches mortgage rates, savings rates, and the dollar.</p>
+    <div class="sides"><div class="side a"><em>Traders — about 51%</em><span>Two cooling prints in two days pulled them lower, but barely.</span></div><div class="side b"><em>Forecasters — near zero</em><span>Unmoved all week. They have not revised once through any of this.</span></div></div>
+    <p class="ask">Fifty points apart, five weeks out. Where do you put it?</p>
+  </div>
+
+  <div class="ans">
+    <div class="ans-head">
+      <span class="ask2"><b>Your call?</b><i>Tap where you'd put it</i></span>
+      <span class="val" id="v1"><span class="num">—</span>
+      </span>
+    </div>
+    <div class="dial" id="d1" data-key="Fed September" data-lo="0" data-hi="100"
+         data-step="1" data-dec="0" data-sfx="%" data-unit="" data-n="34"
+         style="height:2.30rem" role="slider" tabindex="0" aria-label="Fed September">
+      <span class="mk g2 l" style="left:0.00%;bottom:0.68rem"><k>E</k></span><span class="mk g1 c" style="left:51.00%;bottom:0.68rem"><k>F</k></span><span class="mk g3 c" style="left:88.00%;bottom:0.68rem"><k>H</k></span>
+      <div class="bars"><b style="height:26%"></b><b style="height:29%"></b><b style="height:31%"></b><b style="height:34%"></b><b style="height:36%"></b><b style="height:38%"></b><b style="height:41%"></b><b style="height:43%"></b><b style="height:45%"></b><b style="height:48%"></b><b style="height:50%"></b><b style="height:52%"></b><b style="height:54%"></b><b style="height:57%"></b><b style="height:59%"></b><b style="height:61%"></b><b style="height:63%"></b><b style="height:65%"></b><b style="height:68%"></b><b style="height:70%"></b><b style="height:72%"></b><b style="height:74%"></b><b style="height:76%"></b><b style="height:79%"></b><b style="height:81%"></b><b style="height:83%"></b><b style="height:85%"></b><b style="height:87%"></b><b style="height:89%"></b><b style="height:91%"></b><b style="height:94%"></b><b style="height:96%"></b><b style="height:98%"></b><b style="height:100%"></b></div>
+    </div>
+    <div class="foot-line"><span class="end l">0%</span><span class="end r">100%</span></div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="item">
+  <div class="i-top" id="s2"><span class="slot">Fast · <i>Prices</i><span class="carried">Day 2</span></span><span class="res">resolves today, 8:30 ET</span></div>
+  <span class="turn">Last chance. It closes in under an hour.</span>
+  <div class="q">Where will producer price <em>INFLATION</em> land?</div>
+
+  <div class="normal">
+    <div class="refs"><div class="ref g1"><span><k>S</k>treet consensus</span><b>4.9%</b><span class="track"><i style="width:63%"></i></span></div><div class="ref g2"><span><k>J</k>une actual</span><b>5.5%</b><span class="track"><i style="width:83%"></i></span></div><div class="ref g3"><span><k>C</k>onsumer side, yesterday</span><b>3.4%</b><span class="track"><i style="width:13%"></i></span></div></div>
+    <div class="gap">June fell 0.3% on the month, driven by an 18% collapse in diesel. July has no such help.</div>
+    <p class="why"><b>Why they differ:</b> June's decline came almost entirely from energy — diesel down 18%, gasoline and jet fuel lower with it. Crude has since risen four sessions and sits well above where it was through that month, so the same mechanism now runs the other way. Services rose 0.2% in June and were never the problem. <a class="tobrief" href="#b2">the full case</a></p>
+  </div>
+
+  <div class="plain">
+    <p class="stake">This is inflation measured at the factory gate rather than the checkout. When it runs far above consumer prices, one of the two has to give.</p>
+    <div class="sides"><div class="side a"><em>Forecasters say 4.9%</em><span>Down from 5.5% — the same cooling story yesterday's consumer number told.</span></div><div class="side b"><em>But June's fall was all diesel</em><span>Down 18% in one month. Crude has risen four sessions since.</span></div></div>
+    <p class="ask">Does the factory gate cool again, or does oil show up?</p>
+  </div>
+
+  <div class="ans">
+    <div class="ans-head">
+      <span class="ask2"><b>Your call?</b><i>Tap where you'd put it</i></span>
+      <span class="val" id="v2"><span class="num">—</span>
+      </span>
+    </div>
+    <div class="dial" id="d2" data-key="US PPI" data-lo="3.0" data-hi="6.0"
+         data-step="0.1" data-dec="1" data-sfx="%" data-unit="" data-n="46"
+         style="height:2.30rem" role="slider" tabindex="0" aria-label="US PPI">
+      <span class="mk g3 c" style="left:13.33%;bottom:1.17rem"><k>C</k></span><span class="mk g1 c" style="left:63.33%;bottom:1.17rem"><k>S</k></span><span class="mk g2 c" style="left:83.33%;bottom:1.17rem"><k>J</k></span>
+      <div class="bars thin"><b style="height:30%"></b><b style="height:40%"></b><b style="height:46%"></b><b style="height:52%"></b><b style="height:57%"></b><b style="height:61%"></b><b style="height:66%"></b><b style="height:70%"></b><b style="height:73%"></b><b style="height:77%"></b><b style="height:80%"></b><b style="height:83%"></b><b style="height:86%"></b><b style="height:89%"></b><b style="height:91%"></b><b style="height:93%"></b><b style="height:95%"></b><b style="height:96%"></b><b style="height:97%"></b><b style="height:98%"></b><b style="height:99%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:99%"></b><b style="height:98%"></b><b style="height:97%"></b><b style="height:96%"></b><b style="height:95%"></b><b style="height:93%"></b><b style="height:91%"></b><b style="height:89%"></b><b style="height:86%"></b><b style="height:83%"></b><b style="height:80%"></b><b style="height:77%"></b><b style="height:73%"></b><b style="height:70%"></b><b style="height:66%"></b><b style="height:61%"></b><b style="height:57%"></b><b style="height:52%"></b><b style="height:46%"></b><b style="height:40%"></b><b style="height:30%"></b></div>
+    </div>
+    <div class="foot-line"><span class="end l">3.0%</span><span class="end r">6.0%</span></div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="item">
+  <div class="i-top" id="s3"><span class="slot">Story · <i>Prices</i> — Japan<span class="carried">New</span></span><span class="res">resolves 11 Sep</span></div>
+  <div class="q">Where will Japan's corporate goods <em>INFLATION</em> land in August?</div>
+
+  <div class="normal">
+    <div class="refs"><div class="ref g1"><span><k>J</k>uly, this morning</span><b><span class="chg d">▼0.1</span>7.2%</b><span class="track"><i style="width:64%"></i></span></div><div class="ref g2"><span><k>R</k>evised June</span><b>7.3%</b><span class="track"><i style="width:66%"></i></span></div><div class="ref g3"><span><k>P</k>re-conflict, Jan</span><b>4.4%</b><span class="track"><i style="width:8%"></i></span></div></div>
+    <div class="gap">America is at 3.4% and falling. Japan is at 7.2% and near a three-year high.</div>
+    <p class="why"><b>Why they differ:</b> The Bank of Japan reported this morning that input prices for Japanese firms rose 7.2% year-on-year in July, barely below June's revised 7.3% — the highest since March 2023. Oil and coal products, chemicals and non-ferrous metals led it. Japan imports nearly all of its energy, so the same crude that is easing American inflation through a strong dollar is doing the opposite in Tokyo. The Board has already raised to 1.0% and is weighing another move. <a class="tobrief" href="#b3">the full case</a></p>
+  </div>
+
+  <div class="plain">
+    <p class="stake">Japan is the last major economy with deeply negative real rates. If its cost pressure does not ease, the next rate rise there moves the yen, and the yen moves everything priced in it.</p>
+    <div class="sides"><div class="side a"><em>America is cooling</em><span>Consumer prices 3.4%, core 2.5%, both down yesterday.</span></div><div class="side b"><em>Japan is not</em><span>Firms paid 7.2% more than a year ago, near a three-year high.</span></div></div>
+    <p class="ask">Same oil, opposite outcomes. Where does Japan land next month?</p>
+  </div>
+
+  <div class="ans">
+    <div class="ans-head">
+      <span class="ask2"><b>Your call?</b><i>Tap where you'd put it</i></span>
+      <span class="val" id="v3"><span class="num">—</span>
+      </span>
+    </div>
+    <div class="dial" id="d3" data-key="Japan corporate goods" data-lo="4.0" data-hi="9.0"
+         data-step="0.1" data-dec="1" data-sfx="%" data-unit="" data-n="51"
+         style="height:2.30rem" role="slider" tabindex="0" aria-label="Japan corporate goods">
+      <span class="mk g3 c" style="left:8.00%;bottom:1.17rem"><k>P</k></span><span class="mk g1 c" style="left:64.00%;bottom:1.17rem"><k>J</k></span><span class="mk g2 c" style="left:66.00%;bottom:1.17rem"><k>R</k></span>
+      <div class="bars thin"><b style="height:30%"></b><b style="height:39%"></b><b style="height:45%"></b><b style="height:50%"></b><b style="height:55%"></b><b style="height:59%"></b><b style="height:63%"></b><b style="height:67%"></b><b style="height:70%"></b><b style="height:74%"></b><b style="height:77%"></b><b style="height:80%"></b><b style="height:83%"></b><b style="height:85%"></b><b style="height:88%"></b><b style="height:90%"></b><b style="height:92%"></b><b style="height:93%"></b><b style="height:95%"></b><b style="height:96%"></b><b style="height:97%"></b><b style="height:98%"></b><b style="height:99%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:99%"></b><b style="height:98%"></b><b style="height:97%"></b><b style="height:96%"></b><b style="height:95%"></b><b style="height:93%"></b><b style="height:92%"></b><b style="height:90%"></b><b style="height:88%"></b><b style="height:85%"></b><b style="height:83%"></b><b style="height:80%"></b><b style="height:77%"></b><b style="height:74%"></b><b style="height:70%"></b><b style="height:67%"></b><b style="height:63%"></b><b style="height:59%"></b><b style="height:55%"></b><b style="height:50%"></b><b style="height:45%"></b><b style="height:39%"></b><b style="height:30%"></b></div>
+    </div>
+    <div class="foot-line"><span class="end l">4.0%</span><span class="end r">9.0%</span></div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="item">
+  <div class="i-top" id="s4"><span class="slot">Rotate · <i>Markets</i><span class="carried">New</span></span><span class="res">resolves 31 Aug</span></div>
+  <div class="q">Where will the <em>VIX</em> close at the end of August?</div>
+
+  <div class="normal">
+    <div class="refs"><div class="ref g1"><span><k>T</k>oday</span><b><span class="chg d">▼4.8%</span>14.6</b><span class="track"><i style="width:21%"></i></span></div><div class="ref g2"><span><k>Y</k>esterday</span><b>15.3</b><span class="track"><i style="width:24%"></i></span></div><div class="ref g3"><span><k>M</k>arch high</span><b>31.0</b><span class="track"><i style="width:95%"></i></span></div></div>
+    <div class="gap">Fell nearly 5% today. The calmest reading since before the July oil spike.</div>
+    <p class="why"><b>Why they differ:</b> Volatility has drained out of the market even as the questions above stayed open. Shares sit near records, the dollar is firm at 99.9, and crude eased back below $83 on WTI. Calm markets are usually right — but the index cannot fall much below 12 without signalling complacency, while it reached 31 in March in a matter of days. <a class="tobrief" href="#b4">the full case</a></p>
+  </div>
+
+  <div class="plain">
+    <p class="stake">The VIX measures how nervous the stock market is about the coming month. Above 25 means real fear; below 15 means almost none.</p>
+    <div class="sides"><div class="side a"><em>Today — 14.6</em><span>A calm, risk-on level. Shares are near record highs.</span></div><div class="side b"><em>March — 31.0</em><span>Where it went when the war first hit oil prices, in under a week.</span></div></div>
+    <p class="ask">Eighteen days to month end. Calm, or something else?</p>
+  </div>
+
+  <div class="ans">
+    <div class="ans-head">
+      <span class="ask2"><b>Your call?</b><i>Tap where you'd put it</i></span>
+      <span class="val" id="v4"><span class="num">—</span>
+      </span>
+    </div>
+    <div class="dial" id="d4" data-key="VIX at month end" data-lo="10" data-hi="32"
+         data-step="0.5" data-dec="1" data-sfx="" data-unit="" data-n="45"
+         style="height:2.30rem" role="slider" tabindex="0" aria-label="VIX at month end">
+      <span class="mk g1 c" style="left:20.91%;bottom:1.17rem"><k>T</k></span><span class="mk g2 c" style="left:24.09%;bottom:1.17rem"><k>Y</k></span><span class="mk g3 c" style="left:95.45%;bottom:1.17rem"><k>M</k></span>
+      <div class="bars thin"><b style="height:30%"></b><b style="height:40%"></b><b style="height:46%"></b><b style="height:52%"></b><b style="height:57%"></b><b style="height:62%"></b><b style="height:66%"></b><b style="height:70%"></b><b style="height:74%"></b><b style="height:78%"></b><b style="height:81%"></b><b style="height:84%"></b><b style="height:87%"></b><b style="height:89%"></b><b style="height:91%"></b><b style="height:93%"></b><b style="height:95%"></b><b style="height:97%"></b><b style="height:98%"></b><b style="height:99%"></b><b style="height:99%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:100%"></b><b style="height:99%"></b><b style="height:99%"></b><b style="height:98%"></b><b style="height:97%"></b><b style="height:95%"></b><b style="height:93%"></b><b style="height:91%"></b><b style="height:89%"></b><b style="height:87%"></b><b style="height:84%"></b><b style="height:81%"></b><b style="height:78%"></b><b style="height:74%"></b><b style="height:70%"></b><b style="height:66%"></b><b style="height:62%"></b><b style="height:57%"></b><b style="height:52%"></b><b style="height:46%"></b><b style="height:40%"></b><b style="height:30%"></b></div>
+    </div>
+    <div class="foot-line"><span class="end l">10</span><span class="end r">32</span></div>
+  </div>
+</div>
+
+<div class="foot">
+  <span></span>
+  <span class="right"><b id="cnt">0</b> of 4 &nbsp;<a id="sendlink" class="off" href="#">Send my answers</a></span>
+</div>
+
+
+<details class="brief" id="brief">
+  <summary>
+    <span class="ml">Today's Brief</span>
+    <h2>Inflation is cooling in America and refusing to in Japan. The same barrel of oil is doing both.</h2>
+    <span class="cue">Read the case behind each question</span>
+  </summary>
+  <p class="intro">Four questions above, four short pieces below. Each explains why two sets of informed people are looking at the same facts and reaching different answers — and what would settle it.</p>
+
+  <div class="sec" id="b1">
+    <div class="sec-tag">01 · <i>Prices</i> — the Fed in September</div>
+    <h3>Two cooling prints in two days, and the committee is exactly as split as it was.</h3>
+    <p>Consumer prices came in at 3.4% yesterday, core at 2.5%, both a tenth below June and both on consensus. Market odds for a September rise eased another three points to around 51%. Published economist forecasts have not moved once all week.</p>
+    <p>What has not changed is the argument. Beth Hammack, one of three who dissented for an immediate rise on 29 July, wrote publicly on Tuesday that now is the time to act. Cooler data does not answer her case, which was never about the current reading — it was about how expensive the return to 2% becomes if you wait.</p>
+    <p>After this morning's producer figure, the August data cycle is effectively closed. Nothing new arrives until payrolls on 4 September and August CPI on 11 September, five days before the decision. Three weeks of silence, and a fifty-point gap between the two groups who claim to know.</p>
+    <div class="watchline"><b>Watch</b><span>Whether Kashkari or Logan follows Hammack into public argument during the quiet weeks. Three dissenters speaking is a different signal from one.</span></div>
+    <p class="src">Sources: BLS Consumer Price Index, July 2026 · Hammack public remarks, 11 Aug 2026 · fed funds futures pricing</p>
+    <a class="backup" href="#s1">back to the question</a>
+  </div>
+
+  <div class="sec" id="b2">
+    <div class="sec-tag">02 · <i>Prices</i> — the factory gate, in one hour</div>
+    <h3>June's fall was one commodity. That commodity has since risen four sessions.</h3>
+    <p>Producer prices fell 0.3% in June, and the reason is legible in a single line of the release: diesel dropped 18% in the month. Gasoline, jet fuel and crude petroleum fell with it. Final demand goods were down 1.4% while services rose 0.2%.</p>
+    <p>The annual rate at 5.5% still sits two points above what consumers pay. Forecasters expect 4.9% this morning, which would narrow the gap. But the arithmetic that produced June's decline does not repeat: crude rose four straight sessions into this week, and stage-one intermediate demand was still running at 11.0% year-on-year in June even after the energy collapse.</p>
+    <p>What makes this the last useful reading is timing. It is the final inflation input before the committee's quiet period, and the one that would show a pass-through if a pass-through exists.</p>
+    <div class="watchline"><b>Watch</b><span>Final demand services rather than goods. Goods track oil directly; services are where a genuine pass-through would appear first.</span></div>
+    <p class="src">Sources: BLS Producer Price Index, June 2026 · economist estimates for July</p>
+    <a class="backup" href="#s2">back to the question</a>
+  </div>
+
+  <div class="sec" id="b3">
+    <div class="sec-tag">03 · <i>Prices</i> — Japan, and the other direction</div>
+    <h3>Japanese firms paid 7.2% more than a year ago. American consumers paid 3.4%.</h3>
+    <p>The Bank of Japan reported this morning that corporate goods prices rose 7.2% year-on-year in July, barely below June's upwardly revised 7.3% — the highest since March 2023. Monthly, they rose 0.1%. Oil and coal products, chemicals and non-ferrous metals led the advance.</p>
+    <p>The mechanism is the reason this belongs next to the American questions. Japan imports almost all of its energy and pays for it in dollars. The same crude that is cooling US inflation through a firm dollar and domestic supply is arriving in Tokyo at a currency-adjusted premium, and it lands on producers before anyone else.</p>
+    <p>The Board raised to 1.0% in June, the first time at that level in three decades, on a 7–1 vote, and has said it will keep going while watching how the Middle East situation feeds through. A 7.2% input cost is not a number that argues for stopping. Japan's next policy decision follows this data by weeks, and a move there sets the yen, which sets the price of everything the rest of the world buys from Japan.</p>
+    <div class="watchline"><b>Watch</b><span>Whether the monthly rate stays near 0.1% or reaccelerates. The annual figure is still carrying last year's spike; the monthly one shows what is happening now.</span></div>
+    <p class="src">Sources: Bank of Japan, Corporate Goods Price Index, July 2026 preliminary · BOJ policy statement, 16 Jun 2026</p>
+    <a class="backup" href="#s3">back to the question</a>
+  </div>
+
+  <div class="sec" id="b4">
+    <div class="sec-tag">04 · <i>Markets</i> — the calm</div>
+    <h3>Volatility drained out of a week that produced two inflation prints and no answers.</h3>
+    <p>The VIX fell nearly 5% today to 14.6, its calmest since before July's oil spike. The S&amp;P sits at 7,748, the Nasdaq at 26,588 and up half a percent, the dollar index firm at 99.9. WTI eased back below $83.</p>
+    <p>On its own that is a market deciding the inflation question is settled. What it sits next to is a fifty-point disagreement about the September meeting, a producer price release in under an hour, and an economy where wages have trailed prices for four consecutive months.</p>
+    <p>The asymmetry is the point. The index cannot fall much below 12 without signalling outright complacency, but it reached 31 in March in a matter of days when crude first spiked. Calm markets are usually right, which is why they are calm. When they are wrong it happens in a single session.</p>
+    <div class="watchline"><b>Watch</b><span>Whether equity and Treasury volatility diverge. Persistent gaps between the two have preceded regime shifts more reliably than either alone.</span></div>
+    <p class="src">Sources: Cboe VIX and index levels, 12–13 Aug 2026</p>
+    <a class="backup" href="#s4">back to the question</a>
+  </div>
+</details>
+
+<details class="fold">
+  <summary><span class="ml">Also today</span><em>6 items</em></summary>
+  <div class="also"><h3>Japan's producer inflation stays near a three-year high</h3><p>Corporate goods prices rose 7.2% in July against a revised 7.3% in June, led by oil and coal products, chemicals and non-ferrous metals.</p></div>
+  <div class="also"><h3>WTI eases back below $83</h3><p>Crude gave up part of this week's advance. Brent had risen four straight sessions into Tuesday before pausing.</p></div>
+  <div class="also"><h3>Shares hold near records as volatility falls</h3><p>The Nasdaq added 0.54% and the S&amp;P 0.26%. The VIX fell almost 5% to 14.6.</p></div>
+  <div class="also"><h3>Real wages remain negative for a fourth month</h3><p>Pay is growing at 3.2% against prices at 3.4%. Average hourly earnings slipped 0.2% from a year earlier in yesterday's release.</p></div>
+  <div class="also"><h3>Next US data: payrolls on 4 September</h3><p>Then August CPI on 11 September, five days before the FOMC decides. Nothing of consequence in between.</p></div>
+  <div class="also"><h3>China's second rare-earth wave still set for 10 November</h3><p>Fourteen EU firms were added in July after ten US firms in June. Whether the November date holds is the clearest test of whether 2026's escalation continues.</p></div>
+</details>
+
+<div class="record">
+  <p class="normal"><b>Four answers saved.</b> One resolves at 8:30 this morning, and Monday's issue opens with the result.<br>
+    Nothing here is deleted, including the answers that turn out wrong.</p>
+  <p class="plain"><b>Your four answers are saved with today's date.</b> One is settled within the hour, and Monday's issue shows what actually happened.<br>
+    Wrong answers are kept too — a record that only shows the right ones is not a record.</p>
+  <span class="stamp">Reader since 13 August 2026 · issue No. 004 · <a href="/about/">what this is</a></span>
+</div>
+
+</div>
+
+<script>
+(function(){
+  var t=document.getElementById('toggle');
+  t.addEventListener('click',function(){
+    var on=document.body.classList.toggle('explain');
+    t.textContent=on?'Back':'Explain';
+    t.setAttribute('aria-pressed',on?'true':'false');
+  });
+
+  var answers={};
+
+  document.querySelectorAll('.dial').forEach(function(d,idx){
+    var lo=+d.dataset.lo, hi=+d.dataset.hi, step=+d.dataset.step,
+        dec=+d.dataset.dec, sfx=d.dataset.sfx, key=d.dataset.key, n=+d.dataset.n;
+    var bars=[].slice.call(d.querySelectorAll('.bars b'));
+    var box=document.getElementById('v'+(idx+1));
+    var num=box.querySelector('.num');
+    var cur=null;
+
+    function fmt(v){
+      var s=v.toFixed(dec);
+      if((sfx==='k'||sfx==='pt')&&v>0) s='+'+s;
+      return s+sfx;
+    }
+    function idxAt(e){
+      var r=d.getBoundingClientRect();
+      var x=(e.clientX!==undefined?e.clientX:e.touches[0].clientX)-r.left;
+      return Math.max(0,Math.min(n-1,Math.round((x/r.width)*(n-1))));
+    }
+    function valAt(i){
+      var v=lo+(i/(n-1))*(hi-lo);
+      return Math.round(v/step)*step;
+    }
+    function place(i){
+      i=Math.max(0,Math.min(n-1,i));
+      var v=valAt(i);
+      bars.forEach(function(b,j){
+        b.classList.remove('demo','hov');
+        b.classList.toggle('on', j<=i);
+        b.classList.toggle('cur', j===i);
+      });
+      d.classList.add('set');
+      num.classList.remove('preview');
+      box.classList.add('set');
+      num.textContent=fmt(v);
+      d.setAttribute('aria-valuenow',v.toFixed(dec));
+      answers[key]=fmt(v); cur=i; refresh();
+    }
+
+    // 커서를 올리면 그 자리 값을 미리 보여준다 (데스크톱)
+    if(window.matchMedia('(hover:hover)').matches){
+      d.addEventListener('pointermove',function(e){
+        if(drag){ place(idxAt(e)); return; }
+        var i=idxAt(e);
+        bars.forEach(function(b,j){ b.classList.toggle('hov', j<=i && !b.classList.contains('on')); });
+        if(cur===null){
+          num.textContent=fmt(valAt(i));
+          num.classList.add('preview');
+        }
+      });
+      d.addEventListener('pointerleave',function(){
+        bars.forEach(function(b){ b.classList.remove('hov'); });
+        if(cur===null){ num.textContent='—'; num.classList.remove('preview'); }
+      });
+    }
+
+    var drag=false;
+    d.addEventListener('pointerdown',function(e){drag=true;try{d.setPointerCapture(e.pointerId)}catch(_){}
+      place(idxAt(e));e.preventDefault();});
+    d.addEventListener('pointerup',function(){drag=false;});
+    d.addEventListener('pointercancel',function(){drag=false;});
+    d.addEventListener('keydown',function(e){
+      var i=(cur===null)?Math.floor(n/2):cur;
+      if(e.key==='ArrowRight'||e.key==='ArrowUp'){place(i+1);e.preventDefault();}
+      if(e.key==='ArrowLeft'||e.key==='ArrowDown'){place(i-1);e.preventDefault();}
+      if(e.key==='Enter'||e.key===' '){place(i);e.preventDefault();}
+    });
+
+    if(idx===0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      var k=0, target=Math.round(n*0.55);
+      var iv=setInterval(function(){
+        if(d.classList.contains('set')){clearInterval(iv);return;}
+        bars.forEach(function(b,j){b.classList.toggle('demo', j<=k);});
+        if(++k>target){
+          setTimeout(function(){
+            if(!d.classList.contains('set')) bars.forEach(function(b){b.classList.remove('demo');});
+          },700);
+          clearInterval(iv);
+        }
+      },22);
+    }
+  });
+
+  var brief=document.getElementById('brief');
+  document.querySelectorAll('a[href^="#b"], a[href="#brief"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(brief && !brief.open){
+        e.preventDefault(); brief.open=true;
+        var id=a.getAttribute('href').slice(1);
+        setTimeout(function(){
+          var el=document.getElementById(id);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        },40);
+      }
+    });
+  });
+
+  function refresh(){
+    var keys=Object.keys(answers);
+    document.getElementById('cnt').textContent=keys.length;
+    var nd=document.getElementById('nudge');
+    if(nd&&!window.__first){window.__first=true;nd.classList.add('show');}
+    var a=document.getElementById('sendlink');
+    if(!keys.length){a.className='off';a.href='#';return;}
+    a.className='';
+    var body=keys.map(function(k){return k+': '+answers[k];}).join('\n');
+    body+='\n\nZEXL No. 004 · 13 Aug 2026';
+    a.href='mailto:zexl.brief@gmail.com?subject='+
+      encodeURIComponent('ZEXL 004 — my answers')+'&body='+encodeURIComponent(body);
+  }
+})();
+</script>
+</body>
+</html>
