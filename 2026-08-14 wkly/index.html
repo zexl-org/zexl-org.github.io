@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZEXL Weekly 01 · 10–14 August 2026</title>
+<meta name="description" content="One week, nine numbers, one question settled.">
+<meta property="og:title" content="ZEXL Weekly 01 — 10–14 August 2026">
+<meta property="og:description" content="Inflation cooled in America and held near a three-year high in Japan. Ninety seconds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E7EBED;--card:#F7F9FA;--ink:#12212A;--ink-soft:#53656F;--ink-faint:#8497A0;
+  --rule:#C6CFD4;--up:#9E3417;--dn:#2C5A7A;--watch:#0B6B6B;--watch-tint:#E2EFEE;
+  --f-display:"Newsreader",Georgia,serif;--f-body:"IBM Plex Sans",system-ui,sans-serif;--f-data:"IBM Plex Mono",monospace;
+  --track:.13em;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);
+  font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:41rem;margin:0 auto;padding:0 1.15rem 3.5rem}
+.ml{font-size:.66rem;letter-spacing:var(--track);text-transform:uppercase;font-weight:600;line-height:1}
+
+.masthead{border-bottom:1.5px solid var(--ink);padding:1.5rem 0 .75rem}
+.mh-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--f-display);font-weight:600;font-size:1.5rem;letter-spacing:-.022em;line-height:1}
+.logo b{letter-spacing:.02em;margin-right:.12em}
+.logo span{color:var(--ink-faint);font-weight:400}
+.date{font-family:var(--f-data);font-size:.68rem;color:var(--ink-soft);text-align:right;line-height:1.5}
+.date b{color:var(--ink);font-weight:600}
+.standing{margin-top:.55rem;font-size:.82rem;color:var(--ink-soft);line-height:1.45}
+
+/* headline */
+.lead{padding:1.8rem 0 1.3rem}
+.lead .ml{color:var(--up);margin-bottom:.7rem}
+.lead h1{font-family:var(--f-display);font-size:1.72rem;line-height:1.2;letter-spacing:-.02em;
+  font-weight:500;margin:0 0 .7rem}
+.lead p{margin:0;color:var(--ink-soft);font-size:.95rem;line-height:1.6}
+
+/* at a glance */
+.glance{border-top:1.5px solid var(--ink);border-bottom:1px solid var(--rule)}
+.gh{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;
+  padding:.9rem 0 .7rem;flex-wrap:wrap}
+.gh .ml{color:var(--ink)}
+.gh em{font-style:normal;font-family:var(--f-data);font-size:.66rem;color:var(--ink-faint)}
+.grow{display:grid;grid-template-columns:1fr 4.4rem 3.2rem;gap:.5rem;align-items:baseline;
+  padding:.5rem 0;border-top:1px solid var(--rule)}
+.grow:first-of-type{border-top:none}
+.grow .n{font-size:.9rem;color:var(--ink)}
+.grow .n i{font-style:normal;font-family:var(--f-data);font-size:.62rem;color:var(--ink-faint);
+  display:block;margin-top:.1rem}
+.grow .v{font-family:var(--f-data);font-size:.95rem;font-weight:600;text-align:right;color:var(--ink)}
+.grow .c{font-family:var(--f-data);font-size:.72rem;font-weight:600;text-align:right}
+.c.u{color:var(--up)} .c.d{color:var(--dn)} .c.f{color:var(--ink-faint);font-weight:500}
+.grow.new{background:var(--watch-tint);margin:0 -.6rem;padding:.55rem .6rem;border-radius:2px}
+.grow.new .n{font-weight:600}
+.grow.new .v{color:var(--watch);font-size:1.05rem}
+.grow.new .n i{color:var(--watch);font-weight:600}
+.grow.blank .v{color:var(--ink-faint)}
+
+/* resolved */
+.res{margin-top:2rem}
+.res>.ml{color:var(--up);margin-bottom:.8rem}
+.rcard{background:var(--card);border:1px solid var(--rule);border-radius:3px;
+  padding:.95rem 1rem 1.05rem;margin-bottom:.7rem}
+.rcard h3{font-family:var(--f-display);font-size:1.06rem;line-height:1.3;font-weight:600;margin:0 0 .5rem}
+.rline{display:grid;grid-template-columns:8.4rem 1fr;gap:.5rem;font-size:.86rem;
+  padding:.28rem 0;border-top:1px solid var(--rule);align-items:baseline}
+.rline:first-of-type{border-top:none}
+.rline dt{font-family:var(--f-data);font-size:.7rem;color:var(--ink-faint);letter-spacing:.02em}
+.rline dd{margin:0;font-family:var(--f-data);font-weight:600;color:var(--ink)}
+.rline.hit dd{color:var(--watch)}
+.rline.pend dd{color:var(--ink-faint);font-weight:400}
+.rnote{margin:.65rem 0 0;font-size:.85rem;line-height:1.55;color:var(--ink-soft)}
+
+/* your record — preview */
+.mine{margin-top:2rem;border:1.5px dashed var(--rule);border-radius:3px;padding:1rem 1rem 1.1rem;
+  background:var(--card)}
+.mine .ml{color:var(--watch);margin-bottom:.35rem}
+.mine h3{font-family:var(--f-display);font-size:1.1rem;line-height:1.3;font-weight:600;margin:0 0 .45rem}
+.mine .sub{margin:0 0 .9rem;font-size:.86rem;line-height:1.55;color:var(--ink-soft)}
+.mine .sub b{color:var(--ink);font-weight:600}
+.preview{opacity:.55}
+.tagline{display:inline-block;font-family:var(--f-data);font-size:.6rem;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:600;color:var(--watch);border:1px solid var(--watch);
+  border-radius:2px;padding:.14rem .38rem;margin-bottom:.6rem}
+
+/* next week */
+.next{margin-top:2rem;border-top:1.5px solid var(--ink);padding-top:1rem}
+.next>.ml{color:var(--up);margin-bottom:.7rem}
+.next ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+.next li{display:grid;grid-template-columns:5.4rem 1fr;gap:.7rem;font-size:.88rem;line-height:1.45;align-items:baseline}
+.next time{font-family:var(--f-data);font-size:.72rem;color:var(--watch);font-weight:600;white-space:nowrap}
+.next li span{color:var(--ink-soft)}
+.next li b{color:var(--ink);font-weight:600}
+
+footer{border-top:1px solid var(--rule);margin-top:2.2rem;padding-top:1.1rem;
+  font-size:.84rem;color:var(--ink-soft);line-height:1.6}
+footer p{margin:0 0 .6rem}
+footer .sign{font-family:var(--f-data);font-size:.68rem;color:var(--ink-faint)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+
+@media (min-width:44rem){
+  body{font-size:17px}
+  .lead h1{font-size:2.1rem}
+  .grow{grid-template-columns:1fr 5rem 3.6rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="mh-row">
+    <div class="logo"><b>ZEXL</b>Weekly<span>.</span></div>
+    <div class="date">Fri 14 Aug 2026 · <b>Weekly 01</b><br>10–14 August · 90 seconds</div>
+  </div>
+  <div class="standing">One week, nine numbers, one question settled — and what opens on Monday.</div>
+</header>
+
+<section class="lead">
+  <div class="ml">The week</div>
+  <h1>Both American inflation prints came in soft. Japan's came in near a three-year high.</h1>
+  <p>The same barrel of oil did both. Washington got two soft prints in two days — consumer prices at 3.4%, producer prices at 4.7%, each below what forecasters expected. Tokyo reported that its firms are paying 7.2% more than a year ago. The committee that has to decide in September ended the week exactly as split as it began it.</p>
+</section>
+
+<section class="glance">
+  <div class="gh"><span class="ml">This week at a glance</span><em>▮ released Thu–Fri</em></div>
+
+  <div class="grow">
+    <span class="n">US consumer prices<i>Wed · headline y/y</i></span>
+    <span class="v">3.4%</span><span class="c d">▼0.1</span>
+  </div>
+  <div class="grow">
+    <span class="n">US core inflation<i>Wed · y/y · consensus 2.5%</i></span>
+    <span class="v">2.5%</span><span class="c d">▼0.1</span>
+  </div>
+  <div class="grow new">
+    <span class="n">US producer prices<i>Thu · y/y · consensus was 4.9%</i></span>
+    <span class="v">4.7%</span><span class="c d">▼0.8</span>
+  </div>
+  <div class="grow new">
+    <span class="n">Japan corporate goods<i>Thu · y/y · near 3-year high</i></span>
+    <span class="v">7.2%</span><span class="c d">▼0.1</span>
+  </div>
+  <div class="grow">
+    <span class="n">Fed September odds<i>futures · economists still ~0%</i></span>
+    <span class="v">51%</span><span class="c d">▼11</span>
+  </div>
+  <div class="grow">
+    <span class="n">US 10-year yield<i>Tue peak 4.72%</i></span>
+    <span class="v">4.71%</span><span class="c u">▲6bp</span>
+  </div>
+  <div class="grow">
+    <span class="n">Brent crude<i>rose four sessions, then paused</i></span>
+    <span class="v">$87.8</span><span class="c u">▲12%</span>
+  </div>
+  <div class="grow">
+    <span class="n">VIX<i>calmest since before the July spike</i></span>
+    <span class="v">14.6</span><span class="c d">▼4.8%</span>
+  </div>
+  <div class="grow">
+    <span class="n">S&amp;P 500<i>near record</i></span>
+    <span class="v">7,748</span><span class="c u">▲0.3%</span>
+  </div>
+</section>
+
+<section class="res">
+  <div class="ml">Settled this week</div>
+
+  <div class="rcard">
+    <h3>Where would core inflation land?</h3>
+    <dl>
+      <div class="rline"><dt>Asked</dt><dd>Mon 10 Aug · No. 001</dd></div>
+      <div class="rline"><dt>Street said</dt><dd>2.5%</dd></div>
+      <div class="rline"><dt>Nowcast said</dt><dd>3.0%</dd></div>
+      <div class="rline hit"><dt>Actual</dt><dd>2.5%</dd></div>
+    </dl>
+    <p class="rnote">The street had it exactly. The nowcast, which tracks fuel costs daily, was half a point too hot — the energy pass-through it has been waiting for since spring still has not arrived.</p>
+  </div>
+
+  <div class="rcard">
+    <h3>Where would producer price inflation land?</h3>
+    <dl>
+      <div class="rline"><dt>Asked</dt><dd>Wed 12 Aug · No. 003</dd></div>
+      <div class="rline"><dt>Street said</dt><dd>4.9%</dd></div>
+      <div class="rline"><dt>June was</dt><dd>5.5%</dd></div>
+      <div class="rline hit"><dt>Actual</dt><dd>4.7%</dd></div>
+    </dl>
+    <p class="rnote">Two tenths below consensus, and the mechanism was the same one as June: energy. Final demand goods fell 0.7% on a 3.1% drop in energy and a 5.7% slide in gasoline, while services rose 0.2% and construction jumped 2.2%. Crude petroleum in the intermediate stages fell 11.9%. The oil that has been driving every question on this board pushed producer prices down this month, not up.</p>
+  </div>
+</section>
+
+<section class="mine">
+  <span class="tagline">Preview · from September</span>
+  <div class="ml">Your record</div>
+  <h3>From September, this box fills in with your own numbers.</h3>
+  <p class="sub">Answers are not being stored yet — the account system arrives with the formal launch on <b>7 September</b>. From that Monday, every answer is kept with its timestamp, and this is what you will see each Friday.</p>
+
+  <div class="preview">
+    <div class="rcard" style="margin-bottom:0">
+      <h3>Where would core inflation land?</h3>
+      <dl>
+        <div class="rline"><dt>Your answer</dt><dd>2.6%</dd></div>
+        <div class="rline"><dt>Reader median</dt><dd>2.7%</dd></div>
+        <div class="rline"><dt>Street consensus</dt><dd>2.5%</dd></div>
+        <div class="rline hit"><dt>Actual</dt><dd>2.5%</dd></div>
+        <div class="rline"><dt>Your error</dt><dd>0.10 — closer than 62% of readers</dd></div>
+      </dl>
+      <p class="rnote">Illustration only. The numbers above are not real.</p>
+    </div>
+  </div>
+</section>
+
+<section class="next">
+  <div class="ml">Next week</div>
+  <ul>
+    <li><time>Mon 17</time><span>Board reopens. The September question enters its fifth day, with nothing new to move it until 4 September.</span></li>
+    <li><time>Wed 19</time><span>EIA weekly crude stocks, 10:30 ET</span></li>
+    <li><time>Thu 20</time><span>Weekly jobless claims, 8:30 ET</span></li>
+    <li><time>04 Sep</time><span>August payrolls and average hourly earnings</span></li>
+    <li><time>11 Sep</time><span>August CPI — five days before the FOMC decides</span></li>
+    <li><time>16 Sep</time><span>FOMC. Three dissented in July; the market says 51%, forecasters say zero</span></li>
+  </ul>
+</section>
+
+<footer>
+  <p>Sourced from primary documents where they exist — central bank statements, official releases, regulatory filings. Every figure links back to its source in the daily issues.</p>
+  <p>Monday, same time. <a href="/">Today's board</a> · <a href="/about/">What this is</a></p>
+  <p class="sign">ZEXL Weekly 01 · compiled 14 Aug 2026, 07:00 ET</p>
+</footer>
+
+</div>
+</body>
+</html>
